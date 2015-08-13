@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -24,7 +24,7 @@
 var conf = require('./conf');
 var start = require('./view-server');
 
-if (conf.runner === 'supervisor') {
+if (conf.get('RUNNER') === 'supervisor') {
   process.on('SIGINT', cleanShutdown('SIGINT (Ctrl-C)'));
   process.on('SIGTERM', cleanShutdown('SIGTERM'));
 }

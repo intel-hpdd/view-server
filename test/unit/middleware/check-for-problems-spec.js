@@ -1,6 +1,6 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var λ = require('highland');
 
 describe('check for problems', function () {
@@ -37,7 +37,7 @@ describe('check for problems', function () {
 
   it('should tell supervisor is down on error', function () {
     push(new Error('socket error'));
-    push(null, λ.nil);
+    push(null, nil);
 
     expect(renderRequestError)
       .toHaveBeenCalledOnceWith(res, 'The following services are not running: \n\nsupervisor\n\n', null);
@@ -46,14 +46,14 @@ describe('check for problems', function () {
   it('should report what services are down', function () {
     push(null, 'corosync');
     push(null, 'autoreload');
-    push(null, λ.nil);
+    push(null, nil);
 
     expect(renderRequestError)
       .toHaveBeenCalledOnceWith(res, 'The following services are not running: \n\ncorosync\nautoreload\n\n', null);
   });
 
   it('should call next if no services are down', function () {
-    push(null, λ.nil);
+    push(null, nil);
 
     expect(next).toHaveBeenCalledOnceWith(req, res);
   });

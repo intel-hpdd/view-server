@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -18,19 +18,17 @@
 // of the Materials, either expressly, by implication, inducement, estoppel or
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
-
 'use strict';
 
 var λ = require('highland');
-var _ = require('lodash-mixins');
+var _ = require('@intel-js/lodash-mixins');
 var conf = require('../conf');
-var requestStream = require('../lib/request-stream');
+var apiRequest = require('../lib/api-request');
 var renderRequestError = require('../lib/render-request-error');
-var through = require('through');
+var through = require('@intel-js/through');
 
 module.exports = function getCache (req, res, data, next) {
   var cache;
-
   var keys = [
     'filesystem',
     'target',
@@ -39,12 +37,12 @@ module.exports = function getCache (req, res, data, next) {
     'server_profile'
   ];
 
-  if (data.session.user != null || conf.allowAnonymousRead)
+  if (data.session.user != null || conf.get('ALLOW_ANONYMOUS_READ'))
     cache = λ(keys)
       .map(function addSlash (key) {
         return '/' + key;
       })
-      .map(_.partialRight(requestStream, {
+      .map(_.partialRight(apiRequest, {
         headers: { Cookie: data.cacheCookie },
         qs: { limit: 0 }
       }))

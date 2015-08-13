@@ -1,6 +1,6 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var λ = require('highland');
 
 describe('get stopped supervisor services', function () {

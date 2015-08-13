@@ -1,6 +1,6 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 
 describe('view router', function () {
   var getRouter, router, checkForProblems, getSession, getCache, instance;
@@ -17,7 +17,7 @@ describe('view router', function () {
     getCache = function  getCache () {};
 
     instance = proxyquire('../../../view-server/view-router', {
-      'router': getRouter,
+      '@intel-js/router': getRouter,
       './middleware/check-for-problems': checkForProblems,
       './middleware/get-session': getSession,
       './middleware/get-cache': getCache

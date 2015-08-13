@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -26,6 +26,7 @@ var https = require('https');
 var loginRoute = require('./routes/login-route');
 var indexRoute = require('./routes/index-route');
 var viewRouter = require('./view-router');
+var api = require('./lib/api-request');
 var conf = require('./conf');
 
 // Don't limit to pool to 5 in node 0.10.x
@@ -35,7 +36,7 @@ loginRoute();
 indexRoute();
 
 module.exports = function start () {
-  return http.createServer(function createServer (req, res) {
+  var server = http.createServer(function createServer (req, res) {
     viewRouter.go(req.url,
       {
         verb: req.method,
@@ -49,5 +50,16 @@ module.exports = function start () {
         }
       }
     );
-  }).listen(conf.viewServerPort);
+  }).listen(conf.get('VIEW_SERVER_PORT'));
+
+  return function stop (done) {
+    done = done || function noop () {};
+
+    server.on('close', function (err) {
+      if (err)
+        throw err;
+
+      api.waitForRequests(done);
+    });
+  };
 };

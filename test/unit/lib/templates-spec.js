@@ -1,6 +1,6 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 
 describe('templates', function () {
   var templates, conf, getDirTreeSync;
@@ -8,12 +8,12 @@ describe('templates', function () {
   beforeEach(function () {
     getDirTreeSync = jasmine.createSpy('getDirTreeSync')
       .and.returnValue({
-        'e.html': '<$= a $> <$= t("f.html") $> <$= conf.templateRoot $> <$- html $>',
+        'e.html': '<$= a $> <$= t("f.html") $> <$= conf.get("TEMPLATE_ROOT") $> <$- html $>',
         'f.html': 'bar'
       });
 
     conf = {
-      templateRoot: '/a/b/c'
+      get: jasmine.createSpy('get').and.returnValue('/a/b/c')
     };
 
     templates = proxyquire('../../../lib/templates', {

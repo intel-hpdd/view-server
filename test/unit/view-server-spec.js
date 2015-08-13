@@ -1,41 +1,60 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
+
 
 describe('view server', function () {
-  var http, instance, server, loginRoute, indexRoute, viewRouter, conf;
+  var http, https, close, server, loginRoute, indexRoute, viewRouter, conf, api;
 
   beforeEach(function () {
     server = {
       listen: jasmine.createSpy('listen').and.callFake(function s () {
         return server;
-      })
+      }),
+      on: jasmine.createSpy('on')
     };
 
     http = {
-      createServer: jasmine.createSpy('createServer').and.returnValue(server)
+      createServer: jasmine.createSpy('createServer').and.returnValue(server),
+      globalAgent: {
+        maxSockets: {}
+      }
+    };
+
+    https = {
+      globalAgent: {
+        maxSockets: {}
+      }
     };
 
     viewRouter = {
       go: jasmine.createSpy('go')
     };
 
-    conf = { viewServerPort: 8900 };
+    conf = {
+      get: jasmine.createSpy('conf.get').and.returnValue(8900)
+    };
 
     loginRoute = jasmine.createSpy('loginRoute');
     indexRoute = jasmine.createSpy('indexRoute');
 
-    instance = proxyquire('../../../view-server/view-server', {
+    api = {
+      waitForRequests: jasmine.createSpy('waitForRequests')
+    };
+
+    close = proxyquire('../../../view-server/view-server', {
       'http': http,
+      'https': https,
       './routes/login-route': loginRoute,
       './routes/index-route': indexRoute,
       './view-router': viewRouter,
+      './lib/api-request': api,
       './conf': conf
     })();
   });
 
-  it('should return a server', function () {
-    expect(instance).toEqual(server);
+  it('should return a close function', function () {
+    expect(close).toEqual(jasmine.any(Function));
   });
 
   it('should call loginRoute', function () {
@@ -97,6 +116,37 @@ describe('view server', function () {
       it('should end the response', function () {
         expect(res.end).toHaveBeenCalledOnce();
       });
+    });
+  });
+
+  describe('closing', function () {
+    var spy, fn;
+
+    beforeEach(function () {
+      spy = jasmine.createSpy('spy');
+
+      close(spy);
+
+      fn = server.on.calls.argsFor(0)[1];
+    });
+
+    it('should register a close event', function () {
+      expect(server.on).toHaveBeenCalledOnceWith('close', jasmine.any(Function));
+    });
+
+    it('should throw if server close throws', function () {
+      var fn = server.on.calls.argsFor(0)[1];
+
+      expect(expectToThrow).toThrow(new Error('boom!'));
+
+      function expectToThrow () {
+        fn(new Error('boom!'));
+      }
+    });
+
+    it('should wait for api requests', function () {
+      fn();
+      expect(api.waitForRequests).toHaveBeenCalledOnceWith(spy);
     });
   });
 });

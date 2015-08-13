@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -21,15 +21,14 @@
 
 'use strict';
 
-var requestStream = require('../lib/request-stream');
+var apiRequest = require('../lib/api-request');
 var renderRequestError = require('../lib/render-request-error');
 
 module.exports = function getSession (req, res, next) {
   var cookie = req.clientReq.headers.cookie || '';
-
-  requestStream('/session', {
-    headers: { cookie: cookie }
-  })
+    apiRequest('/session', {
+      headers: { cookie: cookie }
+    })
     .stopOnError(renderRequestError(res, function writeDescription (err) {
       return 'Exception rendering resources: ' + err.stack;
     }))
@@ -48,4 +47,3 @@ module.exports = function getSession (req, res, next) {
       next(req, res, data);
     });
 };
-

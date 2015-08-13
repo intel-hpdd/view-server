@@ -1,6 +1,6 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 
 describe('index handlers', function () {
   var indexHandlers, templates, conf, req, res, data, next;

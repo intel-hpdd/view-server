@@ -1,11 +1,11 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var λ = require('highland');
 
 describe('login route', function () {
   var viewRouter, templates, req, res, next, push,
-    cache, requestStream, pathRouter,
+    cache, apiRequest, pathRouter,
     renderRequestError, renderRequestErrorInner;
 
   beforeEach(function () {
@@ -38,7 +38,7 @@ describe('login route', function () {
       route: jasmine.createSpy('route').and.returnValue(pathRouter)
     };
 
-    requestStream = jasmine.createSpy('requestStream').and.returnValue(λ(function (_push_) {
+    apiRequest = jasmine.createSpy('apiRequest').and.returnValue(λ(function (_push_) {
       push = _push_;
     }));
 
@@ -50,7 +50,7 @@ describe('login route', function () {
     proxyquire('../../../../view-server/routes/login-route', {
       '../view-router': viewRouter,
       '../lib/templates': templates,
-      '../lib/request-stream': requestStream,
+      '../lib/api-request': apiRequest,
       '../lib/render-request-error': renderRequestError
     })();
   });
@@ -99,7 +99,7 @@ describe('login route', function () {
       });
 
       it('should send a delete request', function () {
-        expect(requestStream).toHaveBeenCalledOnceWith('/session', {
+        expect(apiRequest).toHaveBeenCalledOnceWith('/session', {
           method: 'delete',
           headers: { cookie : 'foo' }
         });
@@ -107,14 +107,14 @@ describe('login route', function () {
 
       it('should call next', function () {
         push(null, []);
-        push(null, λ.nil);
+        push(null, nil);
 
         expect(next).toHaveBeenCalledOnceWith(req, res, data.cache);
       });
 
       it('should render errors', function () {
         push(new Error('boom!'));
-        push(null, λ.nil);
+        push(null, nil);
 
         expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error('boom!'), jasmine.any(Function));
       });

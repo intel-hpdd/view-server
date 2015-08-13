@@ -1,10 +1,10 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var λ = require('highland');
 
 describe('get session', function () {
-  var getSession, requestStream, renderRequestError,
+  var getSession, apiRequest, renderRequestError,
     renderRequestErrorInner, req, res, next, push;
 
   beforeEach(function () {
@@ -24,10 +24,10 @@ describe('get session', function () {
 
     next = jasmine.createSpy('next');
 
-    requestStream = jasmine.createSpy('requestStream').and.returnValue(λ(function (_push_) {
+    apiRequest = jasmine.createSpy('apiRequest').and.returnValue(λ(function (_push_) {
       push = function (err, val) {
         _push_(err, val);
-        _push_(null, λ.nil);
+        _push_(null, nil);
       };
     }));
 
@@ -37,7 +37,7 @@ describe('get session', function () {
       .and.returnValue(renderRequestErrorInner);
 
     getSession = proxyquire('../../../../view-server/middleware/get-session', {
-      '../lib/request-stream': requestStream,
+      '../lib/api-request': apiRequest,
       '../lib/render-request-error': renderRequestError
     });
 
@@ -45,7 +45,7 @@ describe('get session', function () {
   });
 
   it('should get a session', function () {
-    expect(requestStream).toHaveBeenCalledOnceWith('/session', {
+    expect(apiRequest).toHaveBeenCalledOnceWith('/session', {
       headers: {
         cookie: 'foo'
       }

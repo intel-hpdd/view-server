@@ -2,9 +2,7 @@
 
 require('jasmine-n-matchers');
 
-var conf = require('../conf');
-
-if (conf.runner === 'CI') {
+if (process.env.RUNNER === 'CI') {
   var krustyJasmineReporter = require('krusty-jasmine-reporter');
 
   var junitReporter = new krustyJasmineReporter.KrustyJasmineJUnitReporter({

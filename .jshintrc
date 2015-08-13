@@ -11,7 +11,8 @@
     "it": false,
     "pit": false,
     "console": false,
-    "expect": false
+    "expect": false,
+    "nil": false
   },
 
   "bitwise": true,

@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -23,15 +23,8 @@
 
 var nconf = require('nconf');
 var url = require('url');
-var _ = require('lodash-mixins');
 var path = require('path');
 var fs = require('fs');
-
-var managerDir = _.range(3).reduce(function getLogPath (dir) {
-  return path.dirname(dir);
-}, __dirname);
-
-var managerPath = path.join.bind(path.join, managerDir);
 
 // Indicate that the memory store will be used so values can be set after nconf is defined.
 nconf.use('memory');
@@ -44,6 +37,8 @@ var conf = nconf
     LOG_FILE: 'view_server.log'
   });
 
+var managerPath = path.join.bind(path.join, conf.get('SITE_ROOT'));
+
 // Set the appropriate values when in the test environment
 if (conf.get('NODE_ENV') === 'test') {
   conf.set('SERVER_HTTP_URL', 'https://localhost:8000/');
@@ -53,31 +48,31 @@ if (conf.get('NODE_ENV') === 'test') {
   conf.set('VERSION', '');
   conf.set('BUILD', 'jenkins__');
   conf.set('VIEW_SERVER_PORT', 8889);
-  conf.set('LOG_PATH', managerDir);
+  conf.set('LOG_PATH', conf.get('SITE_ROOT'));
 
   var helpText = fs.readFileSync(managerPath('chroma_help', 'help.py'), { encoding: 'utf8' })
-    .match(/({[\s\S]*})/mg)[0]
-    .replace(/"""/mg, '\'')
-    .replace(/: "(.+)"/mg, ': \'($1)\'')
-    .replace(/\\'/mg, '\'')
-    .replace(/"/mg, '\\"')
-    .replace(/'(.+)':/gm, '"$1":')
-    .replace(/: '(.+)',/gm, ': "$1",')
-    .replace(/: '\n([\s\S]+)',/mg, ': "$1"')
-    .replace(/\n/mg, '');
+      .match(/({[\s\S]*})/mg)[0]
+     .replace(/"""/mg, '\'')
+     .replace(/: "(.+)"/mg, ': \'($1)\'')
+     .replace(/\\'/mg, '\'')
+     .replace(/"/mg, '\\"')
+     .replace(/'(.+)':/gm, '"$1":')
+     .replace(/: '(.+)',/gm, ': "$1",')
+     .replace(/: '\n([\s\S]+)',/mg, ': "$1"')
+     .replace(/\n/mg, '');
 
-  conf.set('HELP_TEXT', JSON.parse(helpText));
+  helpText = JSON.parse(helpText);
+
+  conf.set('HELP_TEXT', helpText);
 }
 
-var parsedApiHttpUrl = url.parse(conf.get('SERVER_HTTP_URL'));
-parsedApiHttpUrl.pathname = '/api/';
+var parsedServerHttpUrl = url.parse(conf.get('SERVER_HTTP_URL'));
 conf.overrides({
-  API_PORT: parsedApiHttpUrl.port,
-  API_URL: url.format(parsedApiHttpUrl),
-  HOST_NAME: parsedApiHttpUrl.hostname,
-  PARSED_API_URL: parsedApiHttpUrl,
-  SITE_ROOT: managerPath(),
+  API_PORT: parsedServerHttpUrl.port,
+  API_URL: url.format(parsedServerHttpUrl),
+  HOST_NAME: parsedServerHttpUrl.hostname,
+  PARSED_API_URL: parsedServerHttpUrl,
   TEMPLATE_ROOT: managerPath('chroma_ui', 'templates') + path.sep
 });
 
-module.exports = _.mapKeys(conf.load(), _.flip(_.camelCase));
+module.exports = conf;

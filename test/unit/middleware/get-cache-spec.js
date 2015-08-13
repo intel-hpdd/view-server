@@ -1,10 +1,10 @@
 'use strict';
 
-var proxyquire = require('proxyquire').noPreserveCache();
+var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var λ = require('highland');
 
 describe('get cache', function () {
-  var conf, requestStream, data, req, res, getCache,
+  var conf, apiRequest, data, req, res, getCache,
     next, endpoints, renderRequestError, renderRequestErrorInner;
 
   beforeEach(function () {
@@ -16,7 +16,9 @@ describe('get cache', function () {
       '/server_profile'
     ];
 
-    conf = { allowAnonymousRead: false };
+    conf = {
+      get: jasmine.createSpy('conf.get').and.returnValue(false)
+    };
 
     req = {};
     res = {};
@@ -53,7 +55,7 @@ describe('get cache', function () {
       cacheCookie: 'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
     };
 
-    requestStream = jasmine.createSpy('requestStream');
+    apiRequest = jasmine.createSpy('apiRequest');
 
     renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
 
@@ -62,7 +64,7 @@ describe('get cache', function () {
 
     getCache = proxyquire('../../../../view-server/middleware/get-cache', {
       '../conf': conf,
-      '../lib/request-stream': requestStream,
+      '../lib/api-request': apiRequest,
       '../lib/render-request-error': renderRequestError
     });
   });
@@ -87,7 +89,7 @@ describe('get cache', function () {
 
   describe('successful responses', function () {
     beforeEach(function () {
-      requestStream.and.callFake(function (endpoint) {
+      apiRequest.and.callFake(function (endpoint) {
         return λ([{
           body: {
             objects: [{
@@ -108,7 +110,7 @@ describe('get cache', function () {
         }];
       });
 
-      expect(requestStream.calls.allArgs()).toEqual(calls);
+      expect(apiRequest.calls.allArgs()).toEqual(calls);
     });
 
     it('should return the result of each endpoint', function () {
@@ -128,7 +130,7 @@ describe('get cache', function () {
 
   describe('error response', function () {
     beforeEach(function () {
-      requestStream.and.callFake(function (endpoint) {
+      apiRequest.and.callFake(function (endpoint) {
         if (endpoint === '/target')
           throw new Error('boom!');
         else

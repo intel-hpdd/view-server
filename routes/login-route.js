@@ -1,7 +1,7 @@
 //
 // INTEL CONFIDENTIAL
 //
-// Copyright 2013-2014 Intel Corporation All Rights Reserved.
+// Copyright 2013-2015 Intel Corporation All Rights Reserved.
 //
 // The source code contained or described herein and all documents related
 // to the source code ("Material") are owned by Intel Corporation or its
@@ -23,7 +23,7 @@
 
 var viewRouter = require('../view-router');
 var templates = require('../lib/templates');
-var requestStream = require('../lib/request-stream');
+var apiRequest = require('../lib/api-request');
 var renderRequestError = require('../lib/render-request-error');
 
 var indexTemplate = templates['new/index.html'];
@@ -47,7 +47,7 @@ module.exports = function loginRoute () {
       if (session.user.eula_state === 'pass')
         return res.redirect('/ui/');
       else
-        requestStream('/session', {
+        apiRequest('/session', {
           method: 'delete',
           headers: { cookie: data.cacheCookie }
         })
