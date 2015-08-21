@@ -57,6 +57,5 @@ module.exports = function indexRoute () {
   viewRouter.get('/ui/alert', indexHandlers.oldHandler);
   viewRouter.get('/ui/event', indexHandlers.oldHandler);
   viewRouter.get('/ui/log/:around*', indexHandlers.oldHandler);
-  viewRouter.get('/ui/status', indexHandlers.oldHandler);
   viewRouter.get('/(.*)', indexHandlers.newHandler);
 };
