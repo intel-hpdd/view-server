@@ -25,7 +25,7 @@ var conf = require('./conf');
 var bunyan = require('bunyan');
 var path = require('path');
 
-var level = (conf.nodeEnv === 'production' ? 'info' : 'debug');
+var level = (conf.get('NODE_ENV') === 'production' ? 'info' : 'debug');
 
 module.exports = bunyan.createLogger({
   name: 'view_server',
