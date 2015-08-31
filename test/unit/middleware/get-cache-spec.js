@@ -17,7 +17,7 @@ describe('get cache', function () {
     ];
 
     conf = {
-      get: jasmine.createSpy('conf.get').and.returnValue(false)
+      get: jasmine.createSpy('get').and.returnValue(false)
     };
 
     req = {};

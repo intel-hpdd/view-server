@@ -32,7 +32,7 @@ describe('view server', function () {
     };
 
     conf = {
-      get: jasmine.createSpy('conf.get').and.returnValue(8900)
+      get: jasmine.createSpy('get').and.returnValue(8900)
     };
 
     loginRoute = jasmine.createSpy('loginRoute');

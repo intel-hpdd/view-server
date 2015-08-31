@@ -1,6 +1,7 @@
 'use strict';
 
 var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
+var fp = require('@intel-js/fp');
 
 describe('index handlers', function () {
   var indexHandlers, templates, conf, req, res, data, next;
@@ -31,7 +32,9 @@ describe('index handlers', function () {
       'base.html': jasmine.createSpy('base').and.returnValue('base')
     };
 
-    conf = { allowAnonymousRead: false };
+    conf = {
+      get: fp.always(false)
+    };
 
     indexHandlers = proxyquire('../../../lib/index-handlers', {
       './templates': templates,
