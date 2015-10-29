@@ -21,11 +21,12 @@
 'use strict';
 
 var λ = require('highland');
-var _ = require('@intel-js/lodash-mixins');
+var _ = require('lodash');
+var fp = require('intel-fp');
 var conf = require('../conf');
 var apiRequest = require('../lib/api-request');
 var renderRequestError = require('../lib/render-request-error');
-var through = require('@intel-js/through');
+var through = require('intel-through');
 
 module.exports = function getCache (req, res, data, next) {
   var cache;
@@ -50,7 +51,7 @@ module.exports = function getCache (req, res, data, next) {
       .pluck('body')
       .pluck('objects');
   else
-    cache = λ(_.times(keys.length, _.fidentity([])));
+    cache = λ(_.times(keys.length, fp.always([])));
 
   cache
     .through(through.zipObject(keys))

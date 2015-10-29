@@ -2,7 +2,7 @@
 
 var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var url = require('url');
-var _ = require('@intel-js/lodash-mixins');
+var _ = require('lodash');
 
 describe('api-request', function () {
 
@@ -23,7 +23,7 @@ describe('api-request', function () {
     apiRequest = proxyquire('../../../lib/api-request', {
       '../conf': conf,
       'url': url,
-      '@intel-js/req': getReq
+      'intel-req': getReq
     })();
   });
 

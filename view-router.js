@@ -21,7 +21,7 @@
 
 'use strict';
 
-var getRouter = require('@intel-js/router');
+var getRouter = require('intel-router');
 var checkForProblems = require('./middleware/check-for-problems');
 var getSession = require('./middleware/get-session');
 var getCache = require('./middleware/get-cache');

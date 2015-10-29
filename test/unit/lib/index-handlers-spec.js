@@ -1,7 +1,7 @@
 'use strict';
 
 var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
-var fp = require('@intel-js/fp');
+var fp = require('intel-fp');
 
 describe('index handlers', function () {
   var indexHandlers, templates, conf, req, res, data, next;
