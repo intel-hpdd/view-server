@@ -42,7 +42,7 @@ describe('view server', function () {
       waitForRequests: jasmine.createSpy('waitForRequests')
     };
 
-    close = proxyquire('../../../view-server/view-server', {
+    close = proxyquire('../../view-server', {
       'http': http,
       'https': https,
       './routes/login-route': loginRoute,

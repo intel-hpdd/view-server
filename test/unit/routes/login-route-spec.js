@@ -47,7 +47,7 @@ describe('login route', function () {
     renderRequestError = jasmine.createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
 
-    proxyquire('../../../../view-server/routes/login-route', {
+    proxyquire('../../../routes/login-route', {
       '../view-router': viewRouter,
       '../lib/templates': templates,
       '../lib/api-request': apiRequest,

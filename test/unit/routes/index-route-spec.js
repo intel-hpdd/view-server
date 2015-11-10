@@ -27,7 +27,7 @@ describe('index route', function () {
       route: jasmine.createSpy('route').and.returnValue(pathRouter)
     };
 
-    proxyquire('../../../../view-server/routes/index-route', {
+    proxyquire('../../../routes/index-route', {
       '../view-router': viewRouter,
       '../lib/index-handlers': indexHandlers,
       '../lib/check-group': checkGroup

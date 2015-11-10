@@ -26,7 +26,7 @@ describe('check for problems', function () {
 
     next = jasmine.createSpy('next');
 
-    checkForProblems = proxyquire('../../../../view-server/middleware/check-for-problems', {
+    checkForProblems = proxyquire('../../../middleware/check-for-problems', {
       '../logger': logger,
       '../lib/get-stopped-supervisor-services': getStoppedSupervisorServices,
       '../lib/render-request-error': renderRequestError

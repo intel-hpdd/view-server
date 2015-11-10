@@ -36,7 +36,7 @@ describe('get session', function () {
     renderRequestError = jasmine.createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
 
-    getSession = proxyquire('../../../../view-server/middleware/get-session', {
+    getSession = proxyquire('../../../middleware/get-session', {
       '../lib/api-request': apiRequest,
       '../lib/render-request-error': renderRequestError
     });

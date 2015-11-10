@@ -16,7 +16,7 @@ describe('view router', function () {
     getSession = function getSession () {};
     getCache = function  getCache () {};
 
-    instance = proxyquire('../../../view-server/view-router', {
+    instance = proxyquire('../../view-router', {
       'intel-router': getRouter,
       './middleware/check-for-problems': checkForProblems,
       './middleware/get-session': getSession,

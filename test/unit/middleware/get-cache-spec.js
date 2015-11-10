@@ -62,7 +62,7 @@ describe('get cache', function () {
     renderRequestError = jasmine.createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
 
-    getCache = proxyquire('../../../../view-server/middleware/get-cache', {
+    getCache = proxyquire('../../../middleware/get-cache', {
       '../conf': conf,
       '../lib/api-request': apiRequest,
       '../lib/render-request-error': renderRequestError
