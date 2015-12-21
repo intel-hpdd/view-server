@@ -35,7 +35,7 @@ describe('index route', function () {
   });
 
   it('should have a route for hsm', function () {
-    expect(viewRouter.get).toHaveBeenCalledOnceWith('/ui/configure/hsm', indexHandlers.newHandler);
+    expect(viewRouter.get).toHaveBeenCalledOnceWith('/ui/configure/server/:id*', indexHandlers.newHandler);
   });
 
   it('should have a route for server', function () {
