@@ -28,6 +28,7 @@ var indexRoute = require('./routes/index-route');
 var viewRouter = require('./view-router');
 var api = require('./lib/api-request');
 var conf = require('./conf');
+var cspPolicy = require('./lib/csp-policy');
 
 // Don't limit to pool to 5 in node 0.10.x
 https.globalAgent.maxSockets = http.globalAgent.maxSockets = Infinity;
@@ -35,8 +36,8 @@ https.globalAgent.maxSockets = http.globalAgent.maxSockets = Infinity;
 loginRoute();
 indexRoute();
 
-module.exports = function start () {
-  var server = http.createServer(function createServer (req, res) {
+module.exports = function start() {
+  var server = http.createServer(function createServer(req, res) {
     viewRouter.go(req.url,
       {
         verb: req.method,
@@ -44,16 +45,17 @@ module.exports = function start () {
       },
       {
         clientRes: res,
-        redirect: function redirect (path) {
+        redirect: function redirect(path) {
           res.writeHead(302, { Location: path });
+          res.setHeader('Content-Security-Policy', cspPolicy);
           res.end();
         }
       }
     );
   }).listen(conf.get('VIEW_SERVER_PORT'));
 
-  return function stop (done) {
-    done = done || function noop () {};
+  return function stop(done) {
+    done = done || function noop() {};
 
     server.on('close', function (err) {
       if (err)

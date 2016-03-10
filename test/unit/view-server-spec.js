@@ -8,7 +8,7 @@ describe('view server', function () {
 
   beforeEach(function () {
     server = {
-      listen: jasmine.createSpy('listen').and.callFake(function s () {
+      listen: jasmine.createSpy('listen').and.callFake(function s() {
         return server;
       }),
       on: jasmine.createSpy('on')
@@ -84,7 +84,8 @@ describe('view server', function () {
 
       res = {
         writeHead: jasmine.createSpy('writeHead'),
-        end: jasmine.createSpy('end')
+        end: jasmine.createSpy('end'),
+        setHeader: jasmine.createSpy('setHeader')
       };
 
       var handler = http.createServer.calls.mostRecent().args[0];
@@ -113,6 +114,16 @@ describe('view server', function () {
         expect(res.writeHead).toHaveBeenCalledOnceWith(302, { Location: '/' });
       });
 
+      it('should set a Content-Security-Policy header', function () {
+        expect(res.setHeader).toHaveBeenCalledOnceWith('Content-Security-Policy', 'default-src \'none\';\
+ child-src \'self\';\
+ script-src \'self\' \'unsafe-inline\' \'unsafe-eval\';\
+ connect-src \'self\';\
+ img-src \'self\';\
+ font-src \'self\';\
+ style-src \'self\' \'unsafe-inline\';');
+      });
+
       it('should end the response', function () {
         expect(res.end).toHaveBeenCalledOnce();
       });
@@ -139,7 +150,7 @@ describe('view server', function () {
 
       expect(expectToThrow).toThrow(new Error('boom!'));
 
-      function expectToThrow () {
+      function expectToThrow() {
         fn(new Error('boom!'));
       }
     });
