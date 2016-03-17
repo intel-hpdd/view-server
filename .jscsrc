@@ -18,7 +18,8 @@
     "catch"
   ],
   "requireParenthesesAroundIIFE": true,
-  "requireSpacesInFunctionExpression": {
+  "requireSpacesInFunction": {
+    "beforeOpeningRoundBrace": true,
     "beforeOpeningCurlyBrace": true
   },
   "disallowEmptyBlocks": true,

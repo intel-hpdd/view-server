@@ -1,0 +1,2177 @@
+
+{
+  "methodResponse": {
+    "params": {
+      "param": {
+        "value": {
+          "array": {
+            "data": {
+              "value": [
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6208, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6208"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/autoreload-stderr---supervisor-bjCHu4.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/autoreload-stdout---supervisor-4ufzbm.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "autoreload"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "autoreload"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/autoreload-stdout---supervisor-4ufzbm.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6212, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6212"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/celery_jobs-stderr---supervisor-THDX0m.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/celery_jobs-stdout---supervisor-gPSOH9.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "celery_jobs"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "celery_jobs"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/celery_jobs-stdout---supervisor-gPSOH9.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6209, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6209"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/celery_periodic-stderr---supervisor-TE3DYa.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/celery_periodic-stdout---supervisor-U339LG.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "celery_periodic"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "celery_periodic"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/celery_periodic-stdout---supervisor-U339LG.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6228, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6228"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/corosync-stderr---supervisor-M4du56.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/corosync-stdout---supervisor-JxJxhQ.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "corosync"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "corosync"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/corosync-stdout---supervisor-JxJxhQ.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6211, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6211"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/gunicorn-stderr---supervisor-nUnifI.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/gunicorn-stdout---supervisor-354K3B.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "gunicorn"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "gunicorn"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/gunicorn-stdout---supervisor-354K3B.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6216, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6216"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/http_agent-stderr---supervisor-kvLsbJ.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/http_agent-stdout---supervisor-ymdv5u.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "http_agent"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "http_agent"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/http_agent-stdout---supervisor-ymdv5u.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6223, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6223"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/job_scheduler-stderr---supervisor-Cgvb4_.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/job_scheduler-stdout---supervisor-rrIaJN.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "job_scheduler"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "job_scheduler"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/job_scheduler-stdout---supervisor-rrIaJN.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6213, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6213"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/lustre_audit-stderr---supervisor-H6TQQ0.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/lustre_audit-stdout---supervisor-Umdyf7.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "lustre_audit"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "lustre_audit"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/lustre_audit-stdout---supervisor-Umdyf7.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6219, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6219"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/nginx-stderr---supervisor-rGDy1q.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/nginx-stdout---supervisor-w6YPgY.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "nginx"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "nginx"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/nginx-stdout---supervisor-w6YPgY.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6224, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6224"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/plugin_runner-stderr---supervisor-MGq37S.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/plugin_runner-stdout---supervisor-7L8heO.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "plugin_runner"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "plugin_runner"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/plugin_runner-stdout---supervisor-7L8heO.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6221, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6221"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/power_control-stderr---supervisor-pE3adV.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/power_control-stdout---supervisor-yAc0eP.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "power_control"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "power_control"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/power_control-stdout---supervisor-yAc0eP.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6215, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6215"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/realtime-stderr---supervisor-gWmTjl.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/realtime-stdout---supervisor-8gq7P7.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "realtime"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "realtime"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/realtime-stdout---supervisor-8gq7P7.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6210, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6210"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/stats-stderr---supervisor-8BTuMZ.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/stats-stdout---supervisor-0igvXF.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "stats"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "stats"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/stats-stdout---supervisor-0igvXF.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 6214, uptime 18:10:19"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "6214"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/syslog-stderr---supervisor-bQ_43t.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/syslog-stdout---supervisor-TtAbhB.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "syslog"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "syslog"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458077283"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/syslog-stdout---supervisor-TtAbhB.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "struct": {
+                    "member": [
+                      {
+                        "name": {
+                          "text": "description"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "pid 18414, uptime 15:33:46"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "pid"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "18414"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stderr_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/view_server-stderr---supervisor-nIZrmf.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stop"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458086675"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/view_server-stdout---supervisor-tQBdMR.log"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "exitstatus"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "0"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "spawnerr"
+                        },
+                        "value": {
+                          "string": {}
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "now"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458142702"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "group"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "view_server"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "name"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "view_server"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "statename"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "RUNNING"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "start"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "1458086676"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "state"
+                        },
+                        "value": {
+                          "int": {
+                            "text": "20"
+                          }
+                        }
+                      },
+                      {
+                        "name": {
+                          "text": "stdout_logfile"
+                        },
+                        "value": {
+                          "string": {
+                            "text": "/var/folders/jh/rjzkk6wn7s90hzd9wn7_m__00000gp/T/view_server-stdout---supervisor-tQBdMR.log"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

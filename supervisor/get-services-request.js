@@ -19,48 +19,28 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+var req = require('intel-req')('http');
+var _ = require('lodash');
 
-var http = require('http');
-var https = require('https');
-var loginRoute = require('./routes/login-route');
-var indexRoute = require('./routes/index-route');
-var viewRouter = require('./view-router');
-var api = require('./lib/api-request');
-var conf = require('./conf');
-var cspPolicy = require('./lib/csp-policy');
+module.exports = function getServicesInfo (creds) {
+  var body = '<?xml version="1.0"?>\
+<methodCall>\
+  <methodName>supervisor.getAllProcessInfo</methodName>\
+  <params>\
+  </params>\
+</methodCall>';
 
-// Don't limit to pool to 5 in node 0.10.x
-https.globalAgent.maxSockets = http.globalAgent.maxSockets = Infinity;
-
-loginRoute();
-indexRoute();
-
-module.exports = function start () {
-  var server = http.createServer(function createServer (req, res) {
-    viewRouter.go(req.url,
-    {
-      verb: req.method,
-      clientReq: req
-    },
-    {
-      clientRes: res,
-      redirect: function redirect (path) {
-        res.writeHead(302, { Location: path });
-        res.setHeader('Content-Security-Policy', cspPolicy);
-        res.end();
-      }
-    });
-  }).listen(conf.get('VIEW_SERVER_PORT'));
-
-  return function stop (done) {
-    done = done || function noop () {};
-
-    server.on('close', function (err) {
-      if (err)
-        throw err;
-
-      api.waitForRequests(done);
-    });
+  var options = {
+    port: 9100,
+    method: 'POST',
+    path: '/RPC2'
   };
+
+  if (creds)
+    _.merge(options, { auth: creds });
+
+  return req.bufferRequest(
+    options,
+    new Buffer(body)
+  );
 };

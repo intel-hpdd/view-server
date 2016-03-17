@@ -26,24 +26,24 @@ var renderRequestError = require('../lib/render-request-error');
 
 module.exports = function getSession (req, res, next) {
   var cookie = req.clientReq.headers.cookie || '';
-    apiRequest('/session', {
-      headers: { cookie: cookie }
-    })
-    .stopOnError(renderRequestError(res, function writeDescription (err) {
-      return 'Exception rendering resources: ' + err.stack;
-    }))
-    .each(function setData (response) {
-      // Pass the session cookies to the client.
-      res.clientRes.setHeader('Set-Cookie', response.headers['set-cookie']);
+  apiRequest('/session', {
+    headers: { cookie: cookie }
+  })
+  .stopOnError(renderRequestError(res, function writeDescription (err) {
+    return 'Exception rendering resources: ' + err.stack;
+  }))
+  .each(function setData (response) {
+    // Pass the session cookies to the client.
+    res.clientRes.setHeader('Set-Cookie', response.headers['set-cookie']);
 
-      var data = {
-        session: response.body,
-        cacheCookie: response.headers['set-cookie']
-          .map(function extractAuthCookies (cookieString) {
-            return cookieString.match(/((?:csrftoken|sessionid)=[^;]+;)/)[0];
-          }).join(' ')
-      };
+    var data = {
+      session: response.body,
+      cacheCookie: response.headers['set-cookie']
+        .map(function extractAuthCookies (cookieString) {
+          return cookieString.match(/((?:csrftoken|sessionid)=[^;]+;)/)[0];
+        }).join(' ')
+    };
 
-      next(req, res, data);
-    });
+    next(req, res, data);
+  });
 };

@@ -5,7 +5,7 @@ var λ = require('highland');
 
 describe('login route', function () {
   var viewRouter, templates, req, res, next, push,
-    cache, apiRequest, pathRouter,
+    apiRequest, pathRouter,
     renderRequestError, renderRequestErrorInner;
 
   beforeEach(function () {
@@ -20,8 +20,6 @@ describe('login route', function () {
     };
 
     next = jasmine.createSpy('next');
-
-    cache = { session: {} };
 
     templates = {
       'new/index.html': jasmine.createSpy('indexTemplate')
@@ -107,14 +105,14 @@ describe('login route', function () {
 
       it('should call next', function () {
         push(null, []);
-        push(null, nil);
+        push(null, λ.nil);
 
         expect(next).toHaveBeenCalledOnceWith(req, res, data.cache);
       });
 
       it('should render errors', function () {
         push(new Error('boom!'));
-        push(null, nil);
+        push(null, λ.nil);
 
         expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error('boom!'), jasmine.any(Function));
       });

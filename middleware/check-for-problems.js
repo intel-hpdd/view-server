@@ -22,7 +22,7 @@
 'use strict';
 
 var logger = require('../logger');
-var getStoppedSupervisorServices = require('../lib/get-stopped-supervisor-services');
+var getStoppedSupervisorServices = require('../supervisor/get-stopped-supervisor-services');
 var format = require('util').format;
 var renderRequestError = require('../lib/render-request-error');
 

@@ -27,7 +27,7 @@ describe('get session', function () {
     apiRequest = jasmine.createSpy('apiRequest').and.returnValue(λ(function (_push_) {
       push = function (err, val) {
         _push_(err, val);
-        _push_(null, nil);
+        _push_(null, λ.nil);
       };
     }));
 
