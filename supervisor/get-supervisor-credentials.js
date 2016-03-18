@@ -22,10 +22,10 @@
 'use strict';
 
 var λ = require('highland');
-var _ = require('lodash');
 var childProcess = require('child_process');
 var conf = require('../conf');
 var crypto = require('crypto');
+var fp = require('intel-fp');
 
 var credentials;
 var command = 'python -c "import settings; print settings.SECRET_KEY"';
@@ -34,7 +34,7 @@ var exec = λ.wrapCallback(childProcess.exec);
 
 module.exports = function getSupervisorCredentials () {
   if (conf.get('NODE_ENV') === 'production')
-    credentials = [null, null];
+    return λ([null]);
 
   var credentialsStream;
 
@@ -59,8 +59,8 @@ module.exports = function getSupervisorCredentials () {
     .tap(function (c) {
       credentials = c;
     })
-    .stopOnError(console.log)
-    .map(_.partial(_.zipObject, ['user', 'pass']));
+    .map(fp.invokeMethod('join', [':']))
+    .stopOnError(console.log);
 
   function getHash () {
     var hash = crypto.createHash('md5');

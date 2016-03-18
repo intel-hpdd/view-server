@@ -5,16 +5,15 @@ var url = require('url');
 var _ = require('lodash');
 
 describe('api-request', function () {
+  var conf, req, getReq, apiRequest;
 
-  var conf, getReq, req, apiRequest;
   beforeEach(function () {
-
     conf = {
       get: jasmine.createSpy('get').and.returnValue(url.parse('http://localhost:8000'))
     };
 
     req = {
-      bufferRequest: jasmine.createSpy('bufferRequest'),
+      bufferJsonRequest: jasmine.createSpy('bufferRequest'),
       waitForRequests: {}
     };
 
@@ -33,6 +32,7 @@ describe('api-request', function () {
 
   describe('with given path and options', function () {
     var path, options, hostOptions;
+
     beforeEach(function () {
       path = '/session';
       options = {
@@ -50,8 +50,12 @@ describe('api-request', function () {
       apiRequest(path, options);
     });
 
+    it('should call getReq', function () {
+      expect(getReq).toHaveBeenCalledOnceWith('https');
+    });
+
     it('should invoke the bufferReqeust with the api formatted path and options', function () {
-      expect(req.bufferRequest).toHaveBeenCalledWith(_.merge({
+      expect(req.bufferJsonRequest).toHaveBeenCalledWith(_.merge({
         path: '/api/session/'
       }, options, hostOptions));
     });

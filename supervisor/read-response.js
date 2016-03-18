@@ -19,48 +19,52 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-'use strict';
+var fp = require('intel-fp');
 
-var http = require('http');
-var https = require('https');
-var loginRoute = require('./routes/login-route');
-var indexRoute = require('./routes/index-route');
-var viewRouter = require('./view-router');
-var api = require('./lib/api-request');
-var conf = require('./conf');
-var cspPolicy = require('./lib/csp-policy');
+var valuesLens = fp.compose(
+  fp.lensProp('methodResponse'),
+  fp.lensProp('params'),
+  fp.lensProp('param'),
+  fp.lensProp('value'),
+  fp.lensProp('array'),
+  fp.lensProp('data'),
+  fp.lensProp('value')
+);
 
-// Don't limit to pool to 5 in node 0.10.x
-https.globalAgent.maxSockets = http.globalAgent.maxSockets = Infinity;
+var overStructValues = fp.over(
+  fp.compose(
+    valuesLens,
+    fp.mapped,
+    fp.lensProp('struct'),
+    fp.lensProp('member'),
+    fp.mapped,
+    fp.lensProp('value')
+  ),
+  function normalize (xs) {
+    if (xs.string)
+      return xs.string.text || '';
+    else if (xs.int)
+      return parseInt(xs.int.text, 10);
+    else
+      return xs;
+  }
+);
 
-loginRoute();
-indexRoute();
+var overStructs = fp.over(
+  fp.compose(
+    valuesLens,
+    fp.mapped
+  ),
+  function (xs) {
+    return xs.struct.member.reduce(function normalizeText (out, x) {
+      out[x.name.text] = x.value;
+      return out;
+    }, {});
+  }
+);
 
-module.exports = function start () {
-  var server = http.createServer(function createServer (req, res) {
-    viewRouter.go(req.url,
-    {
-      verb: req.method,
-      clientReq: req
-    },
-    {
-      clientRes: res,
-      redirect: function redirect (path) {
-        res.writeHead(302, { Location: path });
-        res.setHeader('Content-Security-Policy', cspPolicy);
-        res.end();
-      }
-    });
-  }).listen(conf.get('VIEW_SERVER_PORT'));
-
-  return function stop (done) {
-    done = done || function noop () {};
-
-    server.on('close', function (err) {
-      if (err)
-        throw err;
-
-      api.waitForRequests(done);
-    });
-  };
-};
+module.exports = fp.flow(
+  overStructValues,
+  overStructs,
+  fp.view(valuesLens)
+);

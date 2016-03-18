@@ -8,7 +8,7 @@ describe('view server', function () {
 
   beforeEach(function () {
     server = {
-      listen: jasmine.createSpy('listen').and.callFake(function s() {
+      listen: jasmine.createSpy('listen').and.callFake(function s () {
         return server;
       }),
       on: jasmine.createSpy('on')
@@ -150,7 +150,7 @@ describe('view server', function () {
 
       expect(expectToThrow).toThrow(new Error('boom!'));
 
-      function expectToThrow() {
+      function expectToThrow () {
         fn(new Error('boom!'));
       }
     });

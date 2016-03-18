@@ -19,7 +19,7 @@ describe('get supervisor credentials', function () {
 
     spyOn(crypto, 'createHash').and.callThrough();
 
-    getSupervisorCredentials = proxyquire('../../../lib/get-supervisor-credentials', {
+    getSupervisorCredentials = proxyquire('../../../supervisor/get-supervisor-credentials', {
       child_process: childProcess,
       '../conf': conf,
       crypto: crypto
@@ -31,10 +31,7 @@ describe('get supervisor credentials', function () {
 
     getSupervisorCredentials()
       .apply(function (x) {
-        expect(x).toEqual({
-          user: 'cacfb6f',
-          pass: '07c5ccc275c888efe5681023dc54e108'
-        });
+        expect(x).toEqual('cacfb6f:07c5ccc275c888efe5681023dc54e108');
         done();
       });
 
@@ -46,10 +43,7 @@ describe('get supervisor credentials', function () {
 
     getSupervisorCredentials()
       .apply(function (x) {
-        expect(x).toEqual({
-          user: null,
-          pass: null
-        });
+        expect(x).toEqual(null);
         done();
       });
   });

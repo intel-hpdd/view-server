@@ -55,12 +55,13 @@ describe('get dir tree sync', function () {
   }, {
     dir: '/a/b/dir/',
     file: 'file2.html'
-  }].forEach(function testPathJoins (pathData) {
-      it('path.join to be called with the directory and file', function () {
-        getDirTreeSync('/a/b/', stripPath);
-        expect(path.join).toHaveBeenCalledWith(pathData.dir, pathData.file);
-      });
+  }]
+  .forEach(function testPathJoins (pathData) {
+    it('path.join to be called with the directory and file', function () {
+      getDirTreeSync('/a/b/', stripPath);
+      expect(path.join).toHaveBeenCalledWith(pathData.dir, pathData.file);
     });
+  });
 });
 
 function stripPath (path) {

@@ -21,24 +21,25 @@
 
 'use strict';
 
-var λ = require('highland');
-var xmlrpc = require('xmlrpc');
 var getSupervisorCredentials = require('./get-supervisor-credentials');
+var getServicesRequest = require('./get-services-request');
+var readResponse = require('./read-response');
+var xml2Json = require('intel-xml-2-json').default;
+var fp = require('intel-fp');
 
 module.exports = function getSupervisorServices () {
   return getSupervisorCredentials()
-    .flatMap(function getServicesInfo (creds) {
-      var client = xmlrpc.createClient({
-        host: 'localhost',
-        port: 9100,
-        path: '/RPC2',
-        basic_auth: creds
-      });
+    .flatMap(getServicesRequest)
+    .map(fp.view(fp.lensProp('body')))
+    .map(function (xml) {
+      var jsonOrError = xml2Json(xml);
 
-      var methodCall = λ.wrapCallback(client.methodCall.bind(client));
+      if (jsonOrError instanceof Error)
+        throw jsonOrError;
 
-      return [methodCall('supervisor.getAllProcessInfo', [])];
+      return jsonOrError;
     })
+    .map(readResponse)
     .flatten()
     .filter(function filterRunningServices (service) {
       return service.statename !== 'RUNNING';
