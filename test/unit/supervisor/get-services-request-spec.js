@@ -35,13 +35,18 @@ describe('get services request', function () {
           path: '/RPC2',
           auth: 'a:bc'
         },
-        new Buffer('<?xml version="1.0"?>\
+        jasmine.any(Buffer)
+      );
+    });
+
+    it('should create a buffer with xml content', function () {
+      var buff = req.bufferRequest.calls.mostRecent().args[1];
+      expect(buff.toString()).toBe('<?xml version="1.0"?>\
 <methodCall>\
   <methodName>supervisor.getAllProcessInfo</methodName>\
   <params>\
   </params>\
-</methodCall>')
-      );
+</methodCall>');
     });
   });
 
@@ -57,12 +62,7 @@ describe('get services request', function () {
           method: 'POST',
           path: '/RPC2'
         },
-        new Buffer('<?xml version="1.0"?>\
-<methodCall>\
-  <methodName>supervisor.getAllProcessInfo</methodName>\
-  <params>\
-  </params>\
-</methodCall>')
+        jasmine.any(Buffer)
       );
     });
   });
