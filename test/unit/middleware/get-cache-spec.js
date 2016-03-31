@@ -2,18 +2,31 @@
 
 var proxyquire = require('proxyquire').noPreserveCache().noCallThru();
 var λ = require('highland');
+var _ = require('lodash');
 
 describe('get cache', function () {
   var conf, apiRequest, data, req, res, getCache,
-    next, endpoints, renderRequestError, renderRequestErrorInner;
+    next, calls, renderRequestError, renderRequestErrorInner;
 
   beforeEach(function () {
-    endpoints = [
-      '/filesystem',
-      '/target',
-      '/host',
-      '/power_control_type',
-      '/server_profile'
+    calls = [
+      ['/filesystem', {}],
+      ['/target', {}],
+      ['/host', {}],
+      ['/power_control_type', {}],
+      ['/server_profile', {}],
+      ['/alert', {
+        jsonMask: 'objects(affected,message)',
+        qs: {
+          active: true
+        }
+      }],
+      ['/job', {
+        jsonMask: 'objects(write_locks,read_locks,description)',
+        qs: {
+          state__in: ['pending', 'tasked']
+        }
+      }]
     ];
 
     conf = {
@@ -74,8 +87,8 @@ describe('get cache', function () {
 
     getCache(req, res, data, next);
 
-    var obj = endpoints.reduce(function (obj, endpoint) {
-      obj[endpoint.slice(1)] = [];
+    var obj = calls.reduce(function (obj, call) {
+      obj[call.slice(1)] = [];
 
       return obj;
     }, {});
@@ -103,19 +116,22 @@ describe('get cache', function () {
     });
 
     it('should request each cache endpoint', function () {
-      var calls = endpoints.map(function (endpoint) {
-        return [endpoint, {
-          headers: { Cookie: data.cacheCookie },
-          qs: { limit: 0 }
-        }];
+      var fullCalls = calls.map(function (call) {
+        return [
+          call[0],
+          _.merge({
+            headers: { Cookie: data.cacheCookie },
+            qs: { limit: 0 }
+          }, call[1])
+        ];
       });
 
-      expect(apiRequest.calls.allArgs()).toEqual(calls);
+      expect(apiRequest.calls.allArgs()).toEqual(fullCalls);
     });
 
     it('should return the result of each endpoint', function () {
-      var obj = endpoints.reduce(function (obj, endpoint) {
-        obj[endpoint.slice(1)] = [{name: endpoint}];
+      var obj = calls.reduce(function (obj, call) {
+        obj[call.slice(1)] = [{name: call}];
 
         return obj;
       }, {});

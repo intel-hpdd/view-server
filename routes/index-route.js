@@ -28,6 +28,7 @@ var checkGroup = require('../lib/check-group');
 module.exports = function indexRoute () {
   viewRouter.get('/ui/configure/hsm/:id*', indexHandlers.newHandler);
   viewRouter.get('/ui/configure/server/:id*', indexHandlers.newHandler);
+  viewRouter.get('/ui/configure/mgt/:id*', indexHandlers.newHandler);
 
   viewRouter.route('/ui/configure/:subpath+')
     .get(checkGroup.fsAdmins)
