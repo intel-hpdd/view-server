@@ -38,19 +38,21 @@ indexRoute();
 
 module.exports = function start () {
   var server = http.createServer(function createServer (req, res) {
-    viewRouter.go(req.url,
-    {
-      verb: req.method,
-      clientReq: req
-    },
-    {
-      clientRes: res,
-      redirect: function redirect (path) {
-        res.writeHead(302, { Location: path });
-        res.setHeader('Content-Security-Policy', cspPolicy);
-        res.end();
+    viewRouter.go(
+      req.url,
+      {
+        verb: req.method,
+        clientReq: req
+      },
+      {
+        clientRes: res,
+        redirect: function redirect (path) {
+          res.writeHead(302, { Location: path });
+          res.setHeader('Content-Security-Policy', cspPolicy);
+          res.end();
+        }
       }
-    });
+    );
   }).listen(conf.get('VIEW_SERVER_PORT'));
 
   return function stop (done) {

@@ -18,6 +18,7 @@
 // of the Materials, either expressly, by implication, inducement, estoppel or
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
+
 'use strict';
 
 var λ = require('highland');
@@ -30,31 +31,54 @@ var through = require('intel-through');
 
 module.exports = function getCache (req, res, data, next) {
   var cache;
-  var keys = [
-    'filesystem',
-    'target',
-    'host',
-    'power_control_type',
-    'server_profile'
+  var calls = [
+    ['filesystem', {}],
+    ['target', {}],
+    ['host', {}],
+    ['power_control_type', {}],
+    ['server_profile', {}],
+    ['alert', {
+      jsonMask: 'objects(affected,message)',
+      qs: {
+        active: true
+      }
+    }],
+    ['job', {
+      jsonMask: 'objects(write_locks,read_locks,description)',
+      qs: {
+        state__in: ['pending', 'tasked']
+      }
+    }]
   ];
 
   if (data.session.user != null || conf.get('ALLOW_ANONYMOUS_READ'))
-    cache = λ(keys)
-      .map(function addSlash (key) {
-        return '/' + key;
+    cache = λ(calls)
+      .map(function performCalls (call) {
+        return apiRequest(
+          '/' + call[0],
+          _.merge(
+            {
+              headers: {
+                Cookie: data.cacheCookie
+              },
+              qs: {
+                limit: 0
+              }
+            },
+            call[1]
+          )
+        );
       })
-      .map(_.partialRight(apiRequest, {
-        headers: { Cookie: data.cacheCookie },
-        qs: { limit: 0 }
-      }))
-      .parallel(keys.length)
+      .parallel(calls.length)
       .pluck('body')
       .pluck('objects');
   else
-    cache = λ(_.times(keys.length, fp.always([])));
+    cache = λ(_.times(calls.length, fp.always([])));
 
   cache
-    .through(through.zipObject(keys))
+    .through(through.zipObject(calls.map(function (call) {
+      return call[0];
+    })))
     .stopOnError(renderRequestError(res, function writeDescription (err) {
       return 'Exception rendering resources: ' + err.stack;
     }))

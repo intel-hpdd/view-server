@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "bunyan": "1.8.0",
-    "highland": "2.7.1",
-    "intel-fp": "4.1.2",
+    "highland": "2.7.3",
+    "intel-fp": "4.2.1",
     "intel-req": "2.0.0",
     "intel-router": "3.0.4",
     "intel-through": "1.0.8",
@@ -39,7 +39,7 @@
     "jasmine-n-matchers": "2.0.2",
     "jscs": "2.11.0",
     "krusty-jasmine-reporter": "1.0.0",
-    "eslint": "2.1.0",
+    "eslint": "2.5.3",
     "pre-commit": "1.1.2",
     "proxyquire": "1.7.4"
   }
