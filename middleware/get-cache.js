@@ -37,6 +37,11 @@ module.exports = function getCache (req, res, data, next) {
     ['host', {}],
     ['power_control_type', {}],
     ['server_profile', {}],
+    ['lnet_configuration', {
+      qs: {
+        dehydrate__host: false
+      }
+    }],
     ['alert', {
       jsonMask: 'objects(affected,message)',
       qs: {

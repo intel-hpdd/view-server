@@ -15,6 +15,11 @@ describe('get cache', function () {
       ['/host', {}],
       ['/power_control_type', {}],
       ['/server_profile', {}],
+      ['/lnet_configuration', {
+        qs: {
+          dehydrate__host: false
+        }
+      }],
       ['/alert', {
         jsonMask: 'objects(affected,message)',
         qs: {
