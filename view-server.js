@@ -47,8 +47,8 @@ module.exports = function start () {
       {
         clientRes: res,
         redirect: function redirect (path) {
-          res.writeHead(302, { Location: path });
           res.setHeader('Content-Security-Policy', cspPolicy);
+          res.writeHead(302, { Location: path });
           res.end();
         }
       }
