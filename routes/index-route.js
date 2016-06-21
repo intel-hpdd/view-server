@@ -55,6 +55,5 @@ module.exports = function indexRoute () {
     .get(indexHandlers.oldHandler);
 
   viewRouter.get('/ui/command/:id', indexHandlers.oldHandler);
-  viewRouter.get('/ui/log/:around*', indexHandlers.oldHandler);
   viewRouter.get('/(.*)', indexHandlers.newHandler);
 };
