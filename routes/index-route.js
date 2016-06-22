@@ -38,10 +38,6 @@ module.exports = function indexRoute () {
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/job/:id')
-    .get(checkGroup.fsAdmins)
-    .get(indexHandlers.oldHandler);
-
   viewRouter.route('/ui/storage_resource/:id')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
@@ -54,6 +50,5 @@ module.exports = function indexRoute () {
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.get('/ui/command/:id', indexHandlers.oldHandler);
   viewRouter.get('/(.*)', indexHandlers.newHandler);
 };
