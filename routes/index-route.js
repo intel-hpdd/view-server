@@ -26,27 +26,23 @@ var indexHandlers = require('../lib/index-handlers');
 var checkGroup = require('../lib/check-group');
 
 module.exports = function indexRoute () {
-  viewRouter.get('/ui/configure/hsm/:id*', indexHandlers.newHandler);
-  viewRouter.get('/ui/configure/server/:id*', indexHandlers.newHandler);
-  viewRouter.get('/ui/configure/mgt/:id*', indexHandlers.newHandler);
-
-  viewRouter.route('/ui/configure/:subpath+')
+  viewRouter.route('/ui/configureold/:subpath+')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/target/:id')
+  viewRouter.route('/ui/targetold/:id')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/storage_resource/:id')
+  viewRouter.route('/ui/storage_resourceold/:id')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/user/:id')
+  viewRouter.route('/ui/userold/:id')
     .get(checkGroup.fsUsers)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/system_status')
+  viewRouter.route('/ui/system_statusold')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 

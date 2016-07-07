@@ -6,7 +6,6 @@ set -ex
 NODE_VERSIONS="
 0.10
 4
-stable
 "
 
 for node_version in $NODE_VERSIONS

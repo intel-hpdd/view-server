@@ -33,12 +33,4 @@ describe('index route', function () {
       '../lib/check-group': checkGroup
     })();
   });
-
-  it('should have a route for hsm', function () {
-    expect(viewRouter.get).toHaveBeenCalledOnceWith('/ui/configure/server/:id*', indexHandlers.newHandler);
-  });
-
-  it('should have a route for server', function () {
-    expect(viewRouter.get).toHaveBeenCalledOnceWith('/ui/configure/server/:id*', indexHandlers.newHandler);
-  });
 });
