@@ -21,40 +21,38 @@
 
 'use strict';
 
-var nconf = require('nconf');
 var url = require('url');
 var path = require('path');
 var helpText = require('intel-help');
+var obj = require('intel-obj');
+var confJson = require('./conf.json');
 
-// Indicate that the memory store will be used so values can be set after nconf is defined.
-nconf.use('memory');
-var conf = nconf
-  .env()
-  .argv()
-  .file(__dirname + '/conf.json')
-  .defaults({
-    LOG_PATH: '',
-    LOG_FILE: 'view_server.log'
-  });
+var defaults = {
+  LOG_PATH: '',
+  LOG_FILE: 'view_server.log',
+  NODE_ENV: process.env.NODE_ENV
+};
 
-var managerPath = path.join.bind(path.join, conf.get('SITE_ROOT'));
+var conf = obj.merge({}, defaults, confJson);
+
+var managerPath = path.join.bind(path.join, conf.SITE_ROOT);
 
 // Set the appropriate values when in the test environment
-if (conf.get('NODE_ENV') === 'test') {
-  conf.set('SERVER_HTTP_URL', 'https://localhost:8000/');
-  conf.set('IS_RELEASE', false);
-  conf.set('ALLOW_ANONYMOUS_READ', true);
-  conf.set('STATIC_URL', '/static/');
-  conf.set('VERSION', '');
-  conf.set('BUILD', 'jenkins__');
-  conf.set('VIEW_SERVER_PORT', 8889);
-  conf.set('LOG_PATH', conf.get('SITE_ROOT'));
+if (conf.NODE_ENV === 'test')
+  conf = obj.merge({}, conf, {
+    SERVER_HTTP_URL: 'https://localhost:8000/',
+    IS_RELEASE: false,
+    ALLOW_ANONYMOUS_READ: true,
+    STATIC_URL: '/static/',
+    VERSION: '',
+    BUILD: 'jenkins__',
+    VIEW_SERVER_PORT: 8889,
+    LOG_PATH: conf.SITE_ROOT,
+    HELP_TEXT: helpText
+  });
 
-  conf.set('HELP_TEXT', helpText);
-}
-
-var parsedServerHttpUrl = url.parse(conf.get('SERVER_HTTP_URL'));
-conf.overrides({
+var parsedServerHttpUrl = url.parse(conf.SERVER_HTTP_URL);
+conf = obj.merge({}, conf, {
   API_PORT: parsedServerHttpUrl.port,
   API_URL: url.format(parsedServerHttpUrl),
   HOST_NAME: parsedServerHttpUrl.hostname,

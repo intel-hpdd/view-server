@@ -8,12 +8,12 @@ describe('templates', function () {
   beforeEach(function () {
     getDirTreeSync = jasmine.createSpy('getDirTreeSync')
       .and.returnValue({
-        'e.html': '<$= a $> <$= t("f.html") $> <$= conf.get("TEMPLATE_ROOT") $> <$- html $>',
+        'e.html': '<$= a $> <$= t("f.html") $> <$= conf.TEMPLATE_ROOT $> <$- html $>',
         'f.html': 'bar'
       });
 
     conf = {
-      get: jasmine.createSpy('get').and.returnValue('/a/b/c')
+      TEMPLATE_ROOT: '/a/b/c'
     };
 
     templates = proxyquire('../../../lib/templates', {

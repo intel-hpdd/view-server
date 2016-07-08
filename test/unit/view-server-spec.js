@@ -32,7 +32,7 @@ describe('view server', function () {
     };
 
     conf = {
-      get: jasmine.createSpy('get').and.returnValue(8900)
+      VIEW_SERVER_PORT: 8900
     };
 
     loginRoute = jasmine.createSpy('loginRoute');

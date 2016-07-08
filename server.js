@@ -24,7 +24,7 @@
 var conf = require('./conf');
 var start = require('./view-server');
 
-if (conf.get('RUNNER') === 'supervisor') {
+if (conf.RUNNER === 'supervisor') {
   process.on('SIGINT', cleanShutdown('SIGINT (Ctrl-C)'));
   process.on('SIGTERM', cleanShutdown('SIGTERM'));
 }

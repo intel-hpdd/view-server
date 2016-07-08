@@ -32,8 +32,8 @@
     "intel-through": "1.0.8",
     "intel-xml-2-json": "1.0.0",
     "intel-help": "1.0.0",
-    "lodash": "3.10.1",
-    "nconf": "0.8.4"
+    "intel-obj": "5.0.2",
+    "lodash": "3.10.1"
   },
   "devDependencies": {
     "jasmine": "2.4.1",

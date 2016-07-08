@@ -56,7 +56,7 @@ module.exports = function getCache (req, res, data, next) {
     }]
   ];
 
-  if (data.session.user != null || conf.get('ALLOW_ANONYMOUS_READ'))
+  if (data.session.user != null || conf.ALLOW_ANONYMOUS_READ)
     cache = λ(calls)
       .map(function performCalls (call) {
         return apiRequest(

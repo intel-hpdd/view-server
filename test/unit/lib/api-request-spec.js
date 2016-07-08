@@ -9,7 +9,7 @@ describe('api-request', function () {
 
   beforeEach(function () {
     conf = {
-      get: jasmine.createSpy('get').and.returnValue(url.parse('http://localhost:8000'))
+      SERVER_HTTP_URL: url.parse('http://localhost:8000')
     };
 
     req = {

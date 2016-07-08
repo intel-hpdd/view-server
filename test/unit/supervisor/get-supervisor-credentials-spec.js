@@ -14,7 +14,7 @@ describe('get supervisor credentials', function () {
     };
 
     conf = {
-      get: jasmine.createSpy('get')
+      NODE_ENV: 'development'
     };
 
     spyOn(crypto, 'createHash').and.callThrough();
@@ -27,8 +27,6 @@ describe('get supervisor credentials', function () {
   });
 
   it('should return supervisor credentials', function (done) {
-    conf.get.and.returnValue('development');
-
     getSupervisorCredentials()
       .apply(function (x) {
         expect(x).toEqual('cacfb6f:07c5ccc275c888efe5681023dc54e108');
@@ -39,7 +37,7 @@ describe('get supervisor credentials', function () {
   });
 
   it('should return null if we are in production', function (done) {
-    conf.get.and.returnValue('production');
+    conf.NODE_ENV = 'production';
 
     getSupervisorCredentials()
       .apply(function (x) {
@@ -49,8 +47,6 @@ describe('get supervisor credentials', function () {
   });
 
   it('should cache credentials', function (done) {
-    conf.get.and.returnValue('development');
-
     getSupervisorCredentials()
       .flatMap(getSupervisorCredentials)
       .apply(function () {

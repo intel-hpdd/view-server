@@ -53,7 +53,7 @@ module.exports = function start () {
         }
       }
     );
-  }).listen(conf.get('VIEW_SERVER_PORT'));
+  }).listen(conf.VIEW_SERVER_PORT);
 
   return function stop (done) {
     done = done || function noop () {};
