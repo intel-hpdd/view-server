@@ -24,7 +24,7 @@
 var nconf = require('nconf');
 var url = require('url');
 var path = require('path');
-var fs = require('fs');
+var helpText = require('intel-help');
 
 // Indicate that the memory store will be used so values can be set after nconf is defined.
 nconf.use('memory');
@@ -49,19 +49,6 @@ if (conf.get('NODE_ENV') === 'test') {
   conf.set('BUILD', 'jenkins__');
   conf.set('VIEW_SERVER_PORT', 8889);
   conf.set('LOG_PATH', conf.get('SITE_ROOT'));
-
-  var helpText = fs.readFileSync(managerPath('chroma_help', 'help.py'), { encoding: 'utf8' })
-      .match(/({[\s\S]*})/mg)[0]
-     .replace(/"""/mg, '\'')
-     .replace(/: "(.+)"/mg, ': \'($1)\'')
-     .replace(/\\'/mg, '\'')
-     .replace(/"/mg, '\\"')
-     .replace(/'(.+)':/gm, '"$1":')
-     .replace(/: '(.+)',/gm, ': "$1",')
-     .replace(/: '\n([\s\S]+)',/mg, ': "$1"')
-     .replace(/\n/mg, '');
-
-  helpText = JSON.parse(helpText);
 
   conf.set('HELP_TEXT', helpText);
 }
