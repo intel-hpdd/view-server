@@ -30,7 +30,7 @@ var confJson = require('./conf.json');
 var defaults = {
   LOG_PATH: '',
   LOG_FILE: 'view_server.log',
-  NODE_ENV: process.env.NODE_ENV
+  NODE_ENV: process.env.NODE_ENV || 'development'
 };
 
 var conf = obj.merge({}, defaults, confJson);
@@ -47,8 +47,7 @@ if (conf.NODE_ENV === 'test')
     VERSION: '',
     BUILD: 'jenkins__',
     VIEW_SERVER_PORT: 8889,
-    LOG_PATH: conf.SITE_ROOT,
-    HELP_TEXT: helpText
+    LOG_PATH: conf.SITE_ROOT
   });
 
 var parsedServerHttpUrl = url.parse(conf.SERVER_HTTP_URL);
@@ -57,7 +56,8 @@ conf = obj.merge({}, conf, {
   API_URL: url.format(parsedServerHttpUrl),
   HOST_NAME: parsedServerHttpUrl.hostname,
   PARSED_API_URL: parsedServerHttpUrl,
-  TEMPLATE_ROOT: managerPath('chroma_ui', 'templates') + path.sep
+  TEMPLATE_ROOT: managerPath('chroma_ui', 'templates') + path.sep,
+  HELP_TEXT: helpText
 });
 
 module.exports = conf;
