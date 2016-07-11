@@ -31,7 +31,7 @@ module.exports = function checkForProblems (req, res, next) {
 
   getStoppedSupervisorServices()
     .errors(function handleErrors (err, push) {
-      log.error(err);
+      log.error({ err: err });
 
       push(null, 'supervisor');
     })
