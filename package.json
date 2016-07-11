@@ -24,9 +24,9 @@
     "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
   },
   "dependencies": {
-    "bunyan": "1.8.0",
     "highland": "2.7.3",
     "intel-fp": "4.2.1",
+    "intel-logger": "1.0.0",
     "intel-req": "2.0.0",
     "intel-router": "3.0.4",
     "intel-through": "1.0.8",

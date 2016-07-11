@@ -22,19 +22,14 @@
 'use strict';
 
 var conf = require('./conf');
-var bunyan = require('bunyan');
+var logger = require('intel-logger');
 var path = require('path');
 
 var level = (conf.NODE_ENV === 'production' ? 'info' : 'debug');
 
-module.exports = bunyan.createLogger({
+module.exports = logger.default({
   name: 'view_server',
-  serializers: bunyan.stdSerializers,
-  streams: [
-    {
-      type: 'file',
-      level: level,
-      path: path.join(conf.LOG_PATH, conf.LOG_FILE)
-    }
-  ]
+  path: path.join(conf.LOG_PATH, conf.LOG_FILE),
+  level: level,
+  serializers: logger.serializers
 });
