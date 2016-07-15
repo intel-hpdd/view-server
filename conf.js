@@ -30,7 +30,8 @@ var confJson = require('./conf.json');
 var defaults = {
   LOG_PATH: '',
   LOG_FILE: 'view_server.log',
-  NODE_ENV: process.env.NODE_ENV || 'development'
+  NODE_ENV: process.env.NODE_ENV || 'development',
+  RUNNER: process.env.RUNNER
 };
 
 var conf = obj.merge({}, defaults, confJson);
