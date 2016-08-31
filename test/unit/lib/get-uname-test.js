@@ -15,7 +15,7 @@ describe('get uname', () => {
   beforeEach(() => {
     childProcess = {
       exec: jasmine.createSpy('exec').and.callFake((command, cb) => {
-        let commands = {
+        const commands = {
           'uname -m': 'x86_64\n',
           'uname -n': 'iml.local\n',
           'uname -r': '14.1.0\n',

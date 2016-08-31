@@ -35,6 +35,13 @@
       2,
       "multi",
       "consistent"
+    ],
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all",
+        "ignoreReadBeforeAssign": false
+      }
     ]
   },
   "env": {
