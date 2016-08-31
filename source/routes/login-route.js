@@ -39,7 +39,7 @@ export default () => {
    * @param {Function} next
    */
     .get(function checkEula (req, res, data, next) {
-      let session = data.cache.session;
+      const session = data.cache.session;
 
       if (!session.user)
         return goToNext();
@@ -74,7 +74,7 @@ export default () => {
       res.clientRes.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.clientRes.statusCode = 200;
 
-      let rendered = indexTemplate({
+      const rendered = indexTemplate({
         title: 'Login',
         cache: cache
       });

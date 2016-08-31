@@ -56,7 +56,7 @@ export default (req:routerReqT, res:routerResT, next:Function) => {
     // Pass the session cookies to the client.
     res.clientRes.setHeader('Set-Cookie', response.headers['set-cookie']);
 
-    let data:dataT = {
+    const data:dataT = {
       session: response.body,
       cache: {},
       cacheCookie: response

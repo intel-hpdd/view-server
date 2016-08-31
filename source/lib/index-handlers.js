@@ -36,7 +36,7 @@ import type {
 
 const handler = (template) =>
   (req:routerReqT, res:routerResT, data:dataT, next:Function) => {
-    let session = data.cache.session;
+    const session = data.cache.session;
 
     if (!session.user && !conf.ALLOW_ANONYMOUS_READ)
       return res.redirect('/ui/login/');
@@ -45,7 +45,7 @@ const handler = (template) =>
     res.clientRes.setHeader('Content-Security-Policy', cspPolicy);
     res.clientRes.statusCode = 200;
 
-    let rendered = template({
+    const rendered = template({
       title: '',
       cache: data.cache
     });

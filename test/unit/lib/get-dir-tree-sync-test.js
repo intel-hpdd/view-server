@@ -18,7 +18,7 @@ describe('get dir tree sync', () => {
       readdirSync: jasmine.createSpy('readdirSync'),
       readFileSync: jasmine.createSpy('readFileSync').and.returnValue('foo'),
       statSync: jasmine.createSpy('statSync').and.callFake((filePath) => {
-        let isFile = (filePath.indexOf('.html') !== -1);
+        const isFile = (filePath.indexOf('.html') !== -1);
 
         return {
           isFile: function isAFile () {
