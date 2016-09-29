@@ -4,7 +4,8 @@ set -ex
 . ~/.nvm/nvm.sh
 
 NODE_VERSIONS="
-4
+6
+stable
 "
 
 for node_version in $NODE_VERSIONS
