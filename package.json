@@ -1,6 +1,6 @@
 {
   "name": "intel-view-server",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "description": "Serves the HTML pages for the IML GUI.",
   "main": "index.js",
   "scripts": {
