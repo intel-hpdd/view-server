@@ -34,7 +34,6 @@ type confT = {
   SERVER_HTTP_URL:string,
   IS_RELEASE:boolean,
   ALLOW_ANONYMOUS_READ:boolean,
-  STATIC_URL:string,
   SITE_ROOT:string,
   VERSION:string,
   BUILD:string,
@@ -43,7 +42,8 @@ type confT = {
   API_URL:string,
   HOST_NAME:string,
   PARSED_API_URL:Object,
-  TEMPLATE_ROOT:string,
+  TEMPLATE_ROOT_NEW:string,
+  TEMPLATE_ROOT_OLD:string,
   HELP_TEXT:Object
 };
 
@@ -54,14 +54,13 @@ let conf:confT = Object.assign({
   RUNNER: process.env.RUNNER
 }, confJson);
 
-const managerPath = path.join.bind(path.join, conf.SITE_ROOT);
+const modulesPath = path.join.bind(path.join, conf.SITE_ROOT, 'ui-modules', 'node_modules');
 
 if (conf.NODE_ENV === 'test')
   conf = Object.assign({}, conf, {
     SERVER_HTTP_URL: 'https://localhost:8000/',
     IS_RELEASE: false,
     ALLOW_ANONYMOUS_READ: true,
-    STATIC_URL: '/static/',
     VERSION: '',
     BUILD: 'jenkins__',
     VIEW_SERVER_PORT: 8889,
@@ -78,7 +77,8 @@ conf = Object.assign(
     API_URL: url.format(parsedServerHttpUrl),
     HOST_NAME: parsedServerHttpUrl.hostname,
     PARSED_API_URL: parsedServerHttpUrl,
-    TEMPLATE_ROOT: managerPath('chroma_ui', 'templates') + path.sep,
+    TEMPLATE_ROOT_NEW: modulesPath('@iml', 'gui', 'dist') + path.sep,
+    TEMPLATE_ROOT_OLD: modulesPath('@iml', 'old-gui', 'templates') + path.sep,
     HELP_TEXT: helpText
   }
 );

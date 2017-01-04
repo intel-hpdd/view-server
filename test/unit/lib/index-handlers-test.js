@@ -41,7 +41,7 @@ describe('index handlers', () => {
     next = jasmine.createSpy('next');
 
     templates = {
-      'new/index.html': jasmine.createSpy('index').and.returnValue('index'),
+      'index.html': jasmine.createSpy('index').and.returnValue('index'),
       'base.html': jasmine.createSpy('base').and.returnValue('base')
     };
 
@@ -78,7 +78,7 @@ describe('index handlers', () => {
   it('should render the template', () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(templates['new/index.html']).toHaveBeenCalledOnceWith({
+    expect(templates['index.html']).toHaveBeenCalledOnceWith({
       title: '',
       cache: data.cache
     });
