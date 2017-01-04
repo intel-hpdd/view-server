@@ -55,7 +55,7 @@ const handler = (template) =>
     next(req, res);
   };
 
-const newTemplate = templates['new/index.html'];
+const newTemplate = templates['index.html'];
 const oldTemplate = templates['base.html'];
 
 export default {

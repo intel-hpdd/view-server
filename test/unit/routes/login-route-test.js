@@ -35,7 +35,7 @@ describe('login route', () => {
     next = jasmine.createSpy('next');
 
     templates = {
-      'new/index.html': jasmine.createSpy('indexTemplate')
+      'index.html': jasmine.createSpy('indexTemplate')
         .and.returnValue('foo')
     };
 
@@ -157,7 +157,7 @@ describe('login route', () => {
     });
 
     it('should render the template', () => {
-      expect(templates['new/index.html']).toHaveBeenCalledOnceWith({
+      expect(templates['index.html']).toHaveBeenCalledOnceWith({
         title: 'Login',
         cache: {}
       });

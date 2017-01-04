@@ -26,8 +26,11 @@ import _ from 'lodash';
 import getDirTreeSync from './get-dir-tree-sync.js';
 import conf from '../conf.js';
 
-const transformPath = (p) => p.replace(conf.TEMPLATE_ROOT, '');
-const templates = getDirTreeSync(conf.TEMPLATE_ROOT, transformPath);
+const transformPath = (root) => (p) => p.replace(root, '');
+const templates = {
+  ...getDirTreeSync(conf.TEMPLATE_ROOT_OLD, transformPath(conf.TEMPLATE_ROOT_OLD)),
+  ...getDirTreeSync(conf.TEMPLATE_ROOT_NEW, transformPath(conf.TEMPLATE_ROOT_NEW))
+};
 
 _.templateSettings.imports = {
   _,
