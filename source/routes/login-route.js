@@ -26,7 +26,7 @@ import templates from '../lib/templates.js';
 import apiRequest from '../lib/api-request.js';
 import renderRequestError from '../lib/render-request-error.js';
 
-const indexTemplate = templates['new/index.html'];
+const indexTemplate = templates['index.html'];
 
 export default () => {
   viewRouter.route('/ui/login')
