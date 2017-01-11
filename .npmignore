@@ -6,6 +6,9 @@ node_modules
 .flowconfig
 .babelrc
 .gitignore
+.yarn.lock
+readme.md
+conf.json
 *.log
 /test
 /source
