@@ -6,12 +6,12 @@ node_modules
 .flowconfig
 .babelrc
 .gitignore
-.yarn.lock
-readme.md
+yarn.lock
 conf.json
 *.log
 /test
 /source
 /coverage
 /bin
+/dist/test
 run_test.sh
