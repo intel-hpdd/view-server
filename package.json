@@ -20,7 +20,8 @@
   },
   "author": "IML Team",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@iml/fp": "^8.0.3",
     "@iml/help": "1.4.0",
     "@iml/logger": "^1.0.2",
@@ -28,9 +29,7 @@
     "@iml/req": "^3.0.4",
     "@iml/router": "6.0.2",
     "highland": "3.0.0-beta.4",
-    "lodash": "4.17.4"
-  },
-  "devDependencies": {
+    "lodash": "4.17.4",
     "@iml/flow-highland": "^4.2.8",
     "@iml/flow-jasmine": "1.6.1",
     "babel-eslint": "7.2.3",
