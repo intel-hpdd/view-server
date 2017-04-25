@@ -1,7 +1,7 @@
 {
-  "name": "@iml/view-server",
+  "name": "@mfl/view-server",
   "version": "6.3.4",
-  "description": "Serves the HTML pages for the IML GUI.",
+  "description": "Serves the HTML pages for the MFL GUI.",
   "main": "index.js",
   "scripts": {
     "test:dev": "npm run postversion && npm t",
@@ -16,7 +16,7 @@
     "instrument": false
   },
   "publishConfig": {
-    "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
+    "access": "public"
   },
   "pre-commit": [
     "eslint",
@@ -24,20 +24,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.intel.com:IML/view-server.git"
+    "url": "git@github.intel.com:MFL/view-server.git"
   },
-  "author": "IML Team",
+  "author": "MFL Team",
   "license": "MIT",
   "dependencies": {
     "highland": "3.0.0-beta.2",
-    "intel-fp": "5.1.0",
-    "intel-help": "1.3.0",
-    "intel-logger": "1.0.0",
-    "intel-obj": "6.0.0",
-    "intel-req": "2.0.0",
-    "intel-router": "5.0.0",
-    "intel-through": "1.0.8",
-    "intel-xml-2-json": "1.0.1",
+    "@mfl/fp": "5.1.0",
+    "@mfl/help": "1.3.0",
+    "@mfl/logger": "1.0.0",
+    "@mfl/obj": "6.0.0",
+    "@mfl/req": "2.0.0",
+    "@mfl/router": "5.0.0",
+    "@mfl/through": "1.0.8",
+    "@mfl/xml-2-json": "1.0.1",
     "lodash": "3.10.1"
   },
   "devDependencies": {
@@ -52,10 +52,10 @@
     "eslint": "3.6.1",
     "eslint-plugin-flowtype": "2.19.0",
     "eslint-plugin-import": "2.0.0",
-    "intel-flow-highland": "3.8.0",
-    "intel-flow-jasmine": "1.5.0",
-    "intel-jasmine-junit-reporter": "1.0.0",
-    "intel-jasmine-n-matchers": "2.1.1",
+    "@mfl/flow-highland": "3.8.0",
+    "@mfl/flow-jasmine": "1.5.0",
+    "@mfl/jasmine-junit-reporter": "1.0.0",
+    "@mfl/jasmine-n-matchers": "2.1.1",
     "jasmine": "2.5.2",
     "nyc": "8.3.0",
     "pre-commit": "1.1.3",
