@@ -21,32 +21,32 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import getRouter from 'intel-router';
+import getRouter from '@mfl/router';
 
 import checkForProblems from './middleware/check-for-problems.js';
 import getSession from './middleware/get-session.js';
 import getCache from './middleware/get-cache.js';
 
 export type routerReqT = {
-  verb:string,
-  clientReq:{
-    headers:Object;
-    httpVersion:string;
-    method:string;
-    trailers:Object;
-    statusCode:number;
-    url:string;
+  verb: string,
+  clientReq: {
+    headers: Object,
+    httpVersion: string,
+    method: string,
+    trailers: Object,
+    statusCode: number,
+    url: string
   },
-  matches:string[]
+  matches: string[]
 };
 
 export type routerResT = {
-  clientRes:{
-    setHeader:(name:string, value:string | string[]) => void,
-    statusCode:number,
-    end:Function
+  clientRes: {
+    setHeader: (name: string, value: string | string[]) => void,
+    statusCode: number,
+    end: Function
   },
-  redirect:(path:string) => void
+  redirect: (path: string) => void
 };
 
 export default getRouter()

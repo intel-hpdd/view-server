@@ -1,15 +1,9 @@
 import proxyquire from '../../proxyquire.js';
 
-import {
-  describe,
-  beforeEach,
-  jasmine
-} from '../../jasmine.js';
+import { describe, beforeEach, jasmine } from '../../jasmine.js';
 
 describe('index route', () => {
-  let indexHandlers,
-    checkGroup,
-    viewRouter;
+  let indexHandlers, checkGroup, viewRouter;
 
   beforeEach(() => {
     indexHandlers = {
@@ -23,10 +17,7 @@ describe('index route', () => {
     };
 
     const pathRouter = {
-      get: jasmine
-        .createSpy('get')
-        .and
-        .callFake(() => pathRouter)
+      get: jasmine.createSpy('get').and.callFake(() => pathRouter)
     };
 
     viewRouter = {

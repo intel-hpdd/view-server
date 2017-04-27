@@ -26,23 +26,28 @@ import indexHandlers from '../lib/index-handlers.js';
 import checkGroup from '../lib/check-group.js';
 
 export default () => {
-  viewRouter.route('/ui/configureold/:subpath+')
+  viewRouter
+    .route('/ui/configureold/:subpath+')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/targetold/:id')
+  viewRouter
+    .route('/ui/targetold/:id')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/storage_resourceold/:id')
+  viewRouter
+    .route('/ui/storage_resourceold/:id')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/userold/:id')
+  viewRouter
+    .route('/ui/userold/:id')
     .get(checkGroup.fsUsers)
     .get(indexHandlers.oldHandler);
 
-  viewRouter.route('/ui/system_statusold')
+  viewRouter
+    .route('/ui/system_statusold')
     .get(checkGroup.fsAdmins)
     .get(indexHandlers.oldHandler);
 

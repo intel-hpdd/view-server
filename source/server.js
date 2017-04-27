@@ -29,7 +29,7 @@ if (conf.RUNNER === 'supervisor') {
   process.on('SIGTERM', cleanShutdown('SIGTERM'));
 }
 
-function cleanShutdown (signal) {
+function cleanShutdown(signal) {
   return () => {
     console.log(`Caught ${signal}, shutting down cleanly.`); // eslint-disable-line no-console
     // Exit with 0 to keep supervisor happy.

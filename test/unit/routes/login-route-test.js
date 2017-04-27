@@ -1,13 +1,7 @@
 import highland from 'highland';
 import proxyquire from '../../proxyquire.js';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect
-} from '../../jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
 
 describe('login route', () => {
   let viewRouter,
@@ -35,12 +29,11 @@ describe('login route', () => {
     next = jasmine.createSpy('next');
 
     templates = {
-      'index.html': jasmine.createSpy('indexTemplate')
-        .and.returnValue('foo')
+      'index.html': jasmine.createSpy('indexTemplate').and.returnValue('foo')
     };
 
     pathRouter = {
-      get:  jasmine.createSpy('get').and.callFake(() => {
+      get: jasmine.createSpy('get').and.callFake(() => {
         return pathRouter;
       })
     };
@@ -49,13 +42,16 @@ describe('login route', () => {
       route: jasmine.createSpy('route').and.returnValue(pathRouter)
     };
 
-    apiRequest = jasmine.createSpy('apiRequest').and.returnValue(highland((_push_) => {
-      push = _push_;
-    }));
+    apiRequest = jasmine.createSpy('apiRequest').and.returnValue(
+      highland(_push_ => {
+        push = _push_;
+      })
+    );
 
     renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
 
-    renderRequestError = jasmine.createSpy('renderRequestError')
+    renderRequestError = jasmine
+      .createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
 
     proxyquire('../source/routes/login-route', {
@@ -71,8 +67,7 @@ describe('login route', () => {
   });
 
   describe('eula checking', () => {
-    let handler,
-      data;
+    let handler, data;
 
     beforeEach(() => {
       data = {
@@ -113,7 +108,7 @@ describe('login route', () => {
       it('should send a delete request', () => {
         expect(apiRequest).toHaveBeenCalledOnceWith('/session', {
           method: 'delete',
-          headers: { cookie : 'foo' }
+          headers: { cookie: 'foo' }
         });
       });
 
@@ -128,24 +123,25 @@ describe('login route', () => {
         push(new Error('boom!'));
         push(null, highland.nil);
 
-        expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error('boom!'), jasmine.any(Function));
+        expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
+          new Error('boom!'),
+          jasmine.any(Function)
+        );
       });
     });
-
   });
 
   describe('render login', () => {
     beforeEach(() => {
-      const handler = pathRouter
-        .get
-        .calls
-        .mostRecent()
-        .args[0];
+      const handler = pathRouter.get.calls.mostRecent().args[0];
       handler(req, res, {}, next);
     });
 
     it('should set the header', () => {
-      expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith('Content-Type', 'text/html; charset=utf-8');
+      expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith(
+        'Content-Type',
+        'text/html; charset=utf-8'
+      );
     });
 
     it('should set the statusCode', () => {

@@ -21,11 +21,11 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from 'intel-fp';
+import * as fp from '@mfl/fp';
 import groupAllowed from './group-allowed';
 import groups from './groups';
 
-const allowGroup = (groupName:string) =>
+const allowGroup = (groupName: string) =>
   (req, res, data, next) => {
     if (!groupAllowed(groupName, data.cache.session))
       return res.redirect('/ui/');
@@ -33,25 +33,17 @@ const allowGroup = (groupName:string) =>
     next(req, res, data);
   };
 
-const transform = (text) =>
-  text
-    .toLowerCase()
-    .split('_')
-    .reduce((str, part) => str += capitalize(part));
+const transform = text =>
+  text.toLowerCase().split('_').reduce((str, part) => str += capitalize(part));
 
-
-const capitalize = (x) =>
-  x
-    .charAt(0)
-    .toUpperCase() + x.slice(1);
+const capitalize = x => x.charAt(0).toUpperCase() + x.slice(1);
 
 const keys = [];
 const vals = [];
 
-Object.keys(groups)
-  .forEach((key) => {
-    keys.push(transform(key));
-    vals.push(allowGroup(groups[key]));
-  });
+Object.keys(groups).forEach(key => {
+  keys.push(transform(key));
+  vals.push(allowGroup(groups[key]));
+});
 
 export default fp.zipObject(keys, vals);

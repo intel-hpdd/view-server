@@ -21,11 +21,10 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-
-export default 'default-src \'none\';\
- child-src \'self\';\
- script-src \'self\' \'unsafe-inline\' \'unsafe-eval\';\
- connect-src \'self\' wss:;\
- img-src \'self\' data:;\
- font-src \'self\';\
- style-src \'self\' \'unsafe-inline\';';
+export default "default-src 'none';\
+ child-src 'self';\
+ script-src 'self' 'unsafe-inline' 'unsafe-eval';\
+ connect-src 'self' wss:;\
+ img-src 'self' data:;\
+ font-src 'self';\
+ style-src 'self' 'unsafe-inline';";

@@ -25,21 +25,25 @@ import fs from 'fs';
 import path from 'path';
 
 type strMap = {
-  [key:string]:string
-}
+  [key: string]: string
+};
 
-export default function getDirTreeSync (dir:string, transformPath:(x:string) => string, dirTree:strMap = {}):strMap {
-  return fs
-    .readdirSync(dir)
-    .reduce((obj, file) => {
+export default function getDirTreeSync(
+  dir: string,
+  transformPath: (x: string) => string,
+  dirTree: strMap = {}
+): strMap {
+  return fs.readdirSync(dir).reduce(
+    (obj, file) => {
       const filePath = path.join(dir, file);
       const s = fs.statSync(filePath);
 
       if (s.isFile() && /\.html$/.test(filePath))
         obj[transformPath(filePath)] = fs.readFileSync(filePath, 'utf8');
-      if (s.isDirectory())
-        getDirTreeSync(`${filePath}/`, transformPath, obj);
+      if (s.isDirectory()) getDirTreeSync(`${filePath}/`, transformPath, obj);
 
       return obj;
-    }, dirTree);
+    },
+    dirTree
+  );
 }

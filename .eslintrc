@@ -2,34 +2,23 @@
   "parser": "babel-eslint",
   "plugins": [
     "flowtype",
-    "import"
+    "import",
+    "prettier"
   ],
   "rules": {
     "flowtype/define-flow-type": 1,
     "flowtype/use-flow-type": 1,
     "flowtype/space-after-type-colon": [
-        1,
-        "never"
+      0,
+      "never"
     ],
     "import/no-commonjs": 2,
     "import/no-amd": 2,
     "import/export": 2,
     "no-var": 2,
-    "quotes": [
-      2,
-      "single"
-    ],
     "linebreak-style": [
       2,
       "unix"
-    ],
-    "semi": [
-      2,
-      "always"
-    ],
-    "indent": [
-      2,
-      2
     ],
     "curly": [
       2,
@@ -42,6 +31,12 @@
         "destructuring": "all",
         "ignoreReadBeforeAssign": false
       }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+      }
     ]
   },
   "env": {
@@ -53,5 +48,8 @@
     "sourceType": "module",
     "experimentalObjectRestSpread": true
   },
-  "extends": "eslint:recommended"
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ]
 }

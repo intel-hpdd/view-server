@@ -22,13 +22,11 @@
 // express and approved by Intel in writing.
 
 import url from 'url';
-import * as obj from 'intel-obj';
-import getReq from 'intel-req';
+import * as obj from '@mfl/obj';
+import getReq from '@mfl/req';
 import conf from '../conf.js';
 
-import type {
-  HighlandStreamT
-} from 'highland';
+import type { HighlandStreamT } from 'highland';
 
 const req = getReq('https');
 
@@ -40,19 +38,12 @@ const hostOptions = {
   port: serverHttpUrl.port
 };
 
-export default <T> (path:string, options:Object):HighlandStreamT<T> => {
-  path = path
-    .replace(/^\/*/, '/')
-    .replace(/\/*$/, '/');
+export default <T>(path: string, options: Object): HighlandStreamT<T> => {
+  path = path.replace(/^\/*/, '/').replace(/\/*$/, '/');
 
-  const opts = obj.merge(
-    {},
-    options,
-    hostOptions,
-    {
-      path: `/api${path}`
-    }
-  );
+  const opts = obj.merge({}, options, hostOptions, {
+    path: `/api${path}`
+  });
 
   return req.bufferJsonRequest(opts);
 };

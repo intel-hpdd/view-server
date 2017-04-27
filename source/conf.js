@@ -23,38 +23,46 @@
 
 import url from 'url';
 import path from 'path';
-import helpText from 'intel-help';
+import helpText from '@mfl/help';
 import confJson from './conf.json';
 
 type confT = {
-  LOG_PATH:string,
-  LOG_FILE:string,
-  NODE_ENV:string,
-  RUNNER:string,
-  SERVER_HTTP_URL:string,
-  IS_RELEASE:boolean,
-  ALLOW_ANONYMOUS_READ:boolean,
-  SITE_ROOT:string,
-  VERSION:string,
-  BUILD:string,
-  VIEW_SERVER_PORT:number,
-  API_PORT:string,
-  API_URL:string,
-  HOST_NAME:string,
-  PARSED_API_URL:Object,
-  TEMPLATE_ROOT_NEW:string,
-  TEMPLATE_ROOT_OLD:string,
-  HELP_TEXT:Object
+  LOG_PATH: string,
+  LOG_FILE: string,
+  NODE_ENV: string,
+  RUNNER: string,
+  SERVER_HTTP_URL: string,
+  IS_RELEASE: boolean,
+  ALLOW_ANONYMOUS_READ: boolean,
+  SITE_ROOT: string,
+  VERSION: string,
+  BUILD: string,
+  VIEW_SERVER_PORT: number,
+  API_PORT: string,
+  API_URL: string,
+  HOST_NAME: string,
+  PARSED_API_URL: Object,
+  TEMPLATE_ROOT_NEW: string,
+  TEMPLATE_ROOT_OLD: string,
+  HELP_TEXT: Object
 };
 
-let conf:confT = Object.assign({
-  LOG_PATH: '',
-  LOG_FILE: 'view_server.log',
-  NODE_ENV: process.env.NODE_ENV || 'development',
-  RUNNER: process.env.RUNNER
-}, confJson);
+let conf: confT = Object.assign(
+  {
+    LOG_PATH: '',
+    LOG_FILE: 'view_server.log',
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    RUNNER: process.env.RUNNER
+  },
+  confJson
+);
 
-const modulesPath = path.join.bind(path.join, conf.SITE_ROOT, 'ui-modules', 'node_modules');
+const modulesPath = path.join.bind(
+  path.join,
+  conf.SITE_ROOT,
+  'ui-modules',
+  'node_modules'
+);
 
 if (conf.NODE_ENV === 'test')
   conf = Object.assign({}, conf, {
@@ -68,19 +76,15 @@ if (conf.NODE_ENV === 'test')
   });
 
 const parsedServerHttpUrl = url.parse(conf.SERVER_HTTP_URL);
-conf = Object.assign(
-  {},
-  conf,
-  {
-    API_PORT: parsedServerHttpUrl.port,
-    // $FlowIgnore: bad libdef
-    API_URL: url.format(parsedServerHttpUrl),
-    HOST_NAME: parsedServerHttpUrl.hostname,
-    PARSED_API_URL: parsedServerHttpUrl,
-    TEMPLATE_ROOT_NEW: modulesPath('@iml', 'gui', 'dist') + path.sep,
-    TEMPLATE_ROOT_OLD: modulesPath('@iml', 'old-gui', 'templates') + path.sep,
-    HELP_TEXT: helpText
-  }
-);
+conf = Object.assign({}, conf, {
+  API_PORT: parsedServerHttpUrl.port,
+  // $FlowIgnore: bad libdef
+  API_URL: url.format(parsedServerHttpUrl),
+  HOST_NAME: parsedServerHttpUrl.hostname,
+  PARSED_API_URL: parsedServerHttpUrl,
+  TEMPLATE_ROOT_NEW: modulesPath('@mfl', 'gui', 'dist') + path.sep,
+  TEMPLATE_ROOT_OLD: modulesPath('@mfl', 'old-gui', 'templates') + path.sep,
+  HELP_TEXT: helpText
+});
 
 export default conf;

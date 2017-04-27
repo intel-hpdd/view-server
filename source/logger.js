@@ -22,10 +22,10 @@
 // express and approved by Intel in writing.
 
 import path from 'path';
-import logger from 'intel-logger';
+import logger from '@mfl/logger';
 import conf from './conf.js';
 
-const level = (conf.NODE_ENV === 'production' ? 'info' : 'debug');
+const level = conf.NODE_ENV === 'production' ? 'info' : 'debug';
 
 export default logger({
   name: 'view_server',

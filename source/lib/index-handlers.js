@@ -25,17 +25,12 @@ import templates from './templates.js';
 import conf from '../conf.js';
 import cspPolicy from './csp-policy.js';
 
-import type {
-  routerReqT,
-  routerResT
-} from '../view-router.js';
+import type { routerReqT, routerResT } from '../view-router.js';
 
-import type {
-  dataT
-} from '../middleware/get-session.js';
+import type { dataT } from '../middleware/get-session.js';
 
-const handler = (template) =>
-  (req:routerReqT, res:routerResT, data:dataT, next:Function) => {
+const handler = template =>
+  (req: routerReqT, res: routerResT, data: dataT, next: Function) => {
     const session = data.cache.session;
 
     if (!session.user && !conf.ALLOW_ANONYMOUS_READ)

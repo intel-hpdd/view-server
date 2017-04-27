@@ -21,19 +21,21 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from 'intel-fp';
+import * as fp from '@mfl/fp';
 import highland from 'highland';
 import childProcess from 'child_process';
 
-import type {
-  HighlandStreamT
-} from 'highland';
+import type { HighlandStreamT } from 'highland';
 
-const exec:(x:string) => HighlandStreamT<string> = highland.wrapCallback(childProcess.exec);
+const exec: (x: string) => HighlandStreamT<string> = highland.wrapCallback(
+  childProcess.exec
+);
 
 export default () =>
   highland(['m', 'n', 'r', 's', 'v'])
     .flatMap(arg => exec(`uname -${arg}`))
     .map(x => x.trim())
     .collect()
-    .map(fp.zipObject(['sysname', 'nodename', 'release', 'version', 'machine']));
+    .map(
+      fp.zipObject(['sysname', 'nodename', 'release', 'version', 'machine'])
+    );

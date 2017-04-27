@@ -21,7 +21,7 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from 'intel-fp';
+import * as fp from '@mfl/fp';
 
 const valuesLens = fp.compose(
   fp.lensProp('methodResponse'),
@@ -42,31 +42,21 @@ const overStructValues = fp.over(
     fp.mapped,
     fp.lensProp('value')
   ),
-  function normalize (xs) {
-    if (xs.string)
-      return xs.string.text || '';
-    else if (xs.int)
-      return parseInt(xs.int.text, 10);
-    else
-      return xs;
+  function normalize(xs) {
+    if (xs.string) return xs.string.text || '';
+    else if (xs.int) return parseInt(xs.int.text, 10);
+    else return xs;
   }
 );
 
-const overStructs = fp.over(
-  fp.compose(
-    valuesLens,
-    fp.mapped
-  ),
-  function (xs) {
-    return xs.struct.member.reduce(function normalizeText (out, x) {
+const overStructs = fp.over(fp.compose(valuesLens, fp.mapped), function(xs) {
+  return xs.struct.member.reduce(
+    function normalizeText(out, x) {
       out[x.name.text] = x.value;
       return out;
-    }, {});
-  }
-);
+    },
+    {}
+  );
+});
 
-export default fp.flow(
-  overStructValues,
-  overStructs,
-  fp.view(valuesLens)
-);
+export default fp.flow(overStructValues, overStructs, fp.view(valuesLens));
