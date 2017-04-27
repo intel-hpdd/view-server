@@ -2,9 +2,75 @@
 # yarn lockfile v1
 
 
+"@mfl/flow-highland@4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@mfl/flow-highland/-/flow-highland-4.1.0.tgz#86856f6f34cc06fa31be21124151c3768522de4d"
+
+"@mfl/flow-jasmine@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@mfl/flow-jasmine/-/flow-jasmine-1.6.1.tgz#ddf955193823af50f2180fc613e81cf7fbde2043"
+
+"@mfl/fp@8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@mfl/fp/-/fp-8.0.0.tgz#8f25255ccb73cb7d6fe0e047108cb93aa902fff7"
+  dependencies:
+    "@mfl/maybe" "3.0.0"
+
+"@mfl/help@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@mfl/help/-/help-1.4.0.tgz#2ffd7b216cff417d6675bf4af1d506465464bed3"
+
+"@mfl/jasmine-n-matchers@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@mfl/jasmine-n-matchers/-/jasmine-n-matchers-2.1.1.tgz#bf4ab1d4fff38152b1253bb9619e7e5e814926c6"
+
+"@mfl/logger@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@mfl/logger/-/logger-1.0.1.tgz#6608d185a6ef8dd2f73f0b118cdd071b3aed64ec"
+  dependencies:
+    jest "19.0.2"
+
+"@mfl/maybe@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@mfl/maybe/-/maybe-3.0.0.tgz#184d40305afb14011eb9008677771c14d07d98fd"
+
+"@mfl/obj@6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@mfl/obj/-/obj-6.0.1.tgz#3ad9a96200add581367d88387eda9e9ef201b536"
+
+"@mfl/req@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@mfl/req/-/req-3.0.0.tgz#99a3c81a67419f6b41d234a310f00af2eeb5d0d4"
+  dependencies:
+    "@mfl/fp" "8.0.0"
+    highland "3.0.0-beta.2"
+    json-mask "0.3.8"
+
+"@mfl/router@6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@mfl/router/-/router-6.0.1.tgz#5ab893976d542e1d6972b30d7fb80d3920615cf6"
+  dependencies:
+    path-to-regexp "1.7.0"
+
+"@mfl/xml-2-json@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@mfl/xml-2-json/-/xml-2-json-1.0.1.tgz#32d2a1b980554280eb779f42f7f38497d351b462"
+  dependencies:
+    node-xml "^1.0.2"
+
+abab@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
+
 abbrev@1:
   version "1.0.9"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
+
+acorn-globals@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-3.1.0.tgz#fd8270f71fbb4996b004fa880ee5d46573a731bf"
+  dependencies:
+    acorn "^4.0.4"
 
 acorn-jsx@^3.0.0:
   version "3.0.1"
@@ -16,9 +82,13 @@ acorn@^3.0.4:
   version "3.3.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
 
-acorn@^4.0.1:
+acorn@^4.0.4:
   version "4.0.4"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/acorn/-/acorn-4.0.4.tgz#17a8d6a7a6c4ef538b814ec9abac2779293bf30a"
+
+acorn@^5.0.1:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 ajv-keywords@^1.0.0:
   version "1.5.0"
@@ -43,7 +113,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-ansi-escapes@^1.1.0:
+ansi-escapes@^1.1.0, ansi-escapes@^1.4.0:
   version "1.4.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
 
@@ -55,6 +125,12 @@ ansi-styles@^2.1.0, ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
+ansi-styles@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.0.0.tgz#5404e93a544c4fec7f048262977bebfe3155e0c1"
+  dependencies:
+    color-convert "^1.0.0"
+
 anymatch@^1.3.0:
   version "1.3.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/anymatch/-/anymatch-1.3.0.tgz#a3e52fa39168c825ff57b0248126ce5a8ff95507"
@@ -65,6 +141,12 @@ anymatch@^1.3.0:
 append-transform@^0.3.0:
   version "0.3.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/append-transform/-/append-transform-0.3.0.tgz#d6933ce4a85f09445d9ccc4cc119051b7381a813"
+
+append-transform@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
+  dependencies:
+    default-require-extensions "^1.0.0"
 
 aproba@^1.0.3:
   version "1.0.4"
@@ -96,6 +178,10 @@ arr-diff@^2.0.0:
 arr-flatten@^1.0.1:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/arr-flatten/-/arr-flatten-1.0.1.tgz#e5ffe54d45e19f32f216e91eb99c8ce892bb604b"
+
+array-equal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/array-equal/-/array-equal-1.0.0.tgz#8c2a5ef2472fd9ea742b04c77a75093ba2757c93"
 
 array-find-index@^1.0.1:
   version "1.0.2"
@@ -131,6 +217,14 @@ assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
 
+ast-types@0.8.18:
+  version "0.8.18"
+  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.8.18.tgz#c8b98574898e8914e9d8de74b947564a9fe929af"
+
+ast-types@0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.9.4.tgz#410d1f81890aeb8e0a38621558ba5869ae53c91b"
+
 async-each@^1.0.0:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
@@ -138,6 +232,12 @@ async-each@^1.0.0:
 async@^1.4.0, async@^1.4.2:
   version "1.5.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
+
+async@^2.1.4:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.3.0.tgz#1013d1051047dd320fe24e494d5c66ecaf6147d9"
+  dependencies:
+    lodash "^4.14.0"
 
 async@~0.2.6:
   version "0.2.10"
@@ -181,6 +281,14 @@ babel-cli@6.16.0:
   optionalDependencies:
     chokidar "^1.0.0"
 
+babel-code-frame@6.22.0:
+  version "6.22.0"
+  resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.22.0.tgz#027620bee567a88c32561574e7fd0801d33118e4"
+  dependencies:
+    chalk "^1.1.0"
+    esutils "^2.0.2"
+    js-tokens "^3.0.0"
+
 babel-code-frame@^6.16.0, babel-code-frame@^6.20.0:
   version "6.20.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/babel-code-frame/-/babel-code-frame-6.20.0.tgz#b968f839090f9a8bc6d41938fb96cb84f7387b26"
@@ -215,7 +323,7 @@ babel-core@6.16.0, babel-core@^6.16.0:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-core@^6.18.0:
+babel-core@^6.0.0, babel-core@^6.18.0:
   version "6.21.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/babel-core/-/babel-core-6.21.0.tgz#75525480c21c803f826ef3867d22c19f080a3724"
   dependencies:
@@ -335,6 +443,14 @@ babel-helpers@^6.16.0:
     babel-runtime "^6.0.0"
     babel-template "^6.16.0"
 
+babel-jest@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-19.0.0.tgz#59323ced99a3a84d359da219ca881074ffc6ce3f"
+  dependencies:
+    babel-core "^6.0.0"
+    babel-plugin-istanbul "^4.0.0"
+    babel-preset-jest "^19.0.0"
+
 babel-messages@^6.8.0:
   version "6.8.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/babel-messages/-/babel-messages-6.8.0.tgz#bf504736ca967e6d65ef0adb5a2a5f947c8e0eb9"
@@ -354,6 +470,18 @@ babel-plugin-check-es2015-constants@^6.3.13:
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/babel-plugin-check-es2015-constants/-/babel-plugin-check-es2015-constants-6.8.0.tgz#dbf024c32ed37bfda8dee1e76da02386a8d26fe7"
   dependencies:
     babel-runtime "^6.0.0"
+
+babel-plugin-istanbul@^4.0.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-4.1.1.tgz#c12de0fc6fe42adfb16be56f1ad11e4a9782eca9"
+  dependencies:
+    find-up "^2.1.0"
+    istanbul-lib-instrument "^1.6.2"
+    test-exclude "^4.0.3"
+
+babel-plugin-jest-hoist@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-19.0.0.tgz#4ae2a04ea612a6e73651f3fde52c178991304bea"
 
 babel-plugin-syntax-flow@^6.8.0:
   version "6.18.0"
@@ -603,6 +731,12 @@ babel-preset-es2015@6.16.0:
     babel-plugin-transform-es2015-unicode-regex "^6.3.13"
     babel-plugin-transform-regenerator "^6.16.0"
 
+babel-preset-jest@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-19.0.0.tgz#22d67201d02324a195811288eb38294bb3cac396"
+  dependencies:
+    babel-plugin-jest-hoist "^19.0.0"
+
 babel-register@^6.16.0, babel-register@^6.18.0:
   version "6.18.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/babel-register/-/babel-register-6.18.0.tgz#892e2e03865078dd90ad2c715111ec4449b32a68"
@@ -655,6 +789,10 @@ babel-types@^6.15.0, babel-types@^6.16.0, babel-types@^6.18.0, babel-types@^6.19
     lodash "^4.2.0"
     to-fast-properties "^1.0.1"
 
+babylon@6.15.0:
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.15.0.tgz#ba65cfa1a80e1759b0e89fb562e27dccae70348e"
+
 babylon@^6.11.0, babylon@^6.11.2, babylon@^6.13.0:
   version "6.14.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/babylon/-/babylon-6.14.1.tgz#956275fab72753ad9b3435d7afe58f8bf0a29815"
@@ -688,10 +826,6 @@ binary-extensions@^1.0.0:
   version "1.8.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/binary-extensions/-/binary-extensions-1.8.0.tgz#48ec8d16df4377eae5fa5884682480af4d95c774"
 
-bindings@1.2.1:
-  version "1.2.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
-
 block-stream@*:
   version "0.0.9"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/block-stream/-/block-stream-0.0.9.tgz#13ebfe778a03205cfe03751481ebb4b3300c126a"
@@ -719,6 +853,24 @@ braces@^1.8.2:
     preserve "^0.2.0"
     repeat-element "^1.1.2"
 
+browser-resolve@^1.11.2:
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/browser-resolve/-/browser-resolve-1.11.2.tgz#8ff09b0a2c421718a1051c260b32e48f442938ce"
+  dependencies:
+    resolve "1.1.7"
+
+bser@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/bser/-/bser-1.0.2.tgz#381116970b2a6deea5646dd15dd7278444b56169"
+  dependencies:
+    node-int64 "^0.4.0"
+
+bser@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"
+  dependencies:
+    node-int64 "^0.4.0"
+
 buffer-shims@^1.0.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/buffer-shims/-/buffer-shims-1.0.0.tgz#9978ce317388c649ad8793028c3477ef044a8b51"
@@ -744,6 +896,10 @@ caller-path@^0.1.0:
 callsites@^0.2.0:
   version "0.2.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/callsites/-/callsites-0.2.0.tgz#afab96262910a7f33c19a5775825c69f34e350ca"
+
+callsites@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
 
 camelcase-keys@^2.0.0:
   version "2.1.0"
@@ -785,7 +941,7 @@ chalk@1.1.1:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
+chalk@1.1.3, chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
   dependencies:
@@ -809,6 +965,10 @@ chokidar@^1.0.0:
     readdirp "^2.0.0"
   optionalDependencies:
     fsevents "^1.0.0"
+
+ci-info@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.0.0.tgz#dc5285f2b4e251821683681c381c3388f46ec534"
 
 circular-json@^0.3.1:
   version "0.3.1"
@@ -848,6 +1008,20 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+color-convert@^1.0.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.0.tgz#1accf97dd739b983bf994d56fec8f95853641b7a"
+  dependencies:
+    color-name "^1.1.1"
+
+color-name@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.2.tgz#5c8ab72b64bd2215d617ae9559ebb148475cf98d"
+
+colors@>=0.6.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
+
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/combined-stream/-/combined-stream-1.0.5.tgz#938370a57b4a51dea2c77c15d5c5fdf895164009"
@@ -868,7 +1042,7 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concat-stream@^1.4.6, concat-stream@^1.4.7:
+concat-stream@^1.4.7, concat-stream@^1.5.2:
   version "1.6.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/concat-stream/-/concat-stream-1.6.0.tgz#0aac662fd52be78964d5532f694784e70110acf7"
   dependencies:
@@ -883,6 +1057,10 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
 contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
+
+content-type-parser@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/content-type-parser/-/content-type-parser-1.0.1.tgz#c3e56988c53c65127fb46d4032a3a900246fdc94"
 
 convert-source-map@^1.1.0, convert-source-map@^1.3.0:
   version "1.3.0"
@@ -922,6 +1100,16 @@ cryptiles@2.x.x:
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
   dependencies:
     boom "2.x.x"
+
+cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/cssom/-/cssom-0.3.2.tgz#b8036170c79f07a90ff2f16e22284027a243848b"
+
+"cssstyle@>= 0.2.37 < 0.3.0":
+  version "0.2.37"
+  resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
+  dependencies:
+    cssom "0.3.x"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -997,9 +1185,20 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
-doctrine@1.3.x, doctrine@^1.2.2:
-  version "1.3.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/doctrine/-/doctrine-1.3.0.tgz#13e75682b55518424276f7c173783456ef913d26"
+diff@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
+
+doctrine@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-1.5.0.tgz#379dce730f6166f76cefa4e6707a159b02c5a6fa"
+  dependencies:
+    esutils "^2.0.2"
+    isarray "^1.0.0"
+
+doctrine@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.0.0.tgz#c73d8d2909d22291e1a007a395804da8b665fe63"
   dependencies:
     esutils "^2.0.2"
     isarray "^1.0.0"
@@ -1009,6 +1208,12 @@ ecc-jsbn@~0.1.1:
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+"errno@>=0.1.1 <0.2.0-0":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.4.tgz#b896e23a9e5e8ba33871fc996abd3635fc9a1c7d"
+  dependencies:
+    prr "~0.0.0"
 
 error-ex@^1.2.0:
   version "1.3.0"
@@ -1072,6 +1277,17 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
+escodegen@^1.6.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.8.1.tgz#5a5b53af4693110bebb0867aa3430dd3b70a1018"
+  dependencies:
+    esprima "^2.7.1"
+    estraverse "^1.9.1"
+    esutils "^2.0.2"
+    optionator "^0.8.1"
+  optionalDependencies:
+    source-map "~0.2.0"
+
 escope@^3.6.0:
   version "3.6.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/escope/-/escope-3.6.0.tgz#e01975e812781a163a6dadfdd80398dc64c889c3"
@@ -1081,6 +1297,12 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
+eslint-config-prettier@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-1.7.0.tgz#cda3ce22df1e852daa9370f1f3446e8b8a02ce44"
+  dependencies:
+    get-stdin "^5.0.1"
+
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/eslint-import-resolver-node/-/eslint-import-resolver-node-0.2.3.tgz#5add8106e8c928db2cba232bcd9efa846e3da16c"
@@ -1089,50 +1311,58 @@ eslint-import-resolver-node@^0.2.0:
     object-assign "^4.0.1"
     resolve "^1.1.6"
 
-eslint-module-utils@^1.0.0:
-  version "1.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/eslint-module-utils/-/eslint-module-utils-1.0.0.tgz#c4a57fd3a53efd8426cc2d5550aadab9bbd05fd0"
+eslint-module-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.0.0.tgz#a6f8c21d901358759cdc35dbac1982ae1ee58bce"
   dependencies:
     debug "2.2.0"
     pkg-dir "^1.0.0"
 
-eslint-plugin-flowtype@2.19.0:
-  version "2.19.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.19.0.tgz#c4a8e9387cebbbe45deecd7c067ffb47ed99385a"
+eslint-plugin-flowtype@2.32.1:
+  version "2.32.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.32.1.tgz#bbee185dedf97e5f63ec975cdcddd199bd2a2501"
   dependencies:
     lodash "^4.15.0"
 
-eslint-plugin-import@2.0.0:
-  version "2.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/eslint-plugin-import/-/eslint-plugin-import-2.0.0.tgz#5ccd46210162bc1a0d76221eb7518476d04fb089"
+eslint-plugin-import@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.2.0.tgz#72ba306fad305d67c4816348a4699a4229ac8b4e"
   dependencies:
     builtin-modules "^1.1.1"
     contains-path "^0.1.0"
     debug "^2.2.0"
-    doctrine "1.3.x"
+    doctrine "1.5.0"
     eslint-import-resolver-node "^0.2.0"
-    eslint-module-utils "^1.0.0"
+    eslint-module-utils "^2.0.0"
     has "^1.0.1"
     lodash.cond "^4.3.0"
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
 
-eslint@3.6.1:
-  version "3.6.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/eslint/-/eslint-3.6.1.tgz#39eeabcfd8d2fe046fb8754b4cf97182abde0d9d"
+eslint-plugin-prettier@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-2.0.1.tgz#2ae1216cf053dd728360ca8560bf1aabc8af3fa9"
   dependencies:
+    requireindex "~1.1.0"
+
+eslint@^3.16.1:
+  version "3.19.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.19.0.tgz#c8fc6201c7f40dd08941b87c085767386a679acc"
+  dependencies:
+    babel-code-frame "^6.16.0"
     chalk "^1.1.3"
-    concat-stream "^1.4.6"
+    concat-stream "^1.5.2"
     debug "^2.1.1"
-    doctrine "^1.2.2"
+    doctrine "^2.0.0"
     escope "^3.6.0"
-    espree "^3.3.1"
+    espree "^3.4.0"
+    esquery "^1.0.0"
     estraverse "^4.2.0"
     esutils "^2.0.2"
     file-entry-cache "^2.0.0"
     glob "^7.0.3"
-    globals "^9.2.0"
-    ignore "^3.1.5"
+    globals "^9.14.0"
+    ignore "^3.2.0"
     imurmurhash "^0.1.4"
     inquirer "^0.12.0"
     is-my-json-valid "^2.10.0"
@@ -1143,28 +1373,34 @@ eslint@3.6.1:
     lodash "^4.0.0"
     mkdirp "^0.5.0"
     natural-compare "^1.4.0"
-    optionator "^0.8.1"
+    optionator "^0.8.2"
     path-is-inside "^1.0.1"
     pluralize "^1.2.1"
     progress "^1.1.8"
     require-uncached "^1.0.2"
-    shelljs "^0.6.0"
+    shelljs "^0.7.5"
     strip-bom "^3.0.0"
-    strip-json-comments "~1.0.1"
+    strip-json-comments "~2.0.1"
     table "^3.7.8"
     text-table "~0.2.0"
     user-home "^2.0.0"
 
-espree@^3.3.1:
-  version "3.3.2"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/espree/-/espree-3.3.2.tgz#dbf3fadeb4ecb4d4778303e50103b3d36c88b89c"
+espree@^3.4.0:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/espree/-/espree-3.4.2.tgz#38dbdedbedc95b8961a1fbf04734a8f6a9c8c592"
   dependencies:
-    acorn "^4.0.1"
+    acorn "^5.0.1"
     acorn-jsx "^3.0.0"
 
-esprima@^2.6.0:
+esprima@^2.6.0, esprima@^2.7.1:
   version "2.7.3"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
+
+esquery@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/esquery/-/esquery-1.0.0.tgz#cfba8b57d7fba93f17298a8a006a04cda13d80fa"
+  dependencies:
+    estraverse "^4.0.0"
 
 esrecurse@^4.1.0:
   version "4.1.0"
@@ -1173,7 +1409,11 @@ esrecurse@^4.1.0:
     estraverse "~4.1.0"
     object-assign "^4.0.1"
 
-estraverse@^4.1.1, estraverse@^4.2.0:
+estraverse@^1.9.1:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-1.9.3.tgz#af67f2dc922582415950926091a4005d29c9bb44"
+
+estraverse@^4.0.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
 
@@ -1181,7 +1421,7 @@ estraverse@~4.1.0:
   version "4.1.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/estraverse/-/estraverse-4.1.1.tgz#f6caca728933a850ef90661d0e17982ba47111a2"
 
-esutils@^2.0.2:
+esutils@2.0.2, esutils@^2.0.2:
   version "2.0.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
 
@@ -1191,6 +1431,12 @@ event-emitter@~0.3.4:
   dependencies:
     d "~0.1.1"
     es5-ext "~0.10.7"
+
+exec-sh@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.2.0.tgz#14f75de3f20d286ef933099b2ce50a90359cef10"
+  dependencies:
+    merge "^1.1.3"
 
 exit-hook@^1.0.0:
   version "1.1.1"
@@ -1230,6 +1476,18 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
+fb-watchman@^1.8.0:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-1.9.2.tgz#a24cf47827f82d38fb59a69ad70b76e3b6ae7383"
+  dependencies:
+    bser "1.0.2"
+
+fb-watchman@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-2.0.0.tgz#54e9abf7dfa2f26cd9b1636c588c1afc05de5d58"
+  dependencies:
+    bser "^2.0.0"
+
 figures@^1.3.5:
   version "1.7.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -1247,6 +1505,13 @@ file-entry-cache@^2.0.0:
 filename-regex@^2.0.0:
   version "2.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/filename-regex/-/filename-regex-2.0.0.tgz#996e3e80479b98b9897f15a8a58b3d084e926775"
+
+fileset@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/fileset/-/fileset-2.0.3.tgz#8e7548a96d3cc2327ee5e674168723a333bba2a0"
+  dependencies:
+    glob "^7.0.3"
+    minimatch "^3.0.3"
 
 fill-keys@^1.0.2:
   version "1.0.2"
@@ -1280,6 +1545,12 @@ find-up@^1.0.0, find-up@^1.1.2:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
+find-up@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
+  dependencies:
+    locate-path "^2.0.0"
+
 find-versions@^1.0.0:
   version "1.2.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/find-versions/-/find-versions-1.2.1.tgz#cbde9f12e38575a0af1be1b9a2c5d5fd8f186b62"
@@ -1297,6 +1568,14 @@ flat-cache@^1.2.1:
     del "^2.0.2"
     graceful-fs "^4.1.2"
     write "^0.2.1"
+
+flow-parser@0.40.0:
+  version "0.40.0"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.40.0.tgz#b3444742189093323c4319c4fe9d35391f46bcbc"
+  dependencies:
+    ast-types "0.8.18"
+    colors ">=0.6.2"
+    minimist ">=0.2.0"
 
 for-in@^0.1.5:
   version "0.1.6"
@@ -1391,6 +1670,10 @@ get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
 
+get-stdin@5.0.1, get-stdin@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-5.0.1.tgz#122e161591e21ff4c52530305693f20e6393a398"
+
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
@@ -1414,17 +1697,7 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@^5.0.5:
-  version "5.0.15"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
-  dependencies:
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "2 || 3"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
-glob@^7.0.3, glob@^7.0.5, glob@^7.0.6:
+glob@7.1.1, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6:
   version "7.1.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -1435,7 +1708,17 @@ glob@^7.0.3, glob@^7.0.5, glob@^7.0.6:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-globals@^9.0.0, globals@^9.2.0:
+glob@^5.0.5:
+  version "5.0.15"
+  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/glob/-/glob-5.0.15.tgz#1bc936b9e02f4a603fcc222ecf7633d30b8b93b1"
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+globals@^9.0.0, globals@^9.14.0:
   version "9.14.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/globals/-/globals-9.14.0.tgz#8859936af0038741263053b39d0e76ca241e4034"
 
@@ -1450,13 +1733,17 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-graceful-fs@^4.1.2, graceful-fs@^4.1.4:
+graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+growly@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
 handlebars@^4.0.3:
   version "4.0.6"
@@ -1506,19 +1793,13 @@ hawk@~3.1.3:
     hoek "2.x.x"
     sntp "1.x.x"
 
-highland@2.5.1:
-  version "2.5.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/highland/-/highland-2.5.1.tgz#ffa802fe0a4d574e2033621a5cfa4b6d4159ab76"
-
-highland@2.7.1:
-  version "2.7.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/highland/-/highland-2.7.1.tgz#3b7616f8594be58a762a2c2e193ee99d9020bc5a"
-  dependencies:
-    util-deprecate "^1.0.2"
-
 highland@3.0.0-beta.2:
   version "3.0.0-beta.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/highland/-/highland-3.0.0-beta.2.tgz#487c70c7c299b1cdb0fa05850771d6e9dbd19d7e"
+
+highland@3.0.0-beta.4:
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/highland/-/highland-3.0.0-beta.4.tgz#5afde340609d35dc1046adbb57a7f54f1ee5c38f"
 
 hoek@2.x.x:
   version "2.16.3"
@@ -1535,6 +1816,12 @@ hosted-git-info@^2.1.4:
   version "2.1.5"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/hosted-git-info/-/hosted-git-info-2.1.5.tgz#0ba81d90da2e25ab34a332e6ec77936e1598118b"
 
+html-encoding-sniffer@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-1.0.1.tgz#79bf7a785ea495fe66165e734153f363ff5437da"
+  dependencies:
+    whatwg-encoding "^1.0.1"
+
 http-signature@~1.1.0:
   version "1.1.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/http-signature/-/http-signature-1.1.1.tgz#df72e267066cd0ac67fb76adf8e134a8fbcf91bf"
@@ -1543,9 +1830,13 @@ http-signature@~1.1.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-ignore@^3.1.5:
-  version "3.2.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/ignore/-/ignore-3.2.0.tgz#8d88f03c3002a0ac52114db25d2c673b0bf1e435"
+iconv-lite@0.4.13:
+  version "0.4.13"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
+
+ignore@^3.2.0:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.2.7.tgz#4810ca5f1d8eca5595213a34b94f2eb4ed926bbd"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -1590,109 +1881,9 @@ inquirer@^0.12.0:
     strip-ansi "^3.0.0"
     through "^2.3.6"
 
-intel-dirp@1.0.5:
-  version "1.0.5"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-dirp/-/intel-dirp-1.0.5.tgz#ea8411fab87330106d00a7418b68fce2cf5313ad"
-  dependencies:
-    intel-fp "1.0.14"
-
-intel-flow-highland@3.8.0:
-  version "3.8.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-flow-highland/-/intel-flow-highland-3.8.0.tgz#e6ea19b36085c66336298ab411eeb77e56031ec9"
-
-intel-flow-jasmine@1.5.0:
-  version "1.5.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-flow-jasmine/-/intel-flow-jasmine-1.5.0.tgz#3fa4e7a061c32562fc58a54f83e7ece19f5ca57c"
-
-intel-fp@1.0.14:
-  version "1.0.14"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-fp/-/intel-fp-1.0.14.tgz#504503c308fbb803e34ef1085c1781c545189acd"
-
-intel-fp@1.0.15:
-  version "1.0.15"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-fp/-/intel-fp-1.0.15.tgz#96021ec672c930fd251468805821552d831e36c1"
-
-intel-fp@4.1.2:
-  version "4.1.2"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-fp/-/intel-fp-4.1.2.tgz#1d0fcde8170635542b01615218d7c05413455bcc"
-
-intel-fp@5.0.0:
-  version "5.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-fp/-/intel-fp-5.0.0.tgz#1b20a78409da15c84a2cd7114cb5c1e56ea47876"
-
-intel-fp@5.1.0:
-  version "5.1.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-fp/-/intel-fp-5.1.0.tgz#663691f681e95ce475e339703ef8876a3ad15f7f"
-
-intel-help@1.3.0:
-  version "1.3.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-help/-/intel-help-1.3.0.tgz#a1812ad5cd392d9a67150deec02dfb07719e714b"
-
-intel-jasmine-junit-reporter@1.0.0:
-  version "1.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-jasmine-junit-reporter/-/intel-jasmine-junit-reporter-1.0.0.tgz#fc59533725c20d0421228a867de5d0d7eba99b20"
-  dependencies:
-    intel-dirp "1.0.5"
-    jsonschema "1.0.3"
-    pretty-data "0.40.0"
-
-intel-jasmine-n-matchers@2.1.1:
-  version "2.1.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-jasmine-n-matchers/-/intel-jasmine-n-matchers-2.1.1.tgz#7899b8a48e3cc8a578f3c8684e9a64e1f7426911"
-
-intel-logger@1.0.0:
-  version "1.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-logger/-/intel-logger-1.0.0.tgz#d21992eaa407e8ecd752772f81513056db7d5230"
-  dependencies:
-    intel-obj "5.0.2"
-
-intel-obj@1.0.5:
-  version "1.0.5"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-obj/-/intel-obj-1.0.5.tgz#4c5e87cf4d62730de1b8e833d2c78320961c7b64"
-
-intel-obj@5.0.2:
-  version "5.0.2"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-obj/-/intel-obj-5.0.2.tgz#ecc4af506df45aca3ebc7e1cd844304fb3da9db4"
-  dependencies:
-    intel-fp "4.1.2"
-
-intel-obj@6.0.0:
-  version "6.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-obj/-/intel-obj-6.0.0.tgz#9b053c602ee3fb30ba07f496db9df9c360fb9748"
-  dependencies:
-    intel-fp "5.0.0"
-
-intel-req@2.0.0:
-  version "2.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-req/-/intel-req-2.0.0.tgz#8bb44ff2062b129b7e736f65302f7a99b2e4f071"
-  dependencies:
-    highland "2.7.1"
-    intel-fp "4.1.2"
-    intel-obj "5.0.2"
-    intel-through "1.0.8"
-    json-mask "0.3.5"
-
-intel-router@5.0.0:
-  version "5.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-router/-/intel-router-5.0.0.tgz#ca9aeee7a792f355f2cbca416543ed690aa4ce27"
-  dependencies:
-    path-to-regexp "1.2.1"
-
-intel-through@1.0.8:
-  version "1.0.8"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-through/-/intel-through-1.0.8.tgz#20a25effa8b2dd5120dec154eca5b0ad7666d1e9"
-  dependencies:
-    highland "2.5.1"
-    intel-dirp "1.0.5"
-    intel-fp "1.0.15"
-    intel-obj "1.0.5"
-    lodash.isequal "3.0.4"
-
-intel-xml-2-json@1.0.1:
-  version "1.0.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/intel-xml-2-json/-/intel-xml-2-json-1.0.1.tgz#6970eb4c8f3cc017f628ed5376232207a291860d"
-  dependencies:
-    libxmljs "0.18.0"
+interpret@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
 invariant@^2.2.0:
   version "2.2.2"
@@ -1723,6 +1914,12 @@ is-builtin-module@^1.0.0:
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/is-builtin-module/-/is-builtin-module-1.0.0.tgz#540572d34f7ac3119f8f76c30cbc1b1e037affbe"
   dependencies:
     builtin-modules "^1.0.0"
+
+is-ci@^1.0.9:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-1.0.10.tgz#f739336b2632365061a9d48270cd56ae3369318e"
+  dependencies:
+    ci-info "^1.0.0"
 
 is-dotfile@^1.0.0:
   version "1.0.2"
@@ -1847,9 +2044,29 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
+istanbul-api@^1.1.0-alpha.1:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/istanbul-api/-/istanbul-api-1.1.7.tgz#f6f37f09f8002b130f891c646b70ee4a8e7345ae"
+  dependencies:
+    async "^2.1.4"
+    fileset "^2.0.2"
+    istanbul-lib-coverage "^1.0.2"
+    istanbul-lib-hook "^1.0.5"
+    istanbul-lib-instrument "^1.7.0"
+    istanbul-lib-report "^1.0.0"
+    istanbul-lib-source-maps "^1.1.1"
+    istanbul-reports "^1.0.2"
+    js-yaml "^3.7.0"
+    mkdirp "^0.5.1"
+    once "^1.4.0"
+
 istanbul-lib-coverage@^1.0.0, istanbul-lib-coverage@^1.0.0-alpha, istanbul-lib-coverage@^1.0.0-alpha.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/istanbul-lib-coverage/-/istanbul-lib-coverage-1.0.0.tgz#c3f9b6d226da12424064cce87fce0fb57fdfa7a2"
+
+istanbul-lib-coverage@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-1.0.2.tgz#87a0c015b6910651cb3b184814dfb339337e25e1"
 
 istanbul-lib-hook@^1.0.0-alpha.4:
   version "1.0.0-alpha.4"
@@ -1857,7 +2074,13 @@ istanbul-lib-hook@^1.0.0-alpha.4:
   dependencies:
     append-transform "^0.3.0"
 
-istanbul-lib-instrument@^1.1.3:
+istanbul-lib-hook@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-hook/-/istanbul-lib-hook-1.0.5.tgz#6ca3d16d60c5f4082da39f7c5cd38ea8a772b88e"
+  dependencies:
+    append-transform "^0.4.0"
+
+istanbul-lib-instrument@^1.1.1, istanbul-lib-instrument@^1.1.3:
   version "1.4.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/istanbul-lib-instrument/-/istanbul-lib-instrument-1.4.2.tgz#0e2fdfac93c1dabf2e31578637dc78a19089f43e"
   dependencies:
@@ -1868,6 +2091,27 @@ istanbul-lib-instrument@^1.1.3:
     babylon "^6.13.0"
     istanbul-lib-coverage "^1.0.0"
     semver "^5.3.0"
+
+istanbul-lib-instrument@^1.6.2, istanbul-lib-instrument@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-1.7.0.tgz#b8e0dc25709bb44e17336ab47b7bb5c97c23f659"
+  dependencies:
+    babel-generator "^6.18.0"
+    babel-template "^6.16.0"
+    babel-traverse "^6.18.0"
+    babel-types "^6.18.0"
+    babylon "^6.13.0"
+    istanbul-lib-coverage "^1.0.2"
+    semver "^5.3.0"
+
+istanbul-lib-report@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-report/-/istanbul-lib-report-1.0.0.tgz#d83dac7f26566b521585569367fe84ccfc7aaecb"
+  dependencies:
+    istanbul-lib-coverage "^1.0.2"
+    mkdirp "^0.5.1"
+    path-parse "^1.0.5"
+    supports-color "^3.1.2"
 
 istanbul-lib-report@^1.0.0-alpha.3:
   version "1.0.0-alpha.3"
@@ -1889,9 +2133,24 @@ istanbul-lib-source-maps@^1.0.1:
     rimraf "^2.4.4"
     source-map "^0.5.3"
 
+istanbul-lib-source-maps@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/istanbul-lib-source-maps/-/istanbul-lib-source-maps-1.1.1.tgz#f8c8c2e8f2160d1d91526d97e5bd63b2079af71c"
+  dependencies:
+    istanbul-lib-coverage "^1.0.2"
+    mkdirp "^0.5.1"
+    rimraf "^2.4.4"
+    source-map "^0.5.3"
+
 istanbul-reports@^1.0.0-alpha.8:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/istanbul-reports/-/istanbul-reports-1.0.0.tgz#24b4eb2b1d29d50f103b369bd422f6e640aa0777"
+  dependencies:
+    handlebars "^4.0.3"
+
+istanbul-reports@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/istanbul-reports/-/istanbul-reports-1.0.2.tgz#4e8366abe6fa746cc1cd6633f108de12cc6ac6fa"
   dependencies:
     handlebars "^4.0.3"
 
@@ -1907,6 +2166,217 @@ jasmine@2.5.2:
     glob "^7.0.6"
     jasmine-core "~2.5.2"
 
+jest-changed-files@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-19.0.2.tgz#16c54c84c3270be408e06d2e8af3f3e37a885824"
+
+jest-cli@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-19.0.2.tgz#cc3620b62acac5f2d93a548cb6ef697d4ec85443"
+  dependencies:
+    ansi-escapes "^1.4.0"
+    callsites "^2.0.0"
+    chalk "^1.1.1"
+    graceful-fs "^4.1.6"
+    is-ci "^1.0.9"
+    istanbul-api "^1.1.0-alpha.1"
+    istanbul-lib-coverage "^1.0.0"
+    istanbul-lib-instrument "^1.1.1"
+    jest-changed-files "^19.0.2"
+    jest-config "^19.0.2"
+    jest-environment-jsdom "^19.0.2"
+    jest-haste-map "^19.0.0"
+    jest-jasmine2 "^19.0.2"
+    jest-message-util "^19.0.0"
+    jest-regex-util "^19.0.0"
+    jest-resolve-dependencies "^19.0.0"
+    jest-runtime "^19.0.2"
+    jest-snapshot "^19.0.2"
+    jest-util "^19.0.2"
+    micromatch "^2.3.11"
+    node-notifier "^5.0.1"
+    slash "^1.0.0"
+    string-length "^1.0.1"
+    throat "^3.0.0"
+    which "^1.1.1"
+    worker-farm "^1.3.1"
+    yargs "^6.3.0"
+
+jest-config@^19.0.2:
+  version "19.0.3"
+  resolved "https://registry.yarnpkg.com/jest-config/-/jest-config-19.0.3.tgz#829c6356c6e7e8abdd5657580707a5922b9fc90d"
+  dependencies:
+    chalk "^1.1.1"
+    jest-environment-jsdom "^19.0.2"
+    jest-environment-node "^19.0.2"
+    jest-jasmine2 "^19.0.2"
+    jest-regex-util "^19.0.0"
+    jest-resolve "^19.0.2"
+    jest-validate "^19.0.2"
+    pretty-format "^19.0.0"
+
+jest-diff@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-diff/-/jest-diff-19.0.0.tgz#d1563cfc56c8b60232988fbc05d4d16ed90f063c"
+  dependencies:
+    chalk "^1.1.3"
+    diff "^3.0.0"
+    jest-matcher-utils "^19.0.0"
+    pretty-format "^19.0.0"
+
+jest-environment-jsdom@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-19.0.2.tgz#ceda859c4a4b94ab35e4de7dab54b926f293e4a3"
+  dependencies:
+    jest-mock "^19.0.0"
+    jest-util "^19.0.2"
+    jsdom "^9.11.0"
+
+jest-environment-node@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-environment-node/-/jest-environment-node-19.0.2.tgz#6e84079db87ed21d0c05e1f9669f207b116fe99b"
+  dependencies:
+    jest-mock "^19.0.0"
+    jest-util "^19.0.2"
+
+jest-file-exists@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-file-exists/-/jest-file-exists-19.0.0.tgz#cca2e587a11ec92e24cfeab3f8a94d657f3fceb8"
+
+jest-haste-map@^19.0.0:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-haste-map/-/jest-haste-map-19.0.2.tgz#286484c3a16e86da7872b0877c35dce30c3d6f07"
+  dependencies:
+    fb-watchman "^2.0.0"
+    graceful-fs "^4.1.6"
+    micromatch "^2.3.11"
+    sane "~1.5.0"
+    worker-farm "^1.3.1"
+
+jest-jasmine2@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-jasmine2/-/jest-jasmine2-19.0.2.tgz#167991ac825981fb1a800af126e83afcca832c73"
+  dependencies:
+    graceful-fs "^4.1.6"
+    jest-matcher-utils "^19.0.0"
+    jest-matchers "^19.0.0"
+    jest-message-util "^19.0.0"
+    jest-snapshot "^19.0.2"
+
+jest-matcher-utils@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-matcher-utils/-/jest-matcher-utils-19.0.0.tgz#5ecd9b63565d2b001f61fbf7ec4c7f537964564d"
+  dependencies:
+    chalk "^1.1.3"
+    pretty-format "^19.0.0"
+
+jest-matchers@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-matchers/-/jest-matchers-19.0.0.tgz#c74ecc6ebfec06f384767ba4d6fa4a42d6755754"
+  dependencies:
+    jest-diff "^19.0.0"
+    jest-matcher-utils "^19.0.0"
+    jest-message-util "^19.0.0"
+    jest-regex-util "^19.0.0"
+
+jest-message-util@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-message-util/-/jest-message-util-19.0.0.tgz#721796b89c0e4d761606f9ba8cb828a3b6246416"
+  dependencies:
+    chalk "^1.1.1"
+    micromatch "^2.3.11"
+
+jest-mock@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-19.0.0.tgz#67038641e9607ab2ce08ec4a8cb83aabbc899d01"
+
+jest-regex-util@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-regex-util/-/jest-regex-util-19.0.0.tgz#b7754587112aede1456510bb1f6afe74ef598691"
+
+jest-resolve-dependencies@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-resolve-dependencies/-/jest-resolve-dependencies-19.0.0.tgz#a741ad1fa094140e64ecf2642a504f834ece22ee"
+  dependencies:
+    jest-file-exists "^19.0.0"
+
+jest-resolve@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-19.0.2.tgz#5793575de4f07aec32f7d7ff0c6c181963eefb3c"
+  dependencies:
+    browser-resolve "^1.11.2"
+    jest-haste-map "^19.0.0"
+    resolve "^1.2.0"
+
+jest-runtime@^19.0.2:
+  version "19.0.3"
+  resolved "https://registry.yarnpkg.com/jest-runtime/-/jest-runtime-19.0.3.tgz#a163354ace46910ee33f0282b6bff6b0b87d4330"
+  dependencies:
+    babel-core "^6.0.0"
+    babel-jest "^19.0.0"
+    babel-plugin-istanbul "^4.0.0"
+    chalk "^1.1.3"
+    graceful-fs "^4.1.6"
+    jest-config "^19.0.2"
+    jest-file-exists "^19.0.0"
+    jest-haste-map "^19.0.0"
+    jest-regex-util "^19.0.0"
+    jest-resolve "^19.0.2"
+    jest-util "^19.0.2"
+    json-stable-stringify "^1.0.1"
+    micromatch "^2.3.11"
+    strip-bom "3.0.0"
+    yargs "^6.3.0"
+
+jest-snapshot@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-snapshot/-/jest-snapshot-19.0.2.tgz#9c1b216214f7187c38bfd5c70b1efab16b0ff50b"
+  dependencies:
+    chalk "^1.1.3"
+    jest-diff "^19.0.0"
+    jest-file-exists "^19.0.0"
+    jest-matcher-utils "^19.0.0"
+    jest-util "^19.0.2"
+    natural-compare "^1.4.0"
+    pretty-format "^19.0.0"
+
+jest-util@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-19.0.2.tgz#e0a0232a2ab9e6b2b53668bdb3534c2b5977ed41"
+  dependencies:
+    chalk "^1.1.1"
+    graceful-fs "^4.1.6"
+    jest-file-exists "^19.0.0"
+    jest-message-util "^19.0.0"
+    jest-mock "^19.0.0"
+    jest-validate "^19.0.2"
+    leven "^2.0.0"
+    mkdirp "^0.5.1"
+
+jest-validate@19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-19.0.0.tgz#8c6318a20ecfeaba0ba5378bfbb8277abded4173"
+  dependencies:
+    chalk "^1.1.1"
+    jest-matcher-utils "^19.0.0"
+    leven "^2.0.0"
+    pretty-format "^19.0.0"
+
+jest-validate@^19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-19.0.2.tgz#dc534df5f1278d5b63df32b14241d4dbf7244c0c"
+  dependencies:
+    chalk "^1.1.1"
+    jest-matcher-utils "^19.0.0"
+    leven "^2.0.0"
+    pretty-format "^19.0.0"
+
+jest@19.0.2:
+  version "19.0.2"
+  resolved "https://registry.yarnpkg.com/jest/-/jest-19.0.2.tgz#b794faaf8ff461e7388f28beef559a54f20b2c10"
+  dependencies:
+    jest-cli "^19.0.2"
+
 jodid25519@^1.0.0:
   version "1.0.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
@@ -1917,7 +2387,11 @@ js-tokens@^2.0.0:
   version "2.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/js-tokens/-/js-tokens-2.0.0.tgz#79903f5563ee778cc1162e6dcf1a0027c97f9cb5"
 
-js-yaml@^3.5.1:
+js-tokens@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
+
+js-yaml@^3.5.1, js-yaml@^3.7.0:
   version "3.7.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
   dependencies:
@@ -1928,6 +2402,30 @@ jsbn@~0.1.0:
   version "0.1.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jsbn/-/jsbn-0.1.0.tgz#650987da0dd74f4ebf5a11377a2aa2d273e97dfd"
 
+jsdom@^9.11.0:
+  version "9.12.0"
+  resolved "https://registry.yarnpkg.com/jsdom/-/jsdom-9.12.0.tgz#e8c546fffcb06c00d4833ca84410fed7f8a097d4"
+  dependencies:
+    abab "^1.0.3"
+    acorn "^4.0.4"
+    acorn-globals "^3.1.0"
+    array-equal "^1.0.0"
+    content-type-parser "^1.0.1"
+    cssom ">= 0.3.2 < 0.4.0"
+    cssstyle ">= 0.2.37 < 0.3.0"
+    escodegen "^1.6.1"
+    html-encoding-sniffer "^1.0.1"
+    nwmatcher ">= 1.3.9 < 2.0.0"
+    parse5 "^1.5.1"
+    request "^2.79.0"
+    sax "^1.2.1"
+    symbol-tree "^3.2.1"
+    tough-cookie "^2.3.2"
+    webidl-conversions "^4.0.0"
+    whatwg-encoding "^1.0.1"
+    whatwg-url "^4.3.0"
+    xml-name-validator "^2.0.1"
+
 jsesc@^1.3.0:
   version "1.3.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
@@ -1936,9 +2434,9 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
 
-json-mask@0.3.5:
-  version "0.3.5"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/json-mask/-/json-mask-0.3.5.tgz#b0f39236726b2b02f03f49e7d4e4a9ec129435fb"
+json-mask@0.3.8:
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/json-mask/-/json-mask-0.3.8.tgz#2d66415de14b0e8bc6c1514554a90bfca8356941"
 
 json-schema@0.2.3:
   version "0.2.3"
@@ -1970,10 +2468,6 @@ jsonpointer@^4.0.0:
   version "4.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jsonpointer/-/jsonpointer-4.0.1.tgz#4fd92cb34e0e9db3c89c8622ecf51f9b978c6cb9"
 
-jsonschema@1.0.3:
-  version "1.0.3"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jsonschema/-/jsonschema-1.0.3.tgz#1a4df9611e75b3b4b4e52a00c1110ed0e9d7b360"
-
 jsprim@^1.2.2:
   version "1.3.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/jsprim/-/jsprim-1.3.1.tgz#2a7256f70412a29ee3670aaca625994c4dcff252"
@@ -1998,19 +2492,16 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
+leven@^2.0.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
+
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
-
-libxmljs@0.18.0:
-  version "0.18.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/libxmljs/-/libxmljs-0.18.0.tgz#e2993dcf28e4dc60e73486e2db6225dc24d18531"
-  dependencies:
-    bindings "1.2.1"
-    nan "2.3.2"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -2022,21 +2513,12 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-lodash._baseisequal@^3.0.0:
-  version "3.0.7"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash._baseisequal/-/lodash._baseisequal-3.0.7.tgz#d8025f76339d29342767dcc887ce5cb95a5b51f1"
+locate-path@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
   dependencies:
-    lodash.isarray "^3.0.0"
-    lodash.istypedarray "^3.0.0"
-    lodash.keys "^3.0.0"
-
-lodash._bindcallback@^3.0.0:
-  version "3.0.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-
-lodash._getnative@^3.0.0:
-  version "3.9.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
+    p-locate "^2.0.0"
+    path-exists "^3.0.0"
 
 lodash.assign@^4.0.9, lodash.assign@^4.1.0, lodash.assign@^4.2.0:
   version "4.2.0"
@@ -2046,33 +2528,6 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
-lodash.isarguments@^3.0.0:
-  version "3.1.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
-
-lodash.isarray@^3.0.0:
-  version "3.0.4"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
-
-lodash.isequal@3.0.4:
-  version "3.0.4"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.isequal/-/lodash.isequal-3.0.4.tgz#1c35eb3b6ef0cd1ff51743e3ea3cf7fdffdacb64"
-  dependencies:
-    lodash._baseisequal "^3.0.0"
-    lodash._bindcallback "^3.0.0"
-
-lodash.istypedarray@^3.0.0:
-  version "3.0.6"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.istypedarray/-/lodash.istypedarray-3.0.6.tgz#c9a477498607501d8e8494d283b87c39281cef62"
-
-lodash.keys@^3.0.0:
-  version "3.1.2"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
-  dependencies:
-    lodash._getnative "^3.0.0"
-    lodash.isarguments "^3.0.0"
-    lodash.isarray "^3.0.0"
-
 lodash.pickby@^4.6.0:
   version "4.6.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash.pickby/-/lodash.pickby-4.6.0.tgz#7dea21d8c18d7703a27c704c15d3b84a67e33aff"
@@ -2081,7 +2536,7 @@ lodash@3.10.1:
   version "3.10.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.15.0, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.4"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2115,6 +2570,12 @@ lru-cache@^4.0.0, lru-cache@^4.0.1:
     pseudomap "^1.0.1"
     yallist "^2.0.0"
 
+makeerror@1.0.x:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/makeerror/-/makeerror-1.0.11.tgz#e01a5c9109f2af79660e4e8b9587790184f5a96c"
+  dependencies:
+    tmpl "1.0.x"
+
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
@@ -2147,6 +2608,10 @@ meow@^3.5.0:
 merge-descriptors@~1.0.0:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
+
+merge@^1.1.3:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
 
 micromatch@^2.1.5, micromatch@^2.3.11, micromatch@^2.3.8:
   version "2.3.11"
@@ -2186,7 +2651,7 @@ minimist@0.0.8, minimist@~0.0.1:
   version "0.0.8"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
-minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
+minimist@1.2.0, minimist@>=0.2.0, minimist@^1.1.0, minimist@^1.1.1, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
@@ -2212,13 +2677,26 @@ mute-stream@0.0.5:
   version "0.0.5"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/mute-stream/-/mute-stream-0.0.5.tgz#8fbfabb0a98a253d3184331f9e8deb7372fac6c0"
 
-nan@2.3.2, nan@^2.3.0:
+nan@^2.3.0:
   version "2.3.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/nan/-/nan-2.3.2.tgz#4d4ecf17e1da4e989efb4f273d8d00201cad087e"
 
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
+
+node-int64@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
+
+node-notifier@^5.0.1:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/node-notifier/-/node-notifier-5.1.2.tgz#2fa9e12605fa10009d44549d6fcd8a63dde0e4ff"
+  dependencies:
+    growly "^1.3.0"
+    semver "^5.3.0"
+    shellwords "^0.1.0"
+    which "^1.2.12"
 
 node-pre-gyp@^0.6.29:
   version "0.6.32"
@@ -2233,6 +2711,10 @@ node-pre-gyp@^0.6.29:
     semver "~5.3.0"
     tar "~2.2.1"
     tar-pack "~3.3.0"
+
+node-xml@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/node-xml/-/node-xml-1.0.2.tgz#cea59082b100c70337111ca53e1f38f829e3bccb"
 
 nopt@~3.0.6:
   version "3.0.6"
@@ -2265,6 +2747,10 @@ npmlog@^4.0.1:
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
+
+"nwmatcher@>= 1.3.9 < 2.0.0":
+  version "1.3.9"
+  resolved "https://registry.yarnpkg.com/nwmatcher/-/nwmatcher-1.3.9.tgz#8bab486ff7fa3dfd086656bbe8b17116d3692d2a"
 
 nyc@8.3.0:
   version "8.3.0"
@@ -2311,7 +2797,7 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
-once@^1.3.0:
+once@^1.3.0, once@^1.4.0:
   version "1.4.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/once/-/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
   dependencies:
@@ -2334,7 +2820,7 @@ optimist@^0.6.1:
     minimist "~0.0.1"
     wordwrap "~0.0.2"
 
-optionator@^0.8.1:
+optionator@^0.8.1, optionator@^0.8.2:
   version "0.8.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/optionator/-/optionator-0.8.2.tgz#364c5e409d3f4d6301d6c0b4c05bba50180aeb64"
   dependencies:
@@ -2371,6 +2857,16 @@ output-file-sync@^1.1.0:
     mkdirp "^0.5.1"
     object-assign "^4.1.0"
 
+p-limit@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-1.1.0.tgz#b07ff2d9a5d88bec806035895a2bab66a27988bc"
+
+p-locate@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
+  dependencies:
+    p-limit "^1.1.0"
+
 parse-glob@^3.0.4:
   version "3.0.4"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/parse-glob/-/parse-glob-3.0.4.tgz#b2c376cfb11f35513badd173ef0bb6e3a388391c"
@@ -2386,6 +2882,10 @@ parse-json@^2.2.0:
   dependencies:
     error-ex "^1.2.0"
 
+parse5@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-1.5.1.tgz#9b7f3b0de32be78dc2401b17573ccaf0f6f59d94"
+
 path-exists@^1.0.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/path-exists/-/path-exists-1.0.0.tgz#d5a8998eb71ef37a74c34eb0d9eba6e878eea081"
@@ -2395,6 +2895,10 @@ path-exists@^2.0.0:
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/path-exists/-/path-exists-2.1.0.tgz#0feb6c64f0fc518d9a754dd5efb62c7022761f4b"
   dependencies:
     pinkie-promise "^2.0.0"
+
+path-exists@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-3.0.0.tgz#ce0ebeaa5f78cb18925ea7d810d7b59b010fd515"
 
 path-is-absolute@^1.0.0:
   version "1.0.1"
@@ -2408,9 +2912,9 @@ path-parse@^1.0.5:
   version "1.0.5"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/path-parse/-/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
 
-path-to-regexp@1.2.1:
-  version "1.2.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/path-to-regexp/-/path-to-regexp-1.2.1.tgz#b33705c140234d873c8721c7b9fd8b541ed3aff9"
+path-to-regexp@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.7.0.tgz#59fde0f435badacba103a84e9d3bc64e96b9937d"
   dependencies:
     isarray "0.0.1"
 
@@ -2467,9 +2971,26 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-pretty-data@0.40.0:
-  version "0.40.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/pretty-data/-/pretty-data-0.40.0.tgz#572aa8ea23467467ab94b6b5266a6fd9c8fddd72"
+prettier@0.22.0:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-0.22.0.tgz#7b37c4480d0858180407e5a8e13f0f47da7385d2"
+  dependencies:
+    ast-types "0.9.4"
+    babel-code-frame "6.22.0"
+    babylon "6.15.0"
+    chalk "1.1.3"
+    esutils "2.0.2"
+    flow-parser "0.40.0"
+    get-stdin "5.0.1"
+    glob "7.1.1"
+    jest-validate "19.0.0"
+    minimist "1.2.0"
+
+pretty-format@^19.0.0:
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-19.0.0.tgz#56530d32acb98a3fa4851c4e2b9d37b420684c84"
+  dependencies:
+    ansi-styles "^3.0.0"
 
 private@^0.1.6:
   version "0.1.6"
@@ -2490,6 +3011,10 @@ proxyquire@1.7.10:
     fill-keys "^1.0.2"
     module-not-found-error "^1.0.0"
     resolve "~1.1.7"
+
+prr@~0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/prr/-/prr-0.0.0.tgz#1a84b85908325501411853d0081ee3fa86e2926a"
 
 pseudomap@^1.0.1:
   version "1.0.2"
@@ -2574,6 +3099,12 @@ readline2@^1.0.1:
     code-point-at "^1.0.0"
     is-fullwidth-code-point "^1.0.0"
     mute-stream "0.0.5"
+
+rechoir@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
+  dependencies:
+    resolve "^1.1.6"
 
 redent@^1.0.0:
   version "1.0.0"
@@ -2677,6 +3208,10 @@ require-uncached@^1.0.2:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
 
+requireindex@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
+
 resolve-from@^1.0.0:
   version "1.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
@@ -2685,9 +3220,15 @@ resolve-from@^2.0.0:
   version "2.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/resolve-from/-/resolve-from-2.0.0.tgz#9480ab20e94ffa1d9e80a804c7ea147611966b57"
 
-resolve@^1.1.6, resolve@~1.1.7:
+resolve@1.1.7, resolve@^1.1.6, resolve@~1.1.7:
   version "1.1.7"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
+
+resolve@^1.2.0:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.3.3.tgz#655907c3469a8680dc2de3a275a8fdd69691f0e5"
+  dependencies:
+    path-parse "^1.0.5"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
@@ -2717,6 +3258,22 @@ run-async@^0.1.0:
 rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
+
+sane@~1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/sane/-/sane-1.5.0.tgz#a4adeae764d048621ecb27d5f9ecf513101939f3"
+  dependencies:
+    anymatch "^1.3.0"
+    exec-sh "^0.2.0"
+    fb-watchman "^1.8.0"
+    minimatch "^3.0.2"
+    minimist "^1.1.1"
+    walker "~1.0.5"
+    watch "~0.10.0"
+
+sax@^1.2.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.2.tgz#fd8631a23bc7826bef5d871bdb87378c95647828"
 
 semver-regex@^1.0.0:
   version "1.0.0"
@@ -2748,9 +3305,17 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
-shelljs@^0.6.0:
-  version "0.6.1"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/shelljs/-/shelljs-0.6.1.tgz#ec6211bed1920442088fe0f70b2837232ed2c8a8"
+shelljs@^0.7.5:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.7.7.tgz#b2f5c77ef97148f4b4f6e22682e10bba8667cff1"
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
+
+shellwords@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.0.tgz#66afd47b6a12932d9071cbfd98a52e785cd0ba14"
 
 signal-exit@^2.0.0:
   version "2.1.2"
@@ -2793,6 +3358,12 @@ source-map@^0.4.4:
 source-map@^0.5.0, source-map@^0.5.3, source-map@~0.5.1:
   version "0.5.6"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+
+source-map@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.2.0.tgz#dab73fbcfc2ba819b4de03bd6f6eaa48164b3f9d"
+  dependencies:
+    amdefine ">=0.0.4"
 
 spawn-sync@1.0.13:
   version "1.0.13"
@@ -2845,6 +3416,12 @@ sshpk@^1.7.0:
     jsbn "~0.1.0"
     tweetnacl "~0.14.0"
 
+string-length@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/string-length/-/string-length-1.0.1.tgz#56970fb1c38558e9e70b728bf3de269ac45adfac"
+  dependencies:
+    strip-ansi "^3.0.0"
+
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -2874,15 +3451,15 @@ strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   dependencies:
     ansi-regex "^2.0.0"
 
+strip-bom@3.0.0, strip-bom@^3.0.0:
+  version "3.0.0"
+  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
+
 strip-bom@^2.0.0:
   version "2.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/strip-bom/-/strip-bom-2.0.0.tgz#6219a85616520491f35788bdbf1447a99c7e6b0e"
   dependencies:
     is-utf8 "^0.2.0"
-
-strip-bom@^3.0.0:
-  version "3.0.0"
-  resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/strip-bom/-/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
 
 strip-indent@^1.0.1:
   version "1.0.1"
@@ -2890,9 +3467,13 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
-strip-json-comments@~1.0.1, strip-json-comments@~1.0.4:
+strip-json-comments@~1.0.4:
   version "1.0.4"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/strip-json-comments/-/strip-json-comments-1.0.4.tgz#1e15fbcac97d3ee99bf2d73b4c656b082bbafb91"
+
+strip-json-comments@~2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
 supports-color@^0.2.0:
   version "0.2.0"
@@ -2907,6 +3488,10 @@ supports-color@^3.1.2:
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/supports-color/-/supports-color-3.1.2.tgz#72a262894d9d408b956ca05ff37b2ed8a6e2a2d5"
   dependencies:
     has-flag "^1.0.0"
+
+symbol-tree@^3.2.1:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
 table@^3.7.8:
   version "3.8.3"
@@ -2960,23 +3545,45 @@ test-exclude@^2.1.2:
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
 
+test-exclude@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-4.0.3.tgz#86a13ce3effcc60e6c90403cf31a27a60ac6c4e7"
+  dependencies:
+    arrify "^1.0.1"
+    micromatch "^2.3.11"
+    object-assign "^4.1.0"
+    read-pkg-up "^1.0.1"
+    require-main-filename "^1.0.1"
+
 text-table@~0.2.0:
   version "0.2.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
+
+throat@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/throat/-/throat-3.0.0.tgz#e7c64c867cbb3845f10877642f7b60055b8ec0d6"
 
 through@^2.3.6:
   version "2.3.8"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
+tmpl@1.0.x:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/tmpl/-/tmpl-1.0.4.tgz#23640dd7b42d00433911140820e5cf440e521dd1"
+
 to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
 
-tough-cookie@~2.3.0:
+tough-cookie@^2.3.2, tough-cookie@~2.3.0:
   version "2.3.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
     punycode "^1.4.1"
+
+tr46@~0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
 
 trim-newlines@^1.0.0:
   version "1.0.0"
@@ -3031,7 +3638,7 @@ user-home@^2.0.0:
   dependencies:
     os-homedir "^1.0.0"
 
-util-deprecate@^1.0.2, util-deprecate@~1.0.1:
+util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
@@ -3058,11 +3665,42 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
+walker@~1.0.5:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/walker/-/walker-1.0.7.tgz#2f7f9b8fd10d677262b18a884e28d19618e028fb"
+  dependencies:
+    makeerror "1.0.x"
+
+watch@~0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/watch/-/watch-0.10.0.tgz#77798b2da0f9910d595f1ace5b0c2258521f21dc"
+
+webidl-conversions@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
+
+webidl-conversions@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.1.tgz#8015a17ab83e7e1b311638486ace81da6ce206a0"
+
+whatwg-encoding@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/whatwg-encoding/-/whatwg-encoding-1.0.1.tgz#3c6c451a198ee7aec55b1ec61d0920c67801a5f4"
+  dependencies:
+    iconv-lite "0.4.13"
+
+whatwg-url@^4.3.0:
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-4.7.1.tgz#df4dc2e3f25a63b1fa5b32ed6d6c139577d690de"
+  dependencies:
+    tr46 "~0.0.3"
+    webidl-conversions "^3.0.0"
+
 which-module@^1.0.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/which-module/-/which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f"
 
-which@1.2.x, which@^1.2.4, which@^1.2.8, which@^1.2.9:
+which@1.2.x, which@^1.1.1, which@^1.2.12, which@^1.2.4, which@^1.2.8, which@^1.2.9:
   version "1.2.12"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/which/-/which-1.2.12.tgz#de67b5e450269f194909ef23ece4ebe416fa1192"
   dependencies:
@@ -3094,6 +3732,13 @@ wordwrap@~1.0.0:
   version "1.0.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
 
+worker-farm@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.3.1.tgz#4333112bb49b17aa050b87895ca6b2cacf40e5ff"
+  dependencies:
+    errno ">=0.1.1 <0.2.0-0"
+    xtend ">=4.0.0 <4.1.0-0"
+
 wrap-ansi@^2.0.0:
   version "2.1.0"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/wrap-ansi/-/wrap-ansi-2.1.0.tgz#d8fc3d284dd05794fe84973caecdd1cf824fdd85"
@@ -3119,7 +3764,11 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-xtend@^4.0.0:
+xml-name-validator@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
+
+"xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0:
   version "4.0.1"
   resolved "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-repos/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 
@@ -3137,6 +3786,12 @@ yargs-parser@^3.1.0, yargs-parser@^3.2.0:
   dependencies:
     camelcase "^3.0.0"
     lodash.assign "^4.1.0"
+
+yargs-parser@^4.2.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-4.2.1.tgz#29cceac0dc4f03c6c87b4a9f217dd18c9f74871c"
+  dependencies:
+    camelcase "^3.0.0"
 
 yargs@^5.0.0:
   version "5.0.0"
@@ -3156,6 +3811,24 @@ yargs@^5.0.0:
     window-size "^0.2.0"
     y18n "^3.2.1"
     yargs-parser "^3.2.0"
+
+yargs@^6.3.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
+  dependencies:
+    camelcase "^3.0.0"
+    cliui "^3.2.0"
+    decamelize "^1.1.1"
+    get-caller-file "^1.0.1"
+    os-locale "^1.4.0"
+    read-pkg-up "^1.0.1"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^1.0.2"
+    which-module "^1.0.0"
+    y18n "^3.2.1"
+    yargs-parser "^4.2.0"
 
 yargs@~3.10.0:
   version "3.10.0"

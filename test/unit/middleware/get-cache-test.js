@@ -1,14 +1,8 @@
-import * as obj from 'intel-obj';
+import * as obj from '@mfl/obj';
 import highland from 'highland';
 import proxyquire from '../../proxyquire.js';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect
-} from '../../jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
 
 describe('get cache', () => {
   let conf,
@@ -29,23 +23,32 @@ describe('get cache', () => {
       ['/host', {}],
       ['/power_control_type', {}],
       ['/server_profile', {}],
-      ['/lnet_configuration', {
-        qs: {
-          dehydrate__host: false
+      [
+        '/lnet_configuration',
+        {
+          qs: {
+            dehydrate__host: false
+          }
         }
-      }],
-      ['/alert', {
-        jsonMask: 'objects(affected,message)',
-        qs: {
-          active: true
+      ],
+      [
+        '/alert',
+        {
+          jsonMask: 'objects(affected,message)',
+          qs: {
+            active: true
+          }
         }
-      }],
-      ['/job', {
-        jsonMask: 'objects(write_locks,read_locks,description)',
-        qs: {
-          state__in: ['pending', 'tasked']
+      ],
+      [
+        '/job',
+        {
+          jsonMask: 'objects(write_locks,read_locks,description)',
+          qs: {
+            state__in: ['pending', 'tasked']
+          }
         }
-      }]
+      ]
     ];
 
     conf = {
@@ -68,11 +71,13 @@ describe('get cache', () => {
           eula_state: 'pass',
           first_name: '',
           full_name: '',
-          groups: [{
-            id: '1',
-            name: 'superusers',
-            resource_uri: '/api/group/1/'
-          }],
+          groups: [
+            {
+              id: '1',
+              name: 'superusers',
+              resource_uri: '/api/group/1/'
+            }
+          ],
           id: '1',
           is_superuser: true,
           last_name: '',
@@ -91,7 +96,8 @@ describe('get cache', () => {
 
     renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
 
-    renderRequestError = jasmine.createSpy('renderRequestError')
+    renderRequestError = jasmine
+      .createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
 
     getCache = proxyquire('../source/middleware/get-cache', {
@@ -106,11 +112,14 @@ describe('get cache', () => {
 
     getCache(req, res, data, next);
 
-    const obj = calls.reduce((obj, call) => {
-      obj[call.slice(1)] = [];
+    const obj = calls.reduce(
+      (obj, call) => {
+        obj[call.slice(1)] = [];
 
-      return obj;
-    }, {});
+        return obj;
+      },
+      {}
+    );
 
     obj.session = data.session;
 
@@ -121,31 +130,38 @@ describe('get cache', () => {
 
   describe('successful responses', () => {
     beforeEach(() => {
-      apiRequest.and.callFake((endpoint) => {
-        return highland([{
-          body: {
-            objects: [{
-              name: endpoint
-            }]
+      apiRequest.and.callFake(endpoint => {
+        return highland([
+          {
+            body: {
+              objects: [
+                {
+                  name: endpoint
+                }
+              ]
+            }
           }
-        }]);
+        ]);
       });
 
       getCache(req, res, data, next);
     });
 
     it('should request each cache endpoint', () => {
-      const fullCalls = calls.map((call) => {
+      const fullCalls = calls.map(call => {
         return [
           call[0],
-          obj.merge({
-            headers: {
-              Cookie: data.cacheCookie
+          obj.merge(
+            {
+              headers: {
+                Cookie: data.cacheCookie
+              },
+              qs: {
+                limit: 0
+              }
             },
-            qs: {
-              limit: 0
-            }
-          }, call[1])
+            call[1]
+          )
         ];
       });
 
@@ -153,11 +169,14 @@ describe('get cache', () => {
     });
 
     it('should return the result of each endpoint', () => {
-      const obj = calls.reduce((obj, call) => {
-        obj[call.slice(1)] = [{name: call}];
+      const obj = calls.reduce(
+        (obj, call) => {
+          obj[call.slice(1)] = [{ name: call }];
 
-        return obj;
-      }, {});
+          return obj;
+        },
+        {}
+      );
 
       obj.session = data.session;
 
@@ -169,26 +188,34 @@ describe('get cache', () => {
 
   describe('error response', () => {
     beforeEach(() => {
-      apiRequest.and.callFake((endpoint) => {
+      apiRequest.and.callFake(endpoint => {
         if (endpoint === '/target')
           throw new Error('boom!');
         else
-          return highland([{
-            body: {
-              objects: []
+          return highland([
+            {
+              body: {
+                objects: []
+              }
             }
-          }]);
+          ]);
       });
 
       getCache(req, res, data, next);
     });
 
     it('should push the response to renderRequestError', () => {
-      expect(renderRequestError).toHaveBeenCalledOnceWith(res, jasmine.any(Function));
+      expect(renderRequestError).toHaveBeenCalledOnceWith(
+        res,
+        jasmine.any(Function)
+      );
     });
 
     it('should render an error page on error', () => {
-      expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error('boom!'), jasmine.any(Function));
+      expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
+        new Error('boom!'),
+        jasmine.any(Function)
+      );
     });
   });
 });

@@ -1,27 +1,13 @@
 import proxyquire from '../proxyquire.js';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect
-} from '../jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from '../jasmine.js';
 
 describe('view server', () => {
-  let http,
-    https,
-    close,
-    server,
-    loginRoute,
-    indexRoute,
-    viewRouter,
-    conf,
-    api;
+  let http, https, close, server, loginRoute, indexRoute, viewRouter, conf, api;
 
   beforeEach(() => {
     server = {
-      listen: jasmine.createSpy('listen').and.callFake(function s () {
+      listen: jasmine.createSpy('listen').and.callFake(function s() {
         return server;
       }),
       on: jasmine.createSpy('on')
@@ -56,8 +42,8 @@ describe('view server', () => {
     };
 
     close = proxyquire('../source/view-server', {
-      'http': http,
-      'https': https,
+      http: http,
+      https: https,
       './routes/login-route': loginRoute,
       './routes/index-route': indexRoute,
       './view-router': viewRouter,
@@ -87,8 +73,7 @@ describe('view server', () => {
   });
 
   describe('routing requests', () => {
-    let req,
-      res;
+    let req, res;
 
     beforeEach(() => {
       req = {
@@ -108,7 +93,8 @@ describe('view server', () => {
     });
 
     it('should call the view router', () => {
-      expect(viewRouter.go).toHaveBeenCalledOnceWith(req.url,
+      expect(viewRouter.go).toHaveBeenCalledOnceWith(
+        req.url,
         {
           verb: req.method,
           clientReq: req
@@ -116,7 +102,8 @@ describe('view server', () => {
         {
           clientRes: res,
           redirect: jasmine.any(Function)
-        });
+        }
+      );
     });
 
     describe('redirecting', () => {
@@ -129,13 +116,16 @@ describe('view server', () => {
       });
 
       it('should set a Content-Security-Policy header', () => {
-        expect(res.setHeader).toHaveBeenCalledOnceWith('Content-Security-Policy', 'default-src \'none\';\
- child-src \'self\';\
- script-src \'self\' \'unsafe-inline\' \'unsafe-eval\';\
- connect-src \'self\' wss:;\
- img-src \'self\' data:;\
- font-src \'self\';\
- style-src \'self\' \'unsafe-inline\';');
+        expect(res.setHeader).toHaveBeenCalledOnceWith(
+          'Content-Security-Policy',
+          "default-src 'none';\
+ child-src 'self';\
+ script-src 'self' 'unsafe-inline' 'unsafe-eval';\
+ connect-src 'self' wss:;\
+ img-src 'self' data:;\
+ font-src 'self';\
+ style-src 'self' 'unsafe-inline';"
+        );
       });
 
       it('should end the response', () => {
@@ -145,8 +135,7 @@ describe('view server', () => {
   });
 
   describe('closing', () => {
-    let spy,
-      fn;
+    let spy, fn;
 
     beforeEach(() => {
       spy = jasmine.createSpy('spy');
@@ -157,7 +146,10 @@ describe('view server', () => {
     });
 
     it('should register a close event', () => {
-      expect(server.on).toHaveBeenCalledOnceWith('close', jasmine.any(Function));
+      expect(server.on).toHaveBeenCalledOnceWith(
+        'close',
+        jasmine.any(Function)
+      );
     });
 
     it('should throw if server close throws', () => {
@@ -165,7 +157,7 @@ describe('view server', () => {
 
       expect(expectToThrow).toThrow(new Error('boom!'));
 
-      function expectToThrow () {
+      function expectToThrow() {
         fn(new Error('boom!'));
       }
     });

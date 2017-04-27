@@ -1,20 +1,10 @@
 import highland from 'highland';
 import proxyquire from '../../proxyquire.js';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect
-} from '../../jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
 
 describe('render request error', () => {
-  let renderRequestError,
-    getUname,
-    templates,
-    stream,
-    res;
+  let renderRequestError, getUname, templates, stream, res;
 
   beforeEach(() => {
     res = {
@@ -24,7 +14,9 @@ describe('render request error', () => {
     };
 
     templates = {
-      'backend_error.html': jasmine.createSpy('backend error').and.returnValue('backend error')
+      'backend_error.html': jasmine
+        .createSpy('backend error')
+        .and.returnValue('backend error')
     };
 
     stream = highland();
@@ -57,9 +49,13 @@ describe('render request error', () => {
   });
 
   it('should handle a function for description', () => {
-    renderRequestError(res, (err) => {
-      return 'error was ' + err.message;
-    }, new Error('boom!'));
+    renderRequestError(
+      res,
+      err => {
+        return 'error was ' + err.message;
+      },
+      new Error('boom!')
+    );
 
     stream.write({ corosync: 'STOPPED' });
 

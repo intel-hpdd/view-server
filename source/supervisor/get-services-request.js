@@ -21,11 +21,9 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import getReq from 'intel-req';
+import getReq from '@mfl/req';
 
-import type {
-  HighlandStreamT
-} from 'highland';
+import type { HighlandStreamT } from 'highland';
 
 const req = getReq('http');
 
@@ -36,7 +34,7 @@ const body = '<?xml version="1.0"?>\
   </params>\
 </methodCall>';
 
-export default (auth:?string):HighlandStreamT<Object> => {
+export default (auth: ?string): HighlandStreamT<Object> => {
   let options = {
     port: 9100,
     method: 'POST',
@@ -44,16 +42,9 @@ export default (auth:?string):HighlandStreamT<Object> => {
   };
 
   if (auth)
-    options = Object.assign(
-      {},
-      options,
-      {
-        auth
-      }
-    );
+    options = Object.assign({}, options, {
+      auth
+    });
 
-  return req.bufferRequest(
-    options,
-    new Buffer(body)
-  );
+  return req.bufferRequest(options, new Buffer(body));
 };

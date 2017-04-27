@@ -21,24 +21,24 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from 'intel-fp';
-import * as obj from 'intel-obj';
-import through from 'intel-through';
+import * as fp from '@mfl/fp';
+import * as obj from '@mfl/obj';
+import through from '@mfl/through';
 import highland from 'highland';
 import conf from '../conf.js';
 import apiRequest from '../lib/api-request.js';
 import renderRequestError from '../lib/render-request-error.js';
 
-import type {
-  routerReqT,
-  routerResT
-} from '../view-router.js';
+import type { routerReqT, routerResT } from '../view-router.js';
 
-import type {
-  dataT
-} from './get-session.js';
+import type { dataT } from './get-session.js';
 
-export default (req:routerReqT, res:routerResT, data:dataT, next:Function) => {
+export default (
+  req: routerReqT,
+  res: routerResT,
+  data: dataT,
+  next: Function
+) => {
   let cache;
   const calls = [
     ['filesystem', {}],
@@ -46,28 +46,37 @@ export default (req:routerReqT, res:routerResT, data:dataT, next:Function) => {
     ['host', {}],
     ['power_control_type', {}],
     ['server_profile', {}],
-    ['lnet_configuration', {
-      qs: {
-        dehydrate__host: false
+    [
+      'lnet_configuration',
+      {
+        qs: {
+          dehydrate__host: false
+        }
       }
-    }],
-    ['alert', {
-      jsonMask: 'objects(affected,message)',
-      qs: {
-        active: true
+    ],
+    [
+      'alert',
+      {
+        jsonMask: 'objects(affected,message)',
+        qs: {
+          active: true
+        }
       }
-    }],
-    ['job', {
-      jsonMask: 'objects(write_locks,read_locks,description)',
-      qs: {
-        state__in: ['pending', 'tasked']
+    ],
+    [
+      'job',
+      {
+        jsonMask: 'objects(write_locks,read_locks,description)',
+        qs: {
+          state__in: ['pending', 'tasked']
+        }
       }
-    }]
+    ]
   ];
 
   if (data.session.user != null || conf.ALLOW_ANONYMOUS_READ)
     cache = highland(calls)
-      .map((call) => {
+      .map(call => {
         return apiRequest(
           `/${call[0]}`,
           obj.merge(
@@ -87,25 +96,19 @@ export default (req:routerReqT, res:routerResT, data:dataT, next:Function) => {
       .pluck('body')
       .pluck('objects');
   else
-    cache = highland(
-      fp.times(
-        fp.always([]),
-        calls.length
-      )
-    );
+    cache = highland(fp.times(fp.always([]), calls.length));
 
   cache
-    .through(through.zipObject(
-      calls.map((call) => call[0])
-    ))
+    .collect()
+    .map(fp.zipObject(calls.map(call => call[0])))
+    .through(through.zipObject(calls.map(call => call[0])))
     .stopOnError(
       renderRequestError(
         res,
-        (err:Error):string =>
-          `Exception rendering resources: ${err.stack}`
+        (err: Error): string => `Exception rendering resources: ${err.stack}`
       )
     )
-    .each((cache) => {
+    .each(cache => {
       cache.session = data.session;
 
       data.cache = cache;

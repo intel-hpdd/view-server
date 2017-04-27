@@ -21,32 +21,32 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from 'intel-fp';
+import * as fp from '@mfl/fp';
 import groups from './groups.js';
 
 type groupT = {
-  name:string
+  name: string
 };
 
 type sessionT = {
-  user:{
-    groups:groupT[]
+  user: {
+    groups: groupT[]
   }
 };
 
-export default fp.curry2((groupName:string, session:sessionT):boolean => {
-  const hasGroups = session && session.user && Array.isArray(session.user.groups);
+export default fp.curry2((groupName: string, session: sessionT): boolean => {
+  const hasGroups = session &&
+    session.user &&
+    Array.isArray(session.user.groups);
 
-  return hasGroups && session
-    .user
-    .groups
-    .some((group) => {
+  return hasGroups &&
+    session.user.groups.some(group => {
       //Superusers can do everything.
-      if (group.name === groups.SUPERUSERS)
-        return true;
+      if (group.name === groups.SUPERUSERS) return true;
 
-        //Filesystem administrators can do everything a filesystem user can do.
-      if (group.name === groups.FS_ADMINS && groupName === groups.FS_USERS) return true;
+      //Filesystem administrators can do everything a filesystem user can do.
+      if (group.name === groups.FS_ADMINS && groupName === groups.FS_USERS)
+        return true;
 
       // Fallback to matching on names.
       return group.name === groupName;

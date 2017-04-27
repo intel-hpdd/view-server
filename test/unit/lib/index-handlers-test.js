@@ -1,23 +1,10 @@
-import * as fp from 'intel-fp';
+import * as fp from '@mfl/fp';
 import proxyquire from '../../proxyquire.js';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect
-} from '../../jasmine.js';
-
+import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
 
 describe('index handlers', () => {
-  let indexHandlers,
-    templates,
-    conf,
-    req,
-    res,
-    data,
-    next;
+  let indexHandlers, templates, conf, req, res, data, next;
 
   beforeEach(() => {
     req = {};
@@ -55,7 +42,7 @@ describe('index handlers', () => {
     }).default;
   });
 
-  it('should redirect if we don\'t have a user and disallow anonymous read', () => {
+  it("should redirect if we don't have a user and disallow anonymous read", () => {
     delete data.cache.session.user;
 
     indexHandlers.newHandler(req, res, data, next);
@@ -66,7 +53,10 @@ describe('index handlers', () => {
   it('should set the response header', () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith('Content-Type', 'text/html; charset=utf-8');
+    expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith(
+      'Content-Type',
+      'text/html; charset=utf-8'
+    );
   });
 
   it('should set the status code', () => {

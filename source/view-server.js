@@ -21,8 +21,7 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-
-import * as fp from 'intel-fp';
+import * as fp from '@mfl/fp';
 import http from 'http';
 import https from 'https';
 import loginRoute from './routes/login-route';
@@ -31,24 +30,20 @@ import viewRouter from './view-router';
 import conf from './conf';
 import cspPolicy from './lib/csp-policy';
 
-import {
-  waitForRequests
-} from './lib/api-request';
+import { waitForRequests } from './lib/api-request';
 
-import type {
-  IncomingMessage
-} from 'http';
+import type { IncomingMessage } from 'http';
 
 // Don't limit pool to 5 in node 0.10.x
 // $FlowIgnore: node libdefs don't have Agent stuff.
-https.globalAgent.maxSockets = http.globalAgent.maxSockets = Infinity;
+https.globalAgent.maxSockets = (http.globalAgent.maxSockets = Infinity);
 
 loginRoute();
 indexRoute();
 
 export default () => {
   const server = http
-    .createServer((req:IncomingMessage, res:Object) => {
+    .createServer((req: IncomingMessage, res: Object) => {
       viewRouter.go(
         req.url,
         {
@@ -57,7 +52,7 @@ export default () => {
         },
         {
           clientRes: res,
-          redirect (path:string) {
+          redirect(path: string) {
             res.setHeader('Content-Security-Policy', cspPolicy);
             res.writeHead(302, { Location: path });
             res.end();
@@ -67,10 +62,9 @@ export default () => {
     })
     .listen(conf.VIEW_SERVER_PORT);
 
-  return function stop (done:Function = fp.noop) {
-    server.on('close', (err:?Error) => {
-      if (err)
-        throw err;
+  return function stop(done: Function = fp.noop) {
+    server.on('close', (err: ?Error) => {
+      if (err) throw err;
 
       waitForRequests(done);
     });

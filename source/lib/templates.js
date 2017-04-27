@@ -21,39 +21,45 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as obj from 'intel-obj';
+import * as obj from '@mfl/obj';
 import _ from 'lodash';
 import getDirTreeSync from './get-dir-tree-sync.js';
 import conf from '../conf.js';
 
-const transformPath = (root) => (p) => p.replace(root, '');
+const transformPath = root => p => p.replace(root, '');
 const templates = {
-  ...getDirTreeSync(conf.TEMPLATE_ROOT_OLD, transformPath(conf.TEMPLATE_ROOT_OLD)),
-  ...getDirTreeSync(conf.TEMPLATE_ROOT_NEW, transformPath(conf.TEMPLATE_ROOT_NEW))
+  ...getDirTreeSync(
+    conf.TEMPLATE_ROOT_OLD,
+    transformPath(conf.TEMPLATE_ROOT_OLD)
+  ),
+  ...getDirTreeSync(
+    conf.TEMPLATE_ROOT_NEW,
+    transformPath(conf.TEMPLATE_ROOT_NEW)
+  )
 };
 
 _.templateSettings.imports = {
   _,
-  t (name, data) {
+  t(name, data) {
     return templateMap[name](data);
   },
   conf,
-  getServerDate () {
+  getServerDate() {
     return new Date();
   }
 };
 
-_.templateSettings.interpolate =  /<\$=([\s\S]+?)\$>/g;
-_.templateSettings.escape =  /<\$-([\s\S]+?)\$>/g;
-_.templateSettings.evaluate =  /<\$([\s\S]+?)\$>/g;
+_.templateSettings.interpolate = /<\$=([\s\S]+?)\$>/g;
+_.templateSettings.escape = /<\$-([\s\S]+?)\$>/g;
+_.templateSettings.evaluate = /<\$([\s\S]+?)\$>/g;
 
 type fnMap = {
-  [key:string]:Function
+  [key: string]: Function
 };
 
-const templateMap:fnMap = obj.reduce(
+const templateMap: fnMap = obj.reduce(
   () => ({}),
-  (val:string, key:string, out:fnMap):fnMap => {
+  (val: string, key: string, out: fnMap): fnMap => {
     out[key] = _.template(val);
 
     return out;

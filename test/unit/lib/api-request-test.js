@@ -1,19 +1,10 @@
 import proxyquire from '../../proxyquire.js';
 import url from 'url';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect
-} from '../../jasmine.js';
+import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
 
 describe('api-request', () => {
-  let conf,
-    req,
-    getReq,
-    apiRequest;
+  let conf, req, getReq, apiRequest;
 
   beforeEach(() => {
     conf = {
@@ -25,27 +16,21 @@ describe('api-request', () => {
       waitForRequests: {}
     };
 
-    getReq = jasmine
-      .createSpy('getReq')
-      .and
-      .returnValue(req);
+    getReq = jasmine.createSpy('getReq').and.returnValue(req);
 
     apiRequest = proxyquire('../source/lib/api-request', {
       '../conf.js': conf,
-      'url': url,
-      'intel-req': getReq
+      url: url,
+      '@mfl/req': getReq
     }).default;
   });
 
   it('should return a function', () => {
-    expect(apiRequest)
-      .toEqual(jasmine.any(Function));
+    expect(apiRequest).toEqual(jasmine.any(Function));
   });
 
   describe('with given path and options', () => {
-    let path,
-      options,
-      hostOptions;
+    let path, options, hostOptions;
 
     beforeEach(() => {
       path = '/session';
