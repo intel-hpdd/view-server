@@ -1,24 +1,28 @@
-import proxyquire from '../../proxyquire.js';
-
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('templates', () => {
-  let templates, conf, getDirTreeSync;
+  let templates, mockConf, mockGetDirTreeSync;
 
   beforeEach(() => {
-    getDirTreeSync = jasmine.createSpy('getDirTreeSync').and.returnValue({
+    mockGetDirTreeSync = jasmine.createSpy('getDirTreeSync').and.returnValue({
       'e.html': '<$= a $> <$= t("f.html") $> <$= conf.TEMPLATE_ROOT $> <$- html $>',
       'f.html': 'bar'
     });
+    jest.mock('../source/lib/get-dir-tree-sync.js', () => mockGetDirTreeSync);
 
-    conf = {
+    mockConf = {
       TEMPLATE_ROOT: '/a/b/c'
     };
+    jest.mock('../source/conf.js', () => mockConf);
 
-    templates = proxyquire('../source/lib/templates', {
-      './get-dir-tree-sync.js': getDirTreeSync,
-      '../conf.js': conf
-    }).default;
+    templates = require('../../../source/lib/templates').default;
   });
 
   it('should populate a template as expected', () => {

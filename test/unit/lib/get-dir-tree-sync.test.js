@@ -1,5 +1,4 @@
 import path from 'path';
-import proxyquire from '../../proxyquire.js';
 
 import {
   describe,
@@ -7,14 +6,15 @@ import {
   it,
   jasmine,
   expect,
-  spyOn
+  spyOn,
+  jest
 } from '../../jasmine.js';
 
 describe('get dir tree sync', () => {
-  let fs, getDirTreeSync;
+  let mockFs, getDirTreeSync;
 
   beforeEach(() => {
-    fs = {
+    mockFs = {
       readdirSync: jasmine.createSpy('readdirSync'),
       readFileSync: jasmine.createSpy('readFileSync').and.returnValue('foo'),
       statSync: jasmine.createSpy('statSync').and.callFake(filePath => {
@@ -30,18 +30,16 @@ describe('get dir tree sync', () => {
         };
       })
     };
+    jest.mock('fs', () => mockFs);
 
     spyOn(path, 'join').and.callThrough();
 
-    fs.readdirSync.and.callFake(dir => {
+    mockFs.readdirSync.and.callFake(dir => {
       if (dir === '/a/b/dir/') return ['file2.html'];
       else if (dir === '/a/b/') return ['file.html', 'dir'];
     });
 
-    getDirTreeSync = proxyquire('../source/lib/get-dir-tree-sync', {
-      fs,
-      path
-    }).default;
+    getDirTreeSync = require('../../../source/lib/get-dir-tree-sync').default;
   });
 
   it('should build a file list', () => {

@@ -1,12 +1,18 @@
 import highland from 'highland';
-import proxyquire from '../../proxyquire.js';
 
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('get session', () => {
   let getSession,
-    apiRequest,
-    renderRequestError,
+    mockApiRequest,
+    mockRenderRequestError,
     renderRequestErrorInner,
     req,
     res,
@@ -30,7 +36,7 @@ describe('get session', () => {
 
     next = jasmine.createSpy('next');
 
-    apiRequest = jasmine.createSpy('apiRequest').and.returnValue(
+    mockApiRequest = jasmine.createSpy('apiRequest').and.returnValue(
       highland(_push_ => {
         push = (err, val) => {
           _push_(err, val);
@@ -39,22 +45,26 @@ describe('get session', () => {
       })
     );
 
+    jest.mock('../source/lib/api-request.js', () => mockApiRequest);
+
     renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
 
-    renderRequestError = jasmine
+    mockRenderRequestError = jasmine
       .createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
 
-    getSession = proxyquire('../source/middleware/get-session', {
-      '../lib/api-request.js': apiRequest,
-      '../lib/render-request-error.js': renderRequestError
-    }).default;
+    jest.mock(
+      '../source/lib/render-request-error.js',
+      () => mockRenderRequestError
+    );
+
+    getSession = require('../../../source/middleware/get-session').default;
 
     getSession(req, res, next);
   });
 
   it('should get a session', () => {
-    expect(apiRequest).toHaveBeenCalledOnceWith('/session', {
+    expect(mockApiRequest).toHaveBeenCalledOnceWith('/session', {
       headers: {
         cookie: 'foo'
       }

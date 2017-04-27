@@ -1,18 +1,24 @@
 import highland from 'highland';
-import proxyquire from '../../proxyquire.js';
 
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('login route', () => {
-  let viewRouter,
-    templates,
+  let mockViewRouter,
+    mockTemplates,
     req,
     res,
     next,
     push,
-    apiRequest,
+    mockApiRequest,
     pathRouter,
-    renderRequestError,
+    mockRenderRequestError,
     renderRequestErrorInner;
 
   beforeEach(() => {
@@ -28,9 +34,10 @@ describe('login route', () => {
 
     next = jasmine.createSpy('next');
 
-    templates = {
+    mockTemplates = {
       'index.html': jasmine.createSpy('indexTemplate').and.returnValue('foo')
     };
+    jest.mock('../source/lib/templates.js', () => mockTemplates);
 
     pathRouter = {
       get: jasmine.createSpy('get').and.callFake(() => {
@@ -38,32 +45,33 @@ describe('login route', () => {
       })
     };
 
-    viewRouter = {
+    mockViewRouter = {
       route: jasmine.createSpy('route').and.returnValue(pathRouter)
     };
+    jest.mock('../source/view-router.js', () => mockViewRouter);
 
-    apiRequest = jasmine.createSpy('apiRequest').and.returnValue(
+    mockApiRequest = jasmine.createSpy('apiRequest').and.returnValue(
       highland(_push_ => {
         push = _push_;
       })
     );
+    jest.mock('../source/lib/api-request.js', () => mockApiRequest);
 
     renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
 
-    renderRequestError = jasmine
+    mockRenderRequestError = jasmine
       .createSpy('renderRequestError')
       .and.returnValue(renderRequestErrorInner);
+    jest.mock(
+      '../source/lib/render-request-error.js',
+      () => mockRenderRequestError
+    );
 
-    proxyquire('../source/routes/login-route', {
-      '../view-router.js': viewRouter,
-      '../lib/templates.js': templates,
-      '../lib/api-request.js': apiRequest,
-      '../lib/render-request-error.js': renderRequestError
-    }).default();
+    require('../../../source/routes/login-route').default();
   });
 
   it('should register a path for the login route', () => {
-    expect(viewRouter.route).toHaveBeenCalledOnceWith('/ui/login');
+    expect(mockViewRouter.route).toHaveBeenCalledOnceWith('/ui/login');
   });
 
   describe('eula checking', () => {
@@ -106,7 +114,7 @@ describe('login route', () => {
       });
 
       it('should send a delete request', () => {
-        expect(apiRequest).toHaveBeenCalledOnceWith('/session', {
+        expect(mockApiRequest).toHaveBeenCalledOnceWith('/session', {
           method: 'delete',
           headers: { cookie: 'foo' }
         });
@@ -153,7 +161,7 @@ describe('login route', () => {
     });
 
     it('should render the template', () => {
-      expect(templates['index.html']).toHaveBeenCalledOnceWith({
+      expect(mockTemplates['index.html']).toHaveBeenCalledOnceWith({
         title: 'Login',
         cache: {}
       });

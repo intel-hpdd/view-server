@@ -21,7 +21,6 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from '@mfl/fp';
 import getUname from './get-uname.js';
 import templates from './templates.js';
 
@@ -31,8 +30,8 @@ const backendErrorTemplate = templates['backend_error.html'];
 
 type fnToStringT = (err: Error) => string;
 
-export default fp.curry3(
-  (res: routerResT, descriptionFn: fnToStringT, err: Error) => {
+export default (res: routerResT, descriptionFn: fnToStringT) =>
+  (err: Error) => {
     const description = descriptionFn(err);
 
     getUname().each(map => {
@@ -43,5 +42,4 @@ export default fp.curry3(
 
       res.clientRes.end(rendered);
     });
-  }
-);
+  };

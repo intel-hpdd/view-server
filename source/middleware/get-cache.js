@@ -23,7 +23,6 @@
 
 import * as fp from '@mfl/fp';
 import * as obj from '@mfl/obj';
-import through from '@mfl/through';
 import highland from 'highland';
 import conf from '../conf.js';
 import apiRequest from '../lib/api-request.js';
@@ -96,12 +95,11 @@ export default (
       .pluck('body')
       .pluck('objects');
   else
-    cache = highland(fp.times(fp.always([]), calls.length));
+    cache = highland(fp.times(fp.always([]))(calls.length));
 
   cache
     .collect()
     .map(fp.zipObject(calls.map(call => call[0])))
-    .through(through.zipObject(calls.map(call => call[0])))
     .stopOnError(
       renderRequestError(
         res,

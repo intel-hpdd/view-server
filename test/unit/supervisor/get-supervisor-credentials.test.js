@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-import proxyquire from '../../proxyquire.js';
 
 import {
   describe,
@@ -7,33 +6,29 @@ import {
   it,
   jasmine,
   expect,
-  spyOn
+  spyOn,
+  jest
 } from '../../jasmine.js';
 
 describe('get supervisor credentials', () => {
-  let getSupervisorCredentials, childProcess, conf, callback;
+  let getSupervisorCredentials, mockChildProcess, mockConf, callback;
 
   beforeEach(() => {
-    childProcess = {
+    mockChildProcess = {
       exec: jasmine.createSpy('exec').and.callFake((cmd, opts, cb) => {
         callback = cb;
       })
     };
+    jest.mock('child_process', () => mockChildProcess);
 
-    conf = {
+    mockConf = {
       NODE_ENV: 'development'
     };
+    jest.mock('../source/conf.js', () => mockConf);
 
     spyOn(crypto, 'createHash').and.callThrough();
 
-    getSupervisorCredentials = proxyquire(
-      '../source/supervisor/get-supervisor-credentials.js',
-      {
-        child_process: childProcess,
-        '../conf.js': conf,
-        crypto
-      }
-    ).default;
+    getSupervisorCredentials = require('../../../source/supervisor/get-supervisor-credentials.js').default;
   });
 
   it('should return supervisor credentials', done => {
@@ -46,7 +41,7 @@ describe('get supervisor credentials', () => {
   });
 
   it('should return null if we are in production', done => {
-    conf.NODE_ENV = 'production';
+    mockConf.NODE_ENV = 'production';
 
     getSupervisorCredentials().apply(x => {
       expect(x).toEqual(null);

@@ -1,27 +1,29 @@
-import proxyquire from '../../proxyquire.js';
-
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('get services request', () => {
-  let getServicesRequest, getReq, req;
+  let getServicesRequest, mockGetReq, req;
 
   beforeEach(() => {
     req = {
       bufferRequest: jasmine.createSpy('bufferRequest')
     };
 
-    getReq = jasmine.createSpy('getReq').and.returnValue(req);
+    mockGetReq = jasmine.createSpy('getReq').and.returnValue(req);
 
-    getServicesRequest = proxyquire(
-      '../source/supervisor/get-services-request',
-      {
-        '@mfl/req': getReq
-      }
-    ).default;
+    jest.mock('@mfl/req', () => mockGetReq);
+
+    getServicesRequest = require('../../../source/supervisor/get-services-request').default;
   });
 
   it('should create a http req', () => {
-    expect(getReq).toHaveBeenCalledOnceWith('http');
+    expect(mockGetReq).toHaveBeenCalledOnceWith('http');
   });
 
   describe('performing request', () => {

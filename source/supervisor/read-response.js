@@ -41,15 +41,14 @@ const overStructValues = fp.over(
     fp.lensProp('member'),
     fp.mapped,
     fp.lensProp('value')
-  ),
-  function normalize(xs) {
-    if (xs.string) return xs.string.text || '';
-    else if (xs.int) return parseInt(xs.int.text, 10);
-    else return xs;
-  }
-);
+  )
+)(function normalize(xs) {
+  if (xs.string) return xs.string.text || '';
+  else if (xs.int) return parseInt(xs.int.text, 10);
+  else return xs;
+});
 
-const overStructs = fp.over(fp.compose(valuesLens, fp.mapped), function(xs) {
+const overStructs = fp.over(fp.compose(valuesLens, fp.mapped))(function(xs) {
   return xs.struct.member.reduce(
     function normalizeText(out, x) {
       out[x.name.text] = x.value;
