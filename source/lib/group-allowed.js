@@ -21,20 +21,19 @@
 // otherwise. Any license under such intellectual property rights must be
 // express and approved by Intel in writing.
 
-import * as fp from '@mfl/fp';
 import groups from './groups.js';
 
 type groupT = {
   name: string
 };
 
-type sessionT = {
+type Session = {
   user: {
     groups: groupT[]
   }
 };
 
-export default fp.curry2((groupName: string, session: sessionT): boolean => {
+export default (groupName: string, session: Session): boolean => {
   const hasGroups = session &&
     session.user &&
     Array.isArray(session.user.groups);
@@ -51,4 +50,4 @@ export default fp.curry2((groupName: string, session: sessionT): boolean => {
       // Fallback to matching on names.
       return group.name === groupName;
     });
-});
+};

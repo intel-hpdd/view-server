@@ -1,28 +1,32 @@
-import proxyquire from '../../proxyquire.js';
 import url from 'url';
 
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('api-request', () => {
-  let conf, req, getReq, apiRequest;
+  let mockConf, req, mockGetReq, apiRequest;
 
   beforeEach(() => {
-    conf = {
+    mockConf = {
       SERVER_HTTP_URL: url.parse('http://localhost:8000')
     };
+    jest.mock('../source/conf.js', () => mockConf);
 
     req = {
       bufferJsonRequest: jasmine.createSpy('bufferRequest'),
       waitForRequests: {}
     };
 
-    getReq = jasmine.createSpy('getReq').and.returnValue(req);
+    mockGetReq = jasmine.createSpy('getReq').and.returnValue(req);
+    jest.mock('@mfl/req', () => mockGetReq);
 
-    apiRequest = proxyquire('../source/lib/api-request', {
-      '../conf.js': conf,
-      url: url,
-      '@mfl/req': getReq
-    }).default;
+    apiRequest = require('../../../source/lib/api-request').default;
   });
 
   it('should return a function', () => {
@@ -50,7 +54,7 @@ describe('api-request', () => {
     });
 
     it('should call getReq', () => {
-      expect(getReq).toHaveBeenCalledOnceWith('https');
+      expect(mockGetReq).toHaveBeenCalledOnceWith('https');
     });
 
     it('should invoke the bufferReqeust with the api formatted path and options', () => {

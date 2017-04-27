@@ -78,7 +78,6 @@ if (conf.NODE_ENV === 'test')
 const parsedServerHttpUrl = url.parse(conf.SERVER_HTTP_URL);
 conf = Object.assign({}, conf, {
   API_PORT: parsedServerHttpUrl.port,
-  // $FlowIgnore: bad libdef
   API_URL: url.format(parsedServerHttpUrl),
   HOST_NAME: parsedServerHttpUrl.hostname,
   PARSED_API_URL: parsedServerHttpUrl,

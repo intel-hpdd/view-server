@@ -1,10 +1,16 @@
 import * as fp from '@mfl/fp';
-import proxyquire from '../../proxyquire.js';
 
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('index handlers', () => {
-  let indexHandlers, templates, conf, req, res, data, next;
+  let indexHandlers, mockTemplates, mockConf, req, res, data, next;
 
   beforeEach(() => {
     req = {};
@@ -27,19 +33,18 @@ describe('index handlers', () => {
 
     next = jasmine.createSpy('next');
 
-    templates = {
+    mockTemplates = {
       'index.html': jasmine.createSpy('index').and.returnValue('index'),
       'base.html': jasmine.createSpy('base').and.returnValue('base')
     };
+    jest.mock('../source/lib/templates.js', () => mockTemplates);
 
-    conf = {
+    mockConf = {
       get: fp.always(false)
     };
+    jest.mock('../source/conf.js', () => mockConf);
 
-    indexHandlers = proxyquire('../source/lib/index-handlers', {
-      './templates.js': templates,
-      '../conf.js': conf
-    }).default;
+    indexHandlers = require('../../../source/lib/index-handlers').default;
   });
 
   it("should redirect if we don't have a user and disallow anonymous read", () => {
@@ -68,7 +73,7 @@ describe('index handlers', () => {
   it('should render the template', () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(templates['index.html']).toHaveBeenCalledOnceWith({
+    expect(mockTemplates['index.html']).toHaveBeenCalledOnceWith({
       title: '',
       cache: data.cache
     });
@@ -77,7 +82,7 @@ describe('index handlers', () => {
   it('should render the old template', () => {
     indexHandlers.oldHandler(req, res, data, next);
 
-    expect(templates['base.html']).toHaveBeenCalledOnceWith({
+    expect(mockTemplates['base.html']).toHaveBeenCalledOnceWith({
       title: '',
       cache: data.cache
     });

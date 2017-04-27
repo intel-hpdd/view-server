@@ -46,4 +46,4 @@ Object.keys(groups).forEach(key => {
   vals.push(allowGroup(groups[key]));
 });
 
-export default fp.zipObject(keys, vals);
+export default fp.zipObject(keys)(vals);

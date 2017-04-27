@@ -1,9 +1,15 @@
-import proxyquire from '../proxyquire.js';
-
-import { describe, beforeEach, it, jasmine, expect } from '../jasmine.js';
+import { describe, beforeEach, it, jasmine, expect, jest } from '../jasmine.js';
 
 describe('view server', () => {
-  let http, https, close, server, loginRoute, indexRoute, viewRouter, conf, api;
+  let mockHttp,
+    mockHttps,
+    close,
+    server,
+    mockLoginRoute,
+    mockIndexRoute,
+    mockViewRouter,
+    mockConf,
+    mockApi;
 
   beforeEach(() => {
     server = {
@@ -13,43 +19,43 @@ describe('view server', () => {
       on: jasmine.createSpy('on')
     };
 
-    http = {
+    mockHttp = {
       createServer: jasmine.createSpy('createServer').and.returnValue(server),
       globalAgent: {
         maxSockets: {}
       }
     };
+    jest.mock('http', () => mockHttp);
 
-    https = {
+    mockHttps = {
       globalAgent: {
         maxSockets: {}
       }
     };
+    jest.mock('https', () => mockHttps);
 
-    viewRouter = {
+    mockViewRouter = {
       go: jasmine.createSpy('go')
     };
+    jest.mock('../source/view-router.js', () => mockViewRouter);
 
-    conf = {
+    mockConf = {
       VIEW_SERVER_PORT: 8900
     };
+    jest.mock('../source/conf.js', () => mockConf);
 
-    loginRoute = jasmine.createSpy('loginRoute');
-    indexRoute = jasmine.createSpy('indexRoute');
+    mockLoginRoute = jasmine.createSpy('loginRoute');
+    jest.mock('../source/routes/login-route.js', () => mockLoginRoute);
 
-    api = {
+    mockIndexRoute = jasmine.createSpy('indexRoute');
+    jest.mock('../source/routes/index-route.js', () => mockIndexRoute);
+
+    mockApi = {
       waitForRequests: jasmine.createSpy('waitForRequests')
     };
+    jest.mock('../source/lib/api-request.js', () => mockApi);
 
-    close = proxyquire('../source/view-server', {
-      http: http,
-      https: https,
-      './routes/login-route': loginRoute,
-      './routes/index-route': indexRoute,
-      './view-router': viewRouter,
-      './lib/api-request': api,
-      './conf': conf
-    }).default();
+    close = require('../../source/view-server').default();
   });
 
   it('should return a close function', () => {
@@ -57,15 +63,17 @@ describe('view server', () => {
   });
 
   it('should call loginRoute', () => {
-    expect(loginRoute).toHaveBeenCalledOnce();
+    expect(mockLoginRoute).toHaveBeenCalledOnce();
   });
 
   it('should call indexRoute', () => {
-    expect(indexRoute).toHaveBeenCalledOnce();
+    expect(mockIndexRoute).toHaveBeenCalledOnce();
   });
 
   it('should call createServer', () => {
-    expect(http.createServer).toHaveBeenCalledOnceWith(jasmine.any(Function));
+    expect(mockHttp.createServer).toHaveBeenCalledOnceWith(
+      jasmine.any(Function)
+    );
   });
 
   it('should listen on the view server port', () => {
@@ -87,13 +95,13 @@ describe('view server', () => {
         setHeader: jasmine.createSpy('setHeader')
       };
 
-      const handler = http.createServer.calls.mostRecent().args[0];
+      const handler = mockHttp.createServer.calls.mostRecent().args[0];
 
       handler(req, res);
     });
 
     it('should call the view router', () => {
-      expect(viewRouter.go).toHaveBeenCalledOnceWith(
+      expect(mockViewRouter.go).toHaveBeenCalledOnceWith(
         req.url,
         {
           verb: req.method,
@@ -108,7 +116,7 @@ describe('view server', () => {
 
     describe('redirecting', () => {
       beforeEach(() => {
-        viewRouter.go.calls.mostRecent().args[2].redirect('/');
+        mockViewRouter.go.calls.mostRecent().args[2].redirect('/');
       });
 
       it('should have a method to redirect on the response object', () => {
@@ -164,7 +172,7 @@ describe('view server', () => {
 
     it('should wait for api requests', () => {
       fn();
-      expect(api.waitForRequests).toHaveBeenCalledOnceWith(spy);
+      expect(mockApi.waitForRequests).toHaveBeenCalledOnceWith(spy);
     });
   });
 });

@@ -1,34 +1,49 @@
 import highland from 'highland';
-import proxyquire from '../../proxyquire.js';
 
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
+import {
+  describe,
+  beforeEach,
+  it,
+  jasmine,
+  expect,
+  jest
+} from '../../jasmine.js';
 
 describe('check for problems', () => {
   let checkForProblems,
     req,
     res,
     next,
-    logger,
-    renderRequestError,
-    getStoppedSupervisorServices,
+    mockLogger,
+    mockRenderRequestError,
+    mockGetStoppedSupervisorServices,
     push;
 
   beforeEach(() => {
-    logger = {
+    mockLogger = {
       child: jasmine.createSpy('child').and.returnValue({
         error: jasmine.createSpy('error')
       })
     };
+    jest.mock('../source/logger.js', () => mockLogger);
 
-    getStoppedSupervisorServices = jasmine
+    mockGetStoppedSupervisorServices = jasmine
       .createSpy('getStoppedSupervisorServices')
       .and.returnValue(
         highland(_push_ => {
           push = _push_;
         })
       );
+    jest.mock(
+      '../source/supervisor/get-stopped-supervisor-services.js',
+      () => mockGetStoppedSupervisorServices
+    );
 
-    renderRequestError = jasmine.createSpy('renderRequestError');
+    mockRenderRequestError = jasmine.createSpy('renderRequestError');
+    jest.mock(
+      '../source/lib/render-request-error.js',
+      () => mockRenderRequestError
+    );
 
     req = {
       matches: ['/foo/bar']
@@ -37,11 +52,7 @@ describe('check for problems', () => {
 
     next = jasmine.createSpy('next');
 
-    checkForProblems = proxyquire('../source/middleware/check-for-problems', {
-      '../logger.js': logger,
-      '../supervisor/get-stopped-supervisor-services.js': getStoppedSupervisorServices,
-      '../lib/render-request-error.js': renderRequestError
-    }).default;
+    checkForProblems = require('../../../source/middleware/check-for-problems').default;
 
     checkForProblems(req, res, next);
   });
@@ -50,7 +61,7 @@ describe('check for problems', () => {
     push(new Error('socket error'));
     push(null, highland.nil);
 
-    const message = renderRequestError.calls.mostRecent().args[1]();
+    const message = mockRenderRequestError.calls.mostRecent().args[1]();
 
     expect(message).toBe(
       'The following services are not running: \n\nsupervisor\n\n'
@@ -62,7 +73,7 @@ describe('check for problems', () => {
     push(null, 'autoreload');
     push(null, highland.nil);
 
-    const message = renderRequestError.calls.mostRecent().args[1]();
+    const message = mockRenderRequestError.calls.mostRecent().args[1]();
 
     expect(message).toBe(
       'The following services are not running: \n\ncorosync\nautoreload\n\n'
