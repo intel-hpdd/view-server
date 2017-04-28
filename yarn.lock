@@ -44,9 +44,9 @@
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@mfl/obj/-/obj-6.0.1.tgz#3ad9a96200add581367d88387eda9e9ef201b536"
 
-"@mfl/req@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@mfl/req/-/req-3.0.0.tgz#99a3c81a67419f6b41d234a310f00af2eeb5d0d4"
+"@mfl/req@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@mfl/req/-/req-3.0.1.tgz#ea56f494e32d00401971434371bb190cbb89570b"
   dependencies:
     "@mfl/fp" "8.0.0"
     highland "3.0.0-beta.2"

@@ -39,7 +39,7 @@
     "@mfl/help": "1.4.0",
     "@mfl/logger": "1.0.1",
     "@mfl/obj": "6.0.1",
-    "@mfl/req": "3.0.0",
+    "@mfl/req": "3.0.1",
     "@mfl/router": "6.0.1",
     "@mfl/xml-2-json": "1.0.1",
     "highland": "3.0.0-beta.4",
