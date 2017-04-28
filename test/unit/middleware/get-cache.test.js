@@ -120,14 +120,11 @@ describe('get cache', () => {
 
     getCache(req, res, data, next);
 
-    const obj = calls.reduce(
-      (obj, call) => {
-        obj[call.slice(1)] = [];
+    const obj = calls.reduce((obj, call) => {
+      obj[call.slice(1)] = [];
 
-        return obj;
-      },
-      {}
-    );
+      return obj;
+    }, {});
 
     obj.session = data.session;
 
@@ -177,14 +174,11 @@ describe('get cache', () => {
     });
 
     it('should return the result of each endpoint', () => {
-      const obj = calls.reduce(
-        (obj, call) => {
-          obj[call.slice(1)] = [{ name: call }];
+      const obj = calls.reduce((obj, call) => {
+        obj[call.slice(1)] = [{ name: call }];
 
-          return obj;
-        },
-        {}
-      );
+        return obj;
+      }, {});
 
       obj.session = data.session;
 
@@ -197,8 +191,7 @@ describe('get cache', () => {
   describe('error response', () => {
     beforeEach(() => {
       mockApiRequest.and.callFake(opts => {
-        if (opts.path === '/target')
-          throw new Error('boom!');
+        if (opts.path === '/target') throw new Error('boom!');
         else
           return highland([
             {

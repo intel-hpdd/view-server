@@ -52,7 +52,8 @@ describe('check for problems', () => {
 
     next = jasmine.createSpy('next');
 
-    checkForProblems = require('../../../source/middleware/check-for-problems').default;
+    checkForProblems = require('../../../source/middleware/check-for-problems')
+      .default;
 
     checkForProblems(req, res, next);
   });

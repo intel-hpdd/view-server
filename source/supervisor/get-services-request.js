@@ -27,7 +27,8 @@ import type { HighlandStreamT } from 'highland';
 
 const req = getReq('http');
 
-const body = '<?xml version="1.0"?>\
+const body =
+  '<?xml version="1.0"?>\
 <methodCall>\
   <methodName>supervisor.getAllProcessInfo</methodName>\
   <params>\

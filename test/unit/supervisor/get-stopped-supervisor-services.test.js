@@ -48,7 +48,8 @@ describe('get stopped supervisor services', () => {
       () => mockGetSupervisorCredentials
     );
 
-    getStoppedSupervisorServices = require('../../../source/supervisor/get-stopped-supervisor-services').default;
+    getStoppedSupervisorServices = require('../../../source/supervisor/get-stopped-supervisor-services')
+      .default;
   });
 
   it('should call getServicesRequest', () => {

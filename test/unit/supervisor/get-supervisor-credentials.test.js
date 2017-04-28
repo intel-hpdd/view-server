@@ -28,7 +28,8 @@ describe('get supervisor credentials', () => {
 
     spyOn(crypto, 'createHash').and.callThrough();
 
-    getSupervisorCredentials = require('../../../source/supervisor/get-supervisor-credentials.js').default;
+    getSupervisorCredentials = require('../../../source/supervisor/get-supervisor-credentials.js')
+      .default;
   });
 
   it('should return supervisor credentials', done => {

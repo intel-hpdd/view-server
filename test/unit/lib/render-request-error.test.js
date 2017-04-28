@@ -31,7 +31,8 @@ describe('render request error', () => {
     mockGetUname = jasmine.createSpy('getUname').and.returnValue(stream);
     jest.mock('../source/lib/get-uname.js', () => mockGetUname);
 
-    renderRequestError = require('../../../source/lib/render-request-error').default;
+    renderRequestError = require('../../../source/lib/render-request-error')
+      .default;
   });
 
   it('should render a backend error', () => {

@@ -36,7 +36,7 @@ import type { IncomingMessage } from 'http';
 
 // Don't limit pool to 5 in node 0.10.x
 // $FlowFixMe: node libdefs don't have Agent stuff.
-https.globalAgent.maxSockets = (http.globalAgent.maxSockets = Infinity);
+https.globalAgent.maxSockets = http.globalAgent.maxSockets = Infinity;
 
 loginRoute();
 indexRoute();

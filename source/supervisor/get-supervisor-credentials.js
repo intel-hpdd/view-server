@@ -55,7 +55,7 @@ export default (): HighlandStreamT<string | null> => {
 
   return credentialsStream
     .collect()
-    .tap(c => credentials = c)
+    .tap(c => (credentials = c))
     .map(c => c.join(':'))
     .stopOnError(console.log); // eslint-disable-line no-console
 

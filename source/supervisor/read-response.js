@@ -49,13 +49,10 @@ const overStructValues = fp.over(
 });
 
 const overStructs = fp.over(fp.compose(valuesLens, fp.mapped))(function(xs) {
-  return xs.struct.member.reduce(
-    function normalizeText(out, x) {
-      out[x.name.text] = x.value;
-      return out;
-    },
-    {}
-  );
+  return xs.struct.member.reduce(function normalizeText(out, x) {
+    out[x.name.text] = x.value;
+    return out;
+  }, {});
 });
 
 export default fp.flow(overStructValues, overStructs, fp.view(valuesLens));

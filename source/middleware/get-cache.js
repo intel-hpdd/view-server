@@ -83,8 +83,7 @@ export default (
       .parallel(calls.length)
       .pluck('body')
       .pluck('objects');
-  else
-    cache = highland(fp.times(fp.always([]))(calls.length));
+  else cache = highland(fp.times(fp.always([]))(calls.length));
 
   cache
     .collect()
