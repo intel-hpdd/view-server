@@ -22,7 +22,7 @@
 // express and approved by Intel in writing.
 
 import * as obj from '@mfl/obj';
-import _ from 'lodash';
+import { templateSettings, template } from 'lodash';
 import getDirTreeSync from './get-dir-tree-sync.js';
 import conf from '../conf.js';
 
@@ -38,8 +38,8 @@ const templates = {
   )
 };
 
-_.templateSettings.imports = {
-  _,
+templateSettings.imports = {
+  ...templateSettings.imports,
   t(name, data) {
     return templateMap[name](data);
   },
@@ -49,9 +49,9 @@ _.templateSettings.imports = {
   }
 };
 
-_.templateSettings.interpolate = /<\$=([\s\S]+?)\$>/g;
-_.templateSettings.escape = /<\$-([\s\S]+?)\$>/g;
-_.templateSettings.evaluate = /<\$([\s\S]+?)\$>/g;
+templateSettings.interpolate = /<\$=([\s\S]+?)\$>/g;
+templateSettings.escape = /<\$-([\s\S]+?)\$>/g;
+templateSettings.evaluate = /<\$([\s\S]+?)\$>/g;
 
 type fnMap = {
   [key: string]: Function
@@ -60,7 +60,7 @@ type fnMap = {
 const templateMap: fnMap = obj.reduce(
   () => ({}),
   (val: string, key: string, out: fnMap): fnMap => {
-    out[key] = _.template(val);
+    out[key] = template(val);
 
     return out;
   },

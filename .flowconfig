@@ -1,8 +1,5 @@
 [ignore]
-.*/view-server/dist.*
-.*node_modules/babel-.*
-.*node_modules/babylon.*
-.*\(lib\|test\|builtin-modules\|binary-extensions\|faker\|spdx\).*\.json
+.*/view-server/dist/.*
 
 [include]
 

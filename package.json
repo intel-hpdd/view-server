@@ -8,7 +8,7 @@
     "test": "jest",
     "cover": "NODE_ENV=test yarn test -- --coverage",
     "flow": "flow",
-    "postversion": "./bin/build.sh"
+    "postversion": "rollup -c rollup-config.js --output='dist/bundle.js'"
   },
   "publishConfig": {
     "access": "public"
@@ -39,17 +39,19 @@
     "@mfl/help": "1.4.0",
     "@mfl/logger": "1.0.1",
     "@mfl/obj": "6.0.1",
-    "@mfl/req": "3.0.1",
+    "@mfl/req": "3.0.2",
     "@mfl/router": "6.0.1",
     "@mfl/xml-2-json": "1.0.1",
     "highland": "3.0.0-beta.4",
-    "lodash": "3.10.1"
+    "lodash": "4.17.4"
   },
   "devDependencies": {
     "@mfl/flow-highland": "4.2.0",
     "@mfl/flow-jasmine": "1.6.1",
     "@mfl/jasmine-n-matchers": "2.1.1",
     "babel-eslint": "7.2.3",
+    "babel-plugin-external-helpers": "6.22.0",
+    "babel-plugin-lodash": "3.2.11",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
     "babel-plugin-transform-object-rest-spread": "6.23.0",
     "babel-preset-env": "^1.1.9",
@@ -61,6 +63,12 @@
     "flow-bin": "0.45.0",
     "jest": "^19.0.2",
     "pre-commit": "1.2.2",
-    "prettier": "0.22.0"
+    "prettier": "0.22.0",
+    "rollup": "0.41.6",
+    "rollup-plugin-babel": "2.7.1",
+    "rollup-plugin-cleanup": "1.0.0",
+    "rollup-plugin-commonjs": "8.0.2",
+    "rollup-plugin-json": "2.1.1",
+    "rollup-plugin-node-resolve": "3.0.0"
   }
 }
