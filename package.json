@@ -63,7 +63,7 @@
     "flow-bin": "0.45.0",
     "jest": "^19.0.2",
     "pre-commit": "1.2.2",
-    "prettier": "0.22.0",
+    "prettier": "1.2.2",
     "rollup": "0.41.6",
     "rollup-plugin-babel": "2.7.1",
     "rollup-plugin-cleanup": "1.0.0",

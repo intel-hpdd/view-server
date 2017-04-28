@@ -19,7 +19,8 @@ describe('get services request', () => {
 
     jest.mock('@mfl/req', () => mockGetReq);
 
-    getServicesRequest = require('../../../source/supervisor/get-services-request').default;
+    getServicesRequest = require('../../../source/supervisor/get-services-request')
+      .default;
   });
 
   it('should create a http req', () => {

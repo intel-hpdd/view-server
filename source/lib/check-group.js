@@ -25,16 +25,17 @@ import * as fp from '@mfl/fp';
 import groupAllowed from './group-allowed';
 import groups from './groups';
 
-const allowGroup = (groupName: string) =>
-  (req, res, data, next) => {
-    if (!groupAllowed(groupName, data.cache.session))
-      return res.redirect('/ui/');
+const allowGroup = (groupName: string) => (req, res, data, next) => {
+  if (!groupAllowed(groupName, data.cache.session)) return res.redirect('/ui/');
 
-    next(req, res, data);
-  };
+  next(req, res, data);
+};
 
 const transform = text =>
-  text.toLowerCase().split('_').reduce((str, part) => str += capitalize(part));
+  text
+    .toLowerCase()
+    .split('_')
+    .reduce((str, part) => (str += capitalize(part)));
 
 const capitalize = x => x.charAt(0).toUpperCase() + x.slice(1);
 

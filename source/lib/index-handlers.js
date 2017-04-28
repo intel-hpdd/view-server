@@ -29,26 +29,30 @@ import type { routerReqT, routerResT } from '../view-router.js';
 
 import type { dataT } from '../middleware/get-session.js';
 
-const handler = template =>
-  (req: routerReqT, res: routerResT, data: dataT, next: Function) => {
-    const session = data.cache.session;
+const handler = template => (
+  req: routerReqT,
+  res: routerResT,
+  data: dataT,
+  next: Function
+) => {
+  const session = data.cache.session;
 
-    if (!session.user && !conf.ALLOW_ANONYMOUS_READ)
-      return res.redirect('/ui/login/');
+  if (!session.user && !conf.ALLOW_ANONYMOUS_READ)
+    return res.redirect('/ui/login/');
 
-    res.clientRes.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.clientRes.setHeader('Content-Security-Policy', cspPolicy);
-    res.clientRes.statusCode = 200;
+  res.clientRes.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.clientRes.setHeader('Content-Security-Policy', cspPolicy);
+  res.clientRes.statusCode = 200;
 
-    const rendered = template({
-      title: '',
-      cache: data.cache
-    });
+  const rendered = template({
+    title: '',
+    cache: data.cache
+  });
 
-    res.clientRes.end(rendered);
+  res.clientRes.end(rendered);
 
-    next(req, res);
-  };
+  next(req, res);
+};
 
 const newTemplate = templates['index.html'];
 const oldTemplate = templates['base.html'];

@@ -27,9 +27,11 @@ import childProcess from 'child_process';
 
 import type { HighlandStreamT } from 'highland';
 
-const exec: (x: string) => HighlandStreamT<
-  | string
-  | Buffer> = highland.wrapCallback(childProcess.exec);
+const exec: (
+  x: string
+) => HighlandStreamT<string | Buffer> = highland.wrapCallback(
+  childProcess.exec
+);
 
 export default () =>
   highland(['m', 'n', 'r', 's', 'v'])

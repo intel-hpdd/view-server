@@ -44,8 +44,7 @@ export default () => {
 
       if (!session.user) return goToNext();
 
-      if (session.user.eula_state === 'pass')
-        return res.redirect('/ui/');
+      if (session.user.eula_state === 'pass') return res.redirect('/ui/');
       else
         apiRequest({
           path: '/session',
