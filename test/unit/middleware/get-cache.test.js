@@ -158,9 +158,9 @@ describe('get cache', () => {
     it('should request each cache endpoint', () => {
       const fullCalls = calls.map(call => {
         return [
-          call[0],
           obj.merge(
             {
+              path: call[0],
               headers: {
                 Cookie: data.cacheCookie
               },
@@ -196,8 +196,8 @@ describe('get cache', () => {
 
   describe('error response', () => {
     beforeEach(() => {
-      mockApiRequest.and.callFake(endpoint => {
-        if (endpoint === '/target')
+      mockApiRequest.and.callFake(opts => {
+        if (opts.path === '/target')
           throw new Error('boom!');
         else
           return highland([

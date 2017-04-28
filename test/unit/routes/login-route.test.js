@@ -114,7 +114,8 @@ describe('login route', () => {
       });
 
       it('should send a delete request', () => {
-        expect(mockApiRequest).toHaveBeenCalledOnceWith('/session', {
+        expect(mockApiRequest).toHaveBeenCalledOnceWith({
+          path: '/session',
           method: 'delete',
           headers: { cookie: 'foo' }
         });

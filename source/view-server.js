@@ -35,7 +35,7 @@ import { waitForRequests } from './lib/api-request';
 import type { IncomingMessage } from 'http';
 
 // Don't limit pool to 5 in node 0.10.x
-// $FlowIgnore: node libdefs don't have Agent stuff.
+// $FlowFixMe: node libdefs don't have Agent stuff.
 https.globalAgent.maxSockets = (http.globalAgent.maxSockets = Infinity);
 
 loginRoute();

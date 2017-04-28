@@ -64,7 +64,8 @@ describe('get session', () => {
   });
 
   it('should get a session', () => {
-    expect(mockApiRequest).toHaveBeenCalledOnceWith('/session', {
+    expect(mockApiRequest).toHaveBeenCalledOnceWith({
+      path: '/session',
       headers: {
         cookie: 'foo'
       }
