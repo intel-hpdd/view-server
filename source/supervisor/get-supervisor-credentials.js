@@ -44,7 +44,7 @@ export default (): HighlandStreamT<string | null> => {
     const userStream: HighlandStreamT<string> = exec(command, {
       cwd: conf.SITE_ROOT
     })
-      .map((x: string) => x.trim())
+      .map(x => x.toString().trim())
       .through(getHash())
       .map((x: string) => x.slice(0, 7));
 
@@ -59,8 +59,7 @@ export default (): HighlandStreamT<string | null> => {
     .map(c => c.join(':'))
     .stopOnError(console.log); // eslint-disable-line no-console
 
-  // $FlowIgnore: Cannot import stream classes as types
-  function getHash(): Function {
+  function getHash(): crypto$Hash {
     const hash = crypto.createHash('md5');
     hash.setEncoding('hex');
 

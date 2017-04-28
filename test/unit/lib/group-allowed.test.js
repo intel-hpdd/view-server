@@ -7,7 +7,7 @@ import { describe, it, expect } from '../../jasmine.js';
 
 describe('group allowed', () => {
   it('should disallow no session', () => {
-    expect(groupAllowed(GROUPS.FS_USERS, null)).toBeFalsy();
+    expect(groupAllowed(GROUPS.FS_USERS)).toBeFalsy();
   });
 
   it('should disallow fs users and admins for superuser level permissions', () => {

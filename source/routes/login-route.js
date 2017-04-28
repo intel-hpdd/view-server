@@ -47,7 +47,8 @@ export default () => {
       if (session.user.eula_state === 'pass')
         return res.redirect('/ui/');
       else
-        apiRequest('/session', {
+        apiRequest({
+          path: '/session',
           method: 'delete',
           headers: { cookie: data.cacheCookie }
         })

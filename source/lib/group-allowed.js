@@ -33,21 +33,18 @@ type Session = {
   }
 };
 
-export default (groupName: string, session: Session): boolean => {
-  const hasGroups = session &&
-    session.user &&
-    Array.isArray(session.user.groups);
+export default (
+  groupName: string,
+  session: Session = { user: { groups: [] } }
+): boolean =>
+  session.user.groups.some(group => {
+    //Superusers can do everything.
+    if (group.name === groups.SUPERUSERS) return true;
 
-  return hasGroups &&
-    session.user.groups.some(group => {
-      //Superusers can do everything.
-      if (group.name === groups.SUPERUSERS) return true;
+    //Filesystem administrators can do everything a filesystem user can do.
+    if (group.name === groups.FS_ADMINS && groupName === groups.FS_USERS)
+      return true;
 
-      //Filesystem administrators can do everything a filesystem user can do.
-      if (group.name === groups.FS_ADMINS && groupName === groups.FS_USERS)
-        return true;
-
-      // Fallback to matching on names.
-      return group.name === groupName;
-    });
-};
+    // Fallback to matching on names.
+    return group.name === groupName;
+  });

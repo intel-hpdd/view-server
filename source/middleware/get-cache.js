@@ -22,7 +22,6 @@
 // express and approved by Intel in writing.
 
 import * as fp from '@mfl/fp';
-import * as obj from '@mfl/obj';
 import highland from 'highland';
 import conf from '../conf.js';
 import apiRequest from '../lib/api-request.js';
@@ -40,56 +39,46 @@ export default (
 ) => {
   let cache;
   const calls = [
-    ['filesystem', {}],
-    ['target', {}],
-    ['host', {}],
-    ['power_control_type', {}],
-    ['server_profile', {}],
-    [
-      'lnet_configuration',
-      {
-        qs: {
-          dehydrate__host: false
-        }
+    { path: '/filesystem', qs: {} },
+    { path: '/target', qs: {} },
+    { path: '/host', qs: {} },
+    { path: '/power_control_type', qs: {} },
+    { path: '/server_profile', qs: {} },
+    {
+      path: '/lnet_configuration',
+      qs: {
+        dehydrate__host: false
       }
-    ],
-    [
-      'alert',
-      {
-        jsonMask: 'objects(affected,message)',
-        qs: {
-          active: true
-        }
+    },
+    {
+      path: '/alert',
+      jsonMask: 'objects(affected,message)',
+      qs: {
+        active: true
       }
-    ],
-    [
-      'job',
-      {
-        jsonMask: 'objects(write_locks,read_locks,description)',
-        qs: {
-          state__in: ['pending', 'tasked']
-        }
+    },
+    {
+      path: '/job',
+      jsonMask: 'objects(write_locks,read_locks,description)',
+      qs: {
+        state__in: ['pending', 'tasked']
       }
-    ]
+    }
   ];
 
   if (data.session.user != null || conf.ALLOW_ANONYMOUS_READ)
     cache = highland(calls)
-      .map(call => {
-        return apiRequest(
-          `/${call[0]}`,
-          obj.merge(
-            {
-              headers: {
-                Cookie: data.cacheCookie
-              },
-              qs: {
-                limit: 0
-              }
-            },
-            call[1]
-          )
-        );
+      .map(({ qs = {}, ...rest }) => {
+        return apiRequest({
+          headers: {
+            Cookie: data.cacheCookie
+          },
+          qs: {
+            limit: 0,
+            ...qs
+          },
+          ...rest
+        });
       })
       .parallel(calls.length)
       .pluck('body')

@@ -24,6 +24,7 @@
 import url from 'url';
 import path from 'path';
 import helpText from '@mfl/help';
+// $FlowFixMe this file does not exist at dev-time.
 import confJson from './conf.json';
 
 type confT = {

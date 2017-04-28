@@ -27,14 +27,14 @@ import childProcess from 'child_process';
 
 import type { HighlandStreamT } from 'highland';
 
-const exec: (x: string) => HighlandStreamT<string> = highland.wrapCallback(
-  childProcess.exec
-);
+const exec: (x: string) => HighlandStreamT<
+  | string
+  | Buffer> = highland.wrapCallback(childProcess.exec);
 
 export default () =>
   highland(['m', 'n', 'r', 's', 'v'])
     .flatMap(arg => exec(`uname -${arg}`))
-    .map(x => x.trim())
+    .map(x => x.toString().trim())
     .collect()
     .map(
       fp.zipObject(['sysname', 'nodename', 'release', 'version', 'machine'])

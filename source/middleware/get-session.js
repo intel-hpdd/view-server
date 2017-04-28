@@ -35,7 +35,8 @@ export type dataT = {
 export default (req: routerReqT, res: routerResT, next: Function) => {
   const cookie: string = req.clientReq.headers.cookie || '';
 
-  apiRequest('/session', {
+  apiRequest({
+    path: '/session',
     headers: {
       cookie
     }
@@ -55,8 +56,8 @@ export default (req: routerReqT, res: routerResT, next: Function) => {
         cache: {},
         cacheCookie: response.headers['set-cookie']
           .map(
-            cookieString =>
-              cookieString.match(/((?:csrftoken|sessionid)=[^;]+;)/)[0]
+            (x: string) =>
+              (x.match(/((?:csrftoken|sessionid)=[^;]+;)/) || [''])[0]
           )
           .join(' ')
       };

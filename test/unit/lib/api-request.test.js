@@ -34,11 +34,11 @@ describe('api-request', () => {
   });
 
   describe('with given path and options', () => {
-    let path, options, hostOptions;
+    let options, hostOptions;
 
     beforeEach(() => {
-      path = '/session';
       options = {
+        path: '/session',
         headers: {
           cookie: {}
         }
@@ -50,7 +50,7 @@ describe('api-request', () => {
         port: '8000'
       };
 
-      apiRequest(path, options);
+      apiRequest(options);
     });
 
     it('should call getReq', () => {
@@ -59,9 +59,9 @@ describe('api-request', () => {
 
     it('should invoke the bufferReqeust with the api formatted path and options', () => {
       expect(req.bufferJsonRequest).toHaveBeenCalledWith({
-        path: '/api/session/',
         ...options,
-        ...hostOptions
+        ...hostOptions,
+        path: '/api/session/'
       });
     });
   });
