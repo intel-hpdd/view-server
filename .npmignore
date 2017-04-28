@@ -12,6 +12,3 @@ conf.json
 /test
 /source
 /coverage
-/bin
-/dist/test
-run_test.sh
