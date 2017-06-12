@@ -35,6 +35,6 @@ export default function checkForProblems(
       const description = `The following services are not running: \n\n${stopped.join(
         '\n'
       )}\n\n`;
-      renderRequestError(res, () => description, new Error());
+      renderRequestError(res, () => description)(new Error());
     });
 }

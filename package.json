@@ -37,16 +37,16 @@
   "dependencies": {
     "@mfl/fp": "^8.0.3",
     "@mfl/help": "1.4.0",
-    "@mfl/logger": "1.0.1",
+    "@mfl/logger": "^1.0.2",
     "@mfl/obj": "^6.0.3",
     "@mfl/req": "^3.0.4",
     "@mfl/router": "6.0.1",
-    "@mfl/xml-2-json": "1.0.1",
+    "@mfl/xml-2-json": "^1.0.2",
     "highland": "3.0.0-beta.4",
     "lodash": "4.17.4"
   },
   "devDependencies": {
-    "@mfl/flow-highland": "^4.2.6",
+    "@mfl/flow-highland": "^4.2.7",
     "@mfl/flow-jasmine": "1.6.1",
     "@mfl/jasmine-n-matchers": "2.1.1",
     "babel-eslint": "7.2.3",
@@ -60,7 +60,7 @@
     "eslint-plugin-flowtype": "^2.34.0",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-prettier": "^2.1.1",
-    "flow-bin": "0.45.0",
+    "flow-bin": "^0.47.0",
     "jest": "^19.0.2",
     "pre-commit": "1.2.2",
     "prettier": "^1.4.4",
