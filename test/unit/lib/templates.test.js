@@ -12,7 +12,8 @@ describe('templates', () => {
 
   beforeEach(() => {
     mockGetDirTreeSync = jasmine.createSpy('getDirTreeSync').and.returnValue({
-      'e.html': '<$= a $> <$= t("f.html") $> <$= conf.TEMPLATE_ROOT $> <$- html $>',
+      'e.html':
+        '<$= a $> <$= t("f.html") $> <$= conf.TEMPLATE_ROOT $> <$- html $>',
       'f.html': 'bar'
     });
     jest.mock('../source/lib/get-dir-tree-sync.js', () => mockGetDirTreeSync);

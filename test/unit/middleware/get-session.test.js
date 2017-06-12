@@ -88,7 +88,8 @@ describe('get session', () => {
         session: 'stuff'
       },
       cache: {},
-      cacheCookie: 'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
+      cacheCookie:
+        'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
     });
   });
 
