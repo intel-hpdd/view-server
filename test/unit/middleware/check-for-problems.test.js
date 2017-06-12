@@ -39,7 +39,9 @@ describe('check for problems', () => {
       () => mockGetStoppedSupervisorServices
     );
 
-    mockRenderRequestError = jasmine.createSpy('renderRequestError');
+    mockRenderRequestError = jasmine
+      .createSpy('renderRequestError')
+      .and.returnValue(() => {});
     jest.mock(
       '../source/lib/render-request-error.js',
       () => mockRenderRequestError
