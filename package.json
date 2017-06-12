@@ -1,6 +1,6 @@
 {
   "name": "@mfl/view-server",
-  "version": "6.3.4",
+  "version": "6.3.5",
   "description": "Serves the HTML pages for the MFL GUI.",
   "main": "index.js",
   "scripts": {
