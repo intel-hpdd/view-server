@@ -1,7 +1,7 @@
 {
-  "name": "@mfl/view-server",
+  "name": "@iml/view-server",
   "version": "6.3.5",
-  "description": "Serves the HTML pages for the MFL GUI.",
+  "description": "Serves the HTML pages for the IML GUI.",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint ./",
@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git@github.com:intel-hpdd/view-server.git"
   },
-  "author": "MFL Team",
+  "author": "IML Team",
   "license": "MIT",
   "jest": {
     "resetModules": true,
