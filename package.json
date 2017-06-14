@@ -41,7 +41,6 @@
     "@mfl/obj": "^6.0.3",
     "@mfl/req": "^3.0.4",
     "@mfl/router": "6.0.1",
-    "@mfl/xml-2-json": "^1.0.2",
     "highland": "3.0.0-beta.4",
     "lodash": "4.17.4"
   },

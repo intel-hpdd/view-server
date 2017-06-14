@@ -22,7 +22,8 @@ export default {
     'child_process',
     'crypto',
     'stream',
-    'querystring'
+    'querystring',
+    'net'
   ],
   plugins: [
     json(),
