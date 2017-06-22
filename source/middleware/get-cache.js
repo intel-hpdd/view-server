@@ -71,7 +71,7 @@ export default (
 
   cache
     .collect()
-    .map(fp.zipObject(calls.map(call => call[0])))
+    .map(fp.zipObject(calls.map(call => call.path.slice(1))))
     .stopOnError(
       renderRequestError(
         res,
