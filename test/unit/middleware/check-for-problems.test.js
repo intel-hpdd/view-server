@@ -14,19 +14,11 @@ describe('check for problems', () => {
     req,
     res,
     next,
-    mockLogger,
     mockRenderRequestError,
     mockGetStoppedSupervisorServices,
     push;
 
   beforeEach(() => {
-    mockLogger = {
-      child: jasmine.createSpy('child').and.returnValue({
-        error: jasmine.createSpy('error')
-      })
-    };
-    jest.mock('../source/logger.js', () => mockLogger);
-
     mockGetStoppedSupervisorServices = jasmine
       .createSpy('getStoppedSupervisorServices')
       .and.returnValue(
@@ -58,17 +50,6 @@ describe('check for problems', () => {
       .default;
 
     checkForProblems(req, res, next);
-  });
-
-  it('should tell supervisor is down on error', () => {
-    push(new Error('socket error'));
-    push(null, highland.nil);
-
-    const message = mockRenderRequestError.calls.mostRecent().args[1]();
-
-    expect(message).toBe(
-      'The following services are not running: \n\nsupervisor\n\n'
-    );
   });
 
   it('should report what services are down', () => {

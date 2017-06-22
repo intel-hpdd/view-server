@@ -5,25 +5,24 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import xml2Json from '@mfl/xml-2-json';
-import getSupervisorCredentials from './get-supervisor-credentials.js';
-import getServicesRequest from './get-services-request.js';
-import readResponse from './read-response.js';
-
+import net from 'net';
+import highland from 'highland';
 import type { HighlandStreamT } from 'highland';
 
-export default (): HighlandStreamT<string> =>
-  getSupervisorCredentials()
-    .flatMap(getServicesRequest)
-    .map(x => x.body)
-    .map((xml: string) => {
-      const jsonOrError = xml2Json(xml);
-
-      if (jsonOrError instanceof Error) throw jsonOrError;
-
-      return jsonOrError;
+export default (): HighlandStreamT<string> => {
+  const c = net.connect('/var/run/supervisor-status.sock');
+  return highland(c)
+    .collect()
+    .map(xs => xs.join(''))
+    .map(JSON.parse)
+    .map(x => {
+      if (x.result) return x.result;
+      else throw new Error('supervisor status service returned an error.');
     })
-    .map(readResponse)
     .flatten()
     .filter(service => service.statename !== 'RUNNING')
-    .pluck('name');
+    .pluck('name')
+    .errors((err: Error, push) => {
+      push(null, 'supervisor');
+    });
+};
