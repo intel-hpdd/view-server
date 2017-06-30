@@ -1,4 +1,4 @@
-import * as obj from '@mfl/obj';
+import * as obj from '@iml/obj';
 import highland from 'highland';
 
 describe('get cache', () => {

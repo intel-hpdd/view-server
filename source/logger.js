@@ -6,7 +6,7 @@
 // license that can be found in the LICENSE file.
 
 import path from 'path';
-import { default as logger, serializers, LEVELS } from '@mfl/logger';
+import { default as logger, serializers, LEVELS } from '@iml/logger';
 import conf from './conf.js';
 
 const level = conf.NODE_ENV === 'production' ? LEVELS.ERROR : LEVELS.INFO;

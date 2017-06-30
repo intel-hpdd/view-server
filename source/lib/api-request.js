@@ -6,11 +6,11 @@
 // license that can be found in the LICENSE file.
 
 import url from 'url';
-import getReq from '@mfl/req';
+import getReq from '@iml/req';
 import conf from '../conf.js';
 
 import type { HighlandStreamT } from 'highland';
-import type { InputOptions, JsonResponse } from '@mfl/req';
+import type { InputOptions, JsonResponse } from '@iml/req';
 
 const req = getReq('https');
 

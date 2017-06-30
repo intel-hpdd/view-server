@@ -5,7 +5,7 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import * as obj from '@mfl/obj';
+import * as obj from '@iml/obj';
 import { templateSettings, template } from 'lodash';
 import getDirTreeSync from './get-dir-tree-sync.js';
 import conf from '../conf.js';

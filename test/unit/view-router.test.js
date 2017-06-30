@@ -12,7 +12,7 @@ describe('view router', () => {
     };
 
     mockGetRouter = jest.fn(r);
-    jest.mock('@mfl/router', () => mockGetRouter);
+    jest.mock('@iml/router', () => mockGetRouter);
 
     mockCheckForProblems = function checkForProblems() {};
     jest.mock(
