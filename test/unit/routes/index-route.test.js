@@ -1,40 +1,31 @@
-import {
-  describe,
-  beforeEach,
-  jasmine,
-  jest,
-  it,
-  expect
-} from '../../jasmine.js';
-
 describe('index route', () => {
   let mockIndexHandlers, mockCheckGroup, mockViewRouter;
 
   beforeEach(() => {
     mockIndexHandlers = {
-      oldHandler: jasmine.createSpy('oldHandler'),
-      newHandler: jasmine.createSpy('newHandler')
+      oldHandler: jest.fn(),
+      newHandler: jest.fn()
     };
 
-    jest.mock('../source/lib/index-handlers.js', () => mockIndexHandlers);
+    jest.mock('../../../source/lib/index-handlers.js', () => mockIndexHandlers);
 
     mockCheckGroup = {
-      fsAdmins: jasmine.createSpy('fsAdmins'),
-      fsUsers: jasmine.createSpy('fsUsers')
+      fsAdmins: jest.fn(),
+      fsUsers: jest.fn()
     };
 
-    jest.mock('../source/lib/check-group.js', () => mockCheckGroup);
+    jest.mock('../../../source/lib/check-group.js', () => mockCheckGroup);
 
     const pathRouter = {
-      get: jasmine.createSpy('get').and.callFake(() => pathRouter)
+      get: jest.fn(() => pathRouter)
     };
 
     mockViewRouter = {
-      get: jasmine.createSpy('get'),
-      route: jasmine.createSpy('route').and.returnValue(pathRouter)
+      get: jest.fn(),
+      route: jest.fn(() => pathRouter)
     };
 
-    jest.mock('../source/view-router.js', () => mockViewRouter);
+    jest.mock('../../../source/view-router.js', () => mockViewRouter);
 
     require('../../../source/routes/index-route.js').default();
   });

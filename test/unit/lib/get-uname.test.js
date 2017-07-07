@@ -1,18 +1,9 @@
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('get uname', () => {
   let getUname, mockChildProcess;
 
   beforeEach(() => {
     mockChildProcess = {
-      exec: jasmine.createSpy('exec').and.callFake((command, cb) => {
+      exec: jest.fn((command, cb) => {
         const commands = {
           'uname -m': 'x86_64\n',
           'uname -n': 'iml.local\n',

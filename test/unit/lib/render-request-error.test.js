@@ -1,35 +1,24 @@
 import highland from 'highland';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('render request error', () => {
   let renderRequestError, mockGetUname, mockTemplates, stream, res;
 
   beforeEach(() => {
     res = {
       clientRes: {
-        end: jasmine.createSpy('end')
+        end: jest.fn()
       }
     };
 
     mockTemplates = {
-      'backend_error.html': jasmine
-        .createSpy('backend error')
-        .and.returnValue('backend error')
+      'backend_error.html': jest.fn(() => 'backend error')
     };
-    jest.mock('../source/lib/templates.js', () => mockTemplates);
+    jest.mock('../../../source/lib/templates.js', () => mockTemplates);
 
     stream = highland();
 
-    mockGetUname = jasmine.createSpy('getUname').and.returnValue(stream);
-    jest.mock('../source/lib/get-uname.js', () => mockGetUname);
+    mockGetUname = jest.fn(() => stream);
+    jest.mock('../../../source/lib/get-uname.js', () => mockGetUname);
 
     renderRequestError = require('../../../source/lib/render-request-error')
       .default;

@@ -1,14 +1,5 @@
 import url from 'url';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('api-request', () => {
   let mockConf, req, mockGetReq, apiRequest;
 
@@ -16,21 +7,21 @@ describe('api-request', () => {
     mockConf = {
       SERVER_HTTP_URL: url.parse('http://localhost:8000')
     };
-    jest.mock('../source/conf.js', () => mockConf);
+    jest.mock('../../../source/conf.js', () => mockConf);
 
     req = {
-      bufferJsonRequest: jasmine.createSpy('bufferRequest'),
+      bufferJsonRequest: jest.fn(),
       waitForRequests: {}
     };
 
-    mockGetReq = jasmine.createSpy('getReq').and.returnValue(req);
+    mockGetReq = jest.fn(() => req);
     jest.mock('@mfl/req', () => mockGetReq);
 
     apiRequest = require('../../../source/lib/api-request').default;
   });
 
   it('should return a function', () => {
-    expect(apiRequest).toEqual(jasmine.any(Function));
+    expect(apiRequest).toEqual(expect.any(Function));
   });
 
   describe('with given path and options', () => {

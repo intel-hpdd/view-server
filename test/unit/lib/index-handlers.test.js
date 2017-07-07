@@ -1,14 +1,5 @@
 import * as fp from '@mfl/fp';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('index handlers', () => {
   let indexHandlers, mockTemplates, mockConf, req, res, data, next;
 
@@ -17,10 +8,10 @@ describe('index handlers', () => {
 
     res = {
       clientRes: {
-        setHeader: jasmine.createSpy('setHeader'),
-        end: jasmine.createSpy('end')
+        setHeader: jest.fn(),
+        end: jest.fn()
       },
-      redirect: jasmine.createSpy('redirect')
+      redirect: jest.fn()
     };
 
     data = {
@@ -31,18 +22,18 @@ describe('index handlers', () => {
       }
     };
 
-    next = jasmine.createSpy('next');
+    next = jest.fn();
 
     mockTemplates = {
-      'index.html': jasmine.createSpy('index').and.returnValue('index'),
-      'base.html': jasmine.createSpy('base').and.returnValue('base')
+      'index.html': jest.fn(() => 'index'),
+      'base.html': jest.fn(() => 'base')
     };
-    jest.mock('../source/lib/templates.js', () => mockTemplates);
+    jest.mock('../../../source/lib/templates.js', () => mockTemplates);
 
     mockConf = {
       get: fp.always(false)
     };
-    jest.mock('../source/conf.js', () => mockConf);
+    jest.mock('../../../source/conf.js', () => mockConf);
 
     indexHandlers = require('../../../source/lib/index-handlers').default;
   });
