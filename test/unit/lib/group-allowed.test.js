@@ -3,8 +3,6 @@
 import groupAllowed from '../../../source/lib/group-allowed.js';
 import GROUPS from '../../../source/lib/groups.js';
 
-import { describe, it, expect } from '../../jasmine.js';
-
 describe('group allowed', () => {
   it('should disallow no session', () => {
     expect(groupAllowed(GROUPS.FS_USERS)).toBeFalsy();

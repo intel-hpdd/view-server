@@ -1,14 +1,5 @@
 import highland from 'highland';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('login route', () => {
   let mockViewRouter,
     mockTemplates,
@@ -25,45 +16,44 @@ describe('login route', () => {
     req = {};
 
     res = {
-      redirect: jasmine.createSpy('redirect'),
+      redirect: jest.fn(),
       clientRes: {
-        setHeader: jasmine.createSpy('setHeader'),
-        end: jasmine.createSpy('end')
+        setHeader: jest.fn(),
+        end: jest.fn()
       }
     };
 
-    next = jasmine.createSpy('next');
+    next = jest.fn();
 
     mockTemplates = {
-      'index.html': jasmine.createSpy('indexTemplate').and.returnValue('foo')
+      'index.html': jest.fn(() => 'foo')
     };
-    jest.mock('../source/lib/templates.js', () => mockTemplates);
+    jest.mock('../../../source/lib/templates.js', () => mockTemplates);
 
     pathRouter = {
-      get: jasmine.createSpy('get').and.callFake(() => {
+      get: jest.fn(() => {
         return pathRouter;
       })
     };
 
     mockViewRouter = {
-      route: jasmine.createSpy('route').and.returnValue(pathRouter)
+      route: jest.fn(() => pathRouter)
     };
-    jest.mock('../source/view-router.js', () => mockViewRouter);
+    jest.mock('../../../source/view-router.js', () => mockViewRouter);
 
-    mockApiRequest = jasmine.createSpy('apiRequest').and.returnValue(
+    mockApiRequest = jest.fn(() =>
       highland(_push_ => {
         push = _push_;
       })
     );
-    jest.mock('../source/lib/api-request.js', () => mockApiRequest);
+    jest.mock('../../../source/lib/api-request.js', () => mockApiRequest);
 
-    renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
+    renderRequestErrorInner = jest.fn();
 
-    mockRenderRequestError = jasmine
-      .createSpy('renderRequestError')
-      .and.returnValue(renderRequestErrorInner);
+    mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
+
     jest.mock(
-      '../source/lib/render-request-error.js',
+      '../../../source/lib/render-request-error.js',
       () => mockRenderRequestError
     );
 
@@ -85,7 +75,7 @@ describe('login route', () => {
         }
       };
 
-      handler = pathRouter.get.calls.first().args[0];
+      handler = pathRouter.get.mock.calls[0][0];
     });
 
     it('should go to next if user is undefined', () => {
@@ -134,7 +124,7 @@ describe('login route', () => {
 
         expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
           new Error('boom!'),
-          jasmine.any(Function)
+          expect.any(Function)
         );
       });
     });
@@ -142,7 +132,7 @@ describe('login route', () => {
 
   describe('render login', () => {
     beforeEach(() => {
-      const handler = pathRouter.get.calls.mostRecent().args[0];
+      const handler = pathRouter.get.mock.calls[1][0];
       handler(req, res, {}, next);
     });
 

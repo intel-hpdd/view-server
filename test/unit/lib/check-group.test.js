@@ -3,29 +3,27 @@
 import GROUPS from '../../../source/lib/groups.js';
 import checkGroup from '../../../source/lib/check-group.js';
 
-import { describe, beforeEach, it, jasmine, expect } from '../../jasmine.js';
-
 describe('check group', function() {
   let req, res, data, next;
 
   beforeEach(function() {
     req = {};
     res = {
-      redirect: jasmine.createSpy('redirect')
+      redirect: jest.fn()
     };
     data = {
       cache: {
         session: {}
       }
     };
-    next = jasmine.createSpy('next');
+    next = jest.fn();
   });
 
   it('should return the expected interface', function() {
     expect(checkGroup).toEqual({
-      superusers: jasmine.any(Function),
-      fsAdmins: jasmine.any(Function),
-      fsUsers: jasmine.any(Function)
+      superusers: expect.any(Function),
+      fsAdmins: expect.any(Function),
+      fsUsers: expect.any(Function)
     });
   });
 

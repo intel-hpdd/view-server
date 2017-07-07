@@ -1,14 +1,5 @@
 import highland from 'highland';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('check for problems', () => {
   let checkForProblems,
     req,
@@ -19,23 +10,19 @@ describe('check for problems', () => {
     push;
 
   beforeEach(() => {
-    mockGetStoppedSupervisorServices = jasmine
-      .createSpy('getStoppedSupervisorServices')
-      .and.returnValue(
-        highland(_push_ => {
-          push = _push_;
-        })
-      );
+    mockGetStoppedSupervisorServices = jest.fn(() =>
+      highland(_push_ => {
+        push = _push_;
+      })
+    );
     jest.mock(
-      '../source/supervisor/get-stopped-supervisor-services.js',
+      '../../../source/supervisor/get-stopped-supervisor-services.js',
       () => mockGetStoppedSupervisorServices
     );
 
-    mockRenderRequestError = jasmine
-      .createSpy('renderRequestError')
-      .and.returnValue(() => {});
+    mockRenderRequestError = jest.fn(() => () => {});
     jest.mock(
-      '../source/lib/render-request-error.js',
+      '../../../source/lib/render-request-error.js',
       () => mockRenderRequestError
     );
 
@@ -44,7 +31,7 @@ describe('check for problems', () => {
     };
     res = {};
 
-    next = jasmine.createSpy('next');
+    next = jest.fn();
 
     checkForProblems = require('../../../source/middleware/check-for-problems')
       .default;
@@ -57,7 +44,7 @@ describe('check for problems', () => {
     push(null, 'autoreload');
     push(null, highland.nil);
 
-    const message = mockRenderRequestError.calls.mostRecent().args[1]();
+    const message = mockRenderRequestError.mock.calls[0][1]();
 
     expect(message).toBe(
       'The following services are not running: \n\ncorosync\nautoreload\n\n'

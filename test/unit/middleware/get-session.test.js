@@ -1,14 +1,5 @@
 import highland from 'highland';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('get session', () => {
   let getSession,
     mockApiRequest,
@@ -30,13 +21,13 @@ describe('get session', () => {
 
     res = {
       clientRes: {
-        setHeader: jasmine.createSpy('setHeader')
+        setHeader: jest.fn()
       }
     };
 
-    next = jasmine.createSpy('next');
+    next = jest.fn();
 
-    mockApiRequest = jasmine.createSpy('apiRequest').and.returnValue(
+    mockApiRequest = jest.fn(() =>
       highland(_push_ => {
         push = (err, val) => {
           _push_(err, val);
@@ -45,16 +36,14 @@ describe('get session', () => {
       })
     );
 
-    jest.mock('../source/lib/api-request.js', () => mockApiRequest);
+    jest.mock('../../../source/lib/api-request.js', () => mockApiRequest);
 
-    renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
+    renderRequestErrorInner = jest.fn();
 
-    mockRenderRequestError = jasmine
-      .createSpy('renderRequestError')
-      .and.returnValue(renderRequestErrorInner);
+    mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
 
     jest.mock(
-      '../source/lib/render-request-error.js',
+      '../../../source/lib/render-request-error.js',
       () => mockRenderRequestError
     );
 
@@ -98,7 +87,7 @@ describe('get session', () => {
 
     expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
       new Error('boom!'),
-      jasmine.any(Function)
+      expect.any(Function)
     );
   });
 });

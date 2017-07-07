@@ -1,5 +1,3 @@
-import { describe, beforeEach, it, jasmine, expect, jest } from '../jasmine.js';
-
 describe('view server', () => {
   let mockHttp,
     mockHttps,
@@ -13,14 +11,14 @@ describe('view server', () => {
 
   beforeEach(() => {
     server = {
-      listen: jasmine.createSpy('listen').and.callFake(function s() {
+      listen: jest.fn(function s() {
         return server;
       }),
-      on: jasmine.createSpy('on')
+      on: jest.fn()
     };
 
     mockHttp = {
-      createServer: jasmine.createSpy('createServer').and.returnValue(server),
+      createServer: jest.fn(() => server),
       globalAgent: {
         maxSockets: {}
       }
@@ -35,44 +33,44 @@ describe('view server', () => {
     jest.mock('https', () => mockHttps);
 
     mockViewRouter = {
-      go: jasmine.createSpy('go')
+      go: jest.fn()
     };
-    jest.mock('../source/view-router.js', () => mockViewRouter);
+    jest.mock('../../source/view-router.js', () => mockViewRouter);
 
     mockConf = {
       VIEW_SERVER_PORT: 8900
     };
-    jest.mock('../source/conf.js', () => mockConf);
+    jest.mock('../../source/conf.js', () => mockConf);
 
-    mockLoginRoute = jasmine.createSpy('loginRoute');
-    jest.mock('../source/routes/login-route.js', () => mockLoginRoute);
+    mockLoginRoute = jest.fn();
+    jest.mock('../../source/routes/login-route.js', () => mockLoginRoute);
 
-    mockIndexRoute = jasmine.createSpy('indexRoute');
-    jest.mock('../source/routes/index-route.js', () => mockIndexRoute);
+    mockIndexRoute = jest.fn();
+    jest.mock('../../source/routes/index-route.js', () => mockIndexRoute);
 
     mockApi = {
-      waitForRequests: jasmine.createSpy('waitForRequests')
+      waitForRequests: jest.fn()
     };
-    jest.mock('../source/lib/api-request.js', () => mockApi);
+    jest.mock('../../source/lib/api-request.js', () => mockApi);
 
     close = require('../../source/view-server').default();
   });
 
   it('should return a close function', () => {
-    expect(close).toEqual(jasmine.any(Function));
+    expect(close).toEqual(expect.any(Function));
   });
 
   it('should call loginRoute', () => {
-    expect(mockLoginRoute).toHaveBeenCalledOnce();
+    expect(mockLoginRoute).toHaveBeenCalledTimes(1);
   });
 
   it('should call indexRoute', () => {
-    expect(mockIndexRoute).toHaveBeenCalledOnce();
+    expect(mockIndexRoute).toHaveBeenCalledTimes(1);
   });
 
   it('should call createServer', () => {
     expect(mockHttp.createServer).toHaveBeenCalledOnceWith(
-      jasmine.any(Function)
+      expect.any(Function)
     );
   });
 
@@ -90,12 +88,12 @@ describe('view server', () => {
       };
 
       res = {
-        writeHead: jasmine.createSpy('writeHead'),
-        end: jasmine.createSpy('end'),
-        setHeader: jasmine.createSpy('setHeader')
+        writeHead: jest.fn(),
+        end: jest.fn(),
+        setHeader: jest.fn()
       };
 
-      const handler = mockHttp.createServer.calls.mostRecent().args[0];
+      const handler = mockHttp.createServer.mock.calls[0][0];
 
       handler(req, res);
     });
@@ -109,14 +107,14 @@ describe('view server', () => {
         },
         {
           clientRes: res,
-          redirect: jasmine.any(Function)
+          redirect: expect.any(Function)
         }
       );
     });
 
     describe('redirecting', () => {
       beforeEach(() => {
-        mockViewRouter.go.calls.mostRecent().args[2].redirect('/');
+        mockViewRouter.go.mock.calls[0][2].redirect('/');
       });
 
       it('should have a method to redirect on the response object', () => {
@@ -137,7 +135,7 @@ describe('view server', () => {
       });
 
       it('should end the response', () => {
-        expect(res.end).toHaveBeenCalledOnce();
+        expect(res.end).toHaveBeenCalledTimes(1);
       });
     });
   });
@@ -146,22 +144,19 @@ describe('view server', () => {
     let spy, fn;
 
     beforeEach(() => {
-      spy = jasmine.createSpy('spy');
+      spy = jest.fn();
 
       close(spy);
 
-      fn = server.on.calls.argsFor(0)[1];
+      fn = server.on.mock.calls[0][1];
     });
 
     it('should register a close event', () => {
-      expect(server.on).toHaveBeenCalledOnceWith(
-        'close',
-        jasmine.any(Function)
-      );
+      expect(server.on).toHaveBeenCalledOnceWith('close', expect.any(Function));
     });
 
     it('should throw if server close throws', () => {
-      const fn = server.on.calls.argsFor(0)[1];
+      const fn = server.on.mock.calls[0][1];
 
       expect(expectToThrow).toThrow(new Error('boom!'));
 

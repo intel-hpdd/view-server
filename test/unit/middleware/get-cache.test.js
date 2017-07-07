@@ -1,15 +1,6 @@
 import * as obj from '@mfl/obj';
 import highland from 'highland';
 
-import {
-  describe,
-  beforeEach,
-  it,
-  jasmine,
-  expect,
-  jest
-} from '../../jasmine.js';
-
 describe('get cache', () => {
   let mockConf,
     mockApiRequest,
@@ -58,14 +49,14 @@ describe('get cache', () => {
     ];
 
     mockConf = {
-      get: jasmine.createSpy('get').and.returnValue(false)
+      get: jest.fn(() => false)
     };
-    jest.mock('../source/conf.js', () => mockConf);
+    jest.mock('../../../source/conf.js', () => mockConf);
 
     req = {};
     res = {};
 
-    next = jasmine.createSpy('next');
+    next = jest.fn();
 
     data = {
       session: {
@@ -100,16 +91,15 @@ describe('get cache', () => {
         'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
     };
 
-    mockApiRequest = jasmine.createSpy('apiRequest');
-    jest.mock('../source/lib/api-request.js', () => mockApiRequest);
+    mockApiRequest = jest.fn();
+    jest.mock('../../../source/lib/api-request.js', () => mockApiRequest);
 
-    renderRequestErrorInner = jasmine.createSpy('renderRequestErrorInner');
+    renderRequestErrorInner = jest.fn();
 
-    mockRenderRequestError = jasmine
-      .createSpy('renderRequestError')
-      .and.returnValue(renderRequestErrorInner);
+    mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
+
     jest.mock(
-      '../source/lib/render-request-error.js',
+      '../../../source/lib/render-request-error.js',
       () => mockRenderRequestError
     );
 
@@ -136,7 +126,7 @@ describe('get cache', () => {
 
   describe('successful responses', () => {
     beforeEach(() => {
-      mockApiRequest.and.callFake(endpoint => {
+      mockApiRequest.mockImplementation(endpoint => {
         return highland([
           {
             body: {
@@ -171,7 +161,7 @@ describe('get cache', () => {
         ];
       });
 
-      expect(mockApiRequest.calls.allArgs()).toEqual(fullCalls);
+      expect(mockApiRequest.mock.calls).toEqual(fullCalls);
     });
 
     it('should return the result of each endpoint', () => {
@@ -191,7 +181,7 @@ describe('get cache', () => {
 
   describe('error response', () => {
     beforeEach(() => {
-      mockApiRequest.and.callFake(opts => {
+      mockApiRequest.mockImplementation(opts => {
         if (opts.path === '/target') throw new Error('boom!');
         else
           return highland([
@@ -209,14 +199,14 @@ describe('get cache', () => {
     it('should push the response to renderRequestError', () => {
       expect(mockRenderRequestError).toHaveBeenCalledOnceWith(
         res,
-        jasmine.any(Function)
+        expect.any(Function)
       );
     });
 
     it('should render an error page on error', () => {
       expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
         new Error('boom!'),
-        jasmine.any(Function)
+        expect.any(Function)
       );
     });
   });

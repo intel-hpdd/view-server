@@ -1,5 +1,3 @@
-import { describe, beforeEach, it, jasmine, expect, jest } from '../jasmine.js';
-
 describe('view router', () => {
   let mockGetRouter,
     router,
@@ -10,23 +8,23 @@ describe('view router', () => {
 
   beforeEach(() => {
     router = {
-      addStart: jasmine.createSpy('addStart').and.callFake(r)
+      addStart: jest.fn(r)
     };
 
-    mockGetRouter = jasmine.createSpy('getRouter').and.callFake(r);
+    mockGetRouter = jest.fn(r);
     jest.mock('@mfl/router', () => mockGetRouter);
 
     mockCheckForProblems = function checkForProblems() {};
     jest.mock(
-      '../source/middleware/check-for-problems.js',
+      '../../source/middleware/check-for-problems.js',
       () => mockCheckForProblems
     );
 
     mockGetSession = function getSession() {};
-    jest.mock('../source/middleware/get-session.js', () => mockGetSession);
+    jest.mock('../../source/middleware/get-session.js', () => mockGetSession);
 
     mockGetCache = function getCache() {};
-    jest.mock('../source/middleware/get-cache', () => mockGetCache);
+    jest.mock('../../source/middleware/get-cache', () => mockGetCache);
 
     instance = require('../../source/view-router').default;
 

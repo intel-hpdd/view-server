@@ -66,7 +66,7 @@ conf = Object.assign({}, conf, {
   API_URL: url.format(parsedServerHttpUrl),
   HOST_NAME: parsedServerHttpUrl.hostname,
   PARSED_API_URL: parsedServerHttpUrl,
-  TEMPLATE_ROOT_NEW: modulesPath('@iml', 'gui') + path.sep,
+  TEMPLATE_ROOT_NEW: modulesPath('@iml', 'gui', 'dist') + path.sep,
   TEMPLATE_ROOT_OLD: modulesPath('@iml', 'old-gui', 'templates') + path.sep,
   HELP_TEXT: helpText
 });
