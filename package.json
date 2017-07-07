@@ -13,11 +13,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "pre-commit": [
-    "flow",
-    "eslint",
-    "test"
-  ],
+  "pre-commit": ["flow", "eslint", "test"],
   "repository": {
     "type": "git",
     "url": "git@github.com:intel-hpdd/view-server.git"
@@ -25,18 +21,18 @@
   "author": "IML Team",
   "license": "MIT",
   "dependencies": {
-    "@mfl/fp": "^8.0.3",
-    "@mfl/help": "1.4.0",
-    "@mfl/logger": "^1.0.2",
-    "@mfl/obj": "^6.0.3",
-    "@mfl/req": "^3.0.4",
-    "@mfl/router": "6.0.1",
+    "@iml/fp": "^8.0.3",
+    "@iml/help": "1.4.0",
+    "@iml/logger": "^1.0.2",
+    "@iml/obj": "^6.0.3",
+    "@iml/req": "^3.0.4",
+    "@iml/router": "6.0.2",
     "highland": "3.0.0-beta.4",
     "lodash": "4.17.4"
   },
   "devDependencies": {
-    "@mfl/flow-highland": "^4.2.8",
-    "@mfl/flow-jasmine": "1.6.1",
+    "@iml/flow-highland": "^4.2.8",
+    "@iml/flow-jasmine": "1.6.1",
     "babel-eslint": "7.2.3",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-lodash": "3.2.11",

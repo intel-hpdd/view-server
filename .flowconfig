@@ -5,8 +5,8 @@
 
 [libs]
 flow-typed/npm
-node_modules/@mfl/flow-highland/flow-typed
-node_modules/@mfl/flow-jasmine/flow-typed
+node_modules/@iml/flow-highland/flow-typed
+node_modules/@iml/flow-jasmine/flow-typed
 
 [options]
 esproposal.class_instance_fields=enable

@@ -1,4 +1,4 @@
-import * as fp from '@mfl/fp';
+import * as fp from '@iml/fp';
 
 describe('index handlers', () => {
   let indexHandlers, mockTemplates, mockConf, req, res, data, next;

@@ -15,7 +15,7 @@ describe('api-request', () => {
     };
 
     mockGetReq = jest.fn(() => req);
-    jest.mock('@mfl/req', () => mockGetReq);
+    jest.mock('@iml/req', () => mockGetReq);
 
     apiRequest = require('../../../source/lib/api-request').default;
   });
