@@ -7,6 +7,7 @@ script:
 - yarn run eslint
 - yarn run flow
 - yarn run test
+before_deploy: yarn postversion
 deploy:
   provider: npm
   email: joe.grund@intel.com
