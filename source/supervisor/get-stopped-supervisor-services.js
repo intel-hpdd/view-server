@@ -10,7 +10,7 @@ import highland from 'highland';
 import type { HighlandStreamT } from 'highland';
 
 export default (): HighlandStreamT<string> => {
-  const c = net.connect('/var/run/supervisor-status.sock');
+  const c = net.connect('/var/run/iml-supervisor-status.sock');
   return highland(c)
     .collect()
     .map(xs => xs.join(''))
