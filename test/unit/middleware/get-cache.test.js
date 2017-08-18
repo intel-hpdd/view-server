@@ -63,10 +63,8 @@ describe('get cache', () => {
         read_enabled: true,
         resource_uri: '/api/session/',
         user: {
-          accepted_eula: true,
           alert_subscriptions: [],
           email: 'debug@debug.co.eh',
-          eula_state: 'pass',
           first_name: '',
           full_name: '',
           groups: [

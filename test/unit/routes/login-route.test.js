@@ -1,16 +1,5 @@
-import highland from 'highland';
-
 describe('login route', () => {
-  let mockViewRouter,
-    mockTemplates,
-    req,
-    res,
-    next,
-    push,
-    mockApiRequest,
-    pathRouter,
-    mockRenderRequestError,
-    renderRequestErrorInner;
+  let mockViewRouter, mockTemplates, req, res, next, pathRouter;
 
   beforeEach(() => {
     req = {};
@@ -41,93 +30,11 @@ describe('login route', () => {
     };
     jest.mock('../../../source/view-router.js', () => mockViewRouter);
 
-    mockApiRequest = jest.fn(() =>
-      highland(_push_ => {
-        push = _push_;
-      })
-    );
-    jest.mock('../../../source/lib/api-request.js', () => mockApiRequest);
-
-    renderRequestErrorInner = jest.fn();
-
-    mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
-
-    jest.mock(
-      '../../../source/lib/render-request-error.js',
-      () => mockRenderRequestError
-    );
-
     require('../../../source/routes/login-route').default();
   });
 
   it('should register a path for the login route', () => {
     expect(mockViewRouter.route).toHaveBeenCalledOnceWith('/ui/login');
-  });
-
-  describe('eula checking', () => {
-    let handler, data;
-
-    beforeEach(() => {
-      data = {
-        cacheCookie: 'foo',
-        cache: {
-          session: {}
-        }
-      };
-
-      handler = pathRouter.get.mock.calls[0][0];
-    });
-
-    it('should go to next if user is undefined', () => {
-      handler(req, res, data, next);
-
-      expect(next).toHaveBeenCalledOnceWith(req, res, data.cache);
-    });
-
-    it('should redirect if the user exists and accepted eula', () => {
-      data.cache.session.user = {
-        eula_state: 'pass'
-      };
-
-      handler(req, res, data, next);
-
-      expect(res.redirect).toHaveBeenCalledOnceWith('/ui/');
-    });
-
-    describe('deleting session', () => {
-      beforeEach(() => {
-        data.cache.session.user = {
-          eula_state: 'eula'
-        };
-
-        handler(req, res, data, next);
-      });
-
-      it('should send a delete request', () => {
-        expect(mockApiRequest).toHaveBeenCalledOnceWith({
-          path: '/session',
-          method: 'delete',
-          headers: { cookie: 'foo' }
-        });
-      });
-
-      it('should call next', () => {
-        push(null, []);
-        push(null, highland.nil);
-
-        expect(next).toHaveBeenCalledOnceWith(req, res, data.cache);
-      });
-
-      it('should render errors', () => {
-        push(new Error('boom!'));
-        push(null, highland.nil);
-
-        expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
-          new Error('boom!'),
-          expect.any(Function)
-        );
-      });
-    });
   });
 
   describe('render login', () => {
