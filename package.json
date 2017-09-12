@@ -32,7 +32,7 @@
     "lodash": "4.17.4",
     "@iml/flow-highland": "^4.2.8",
     "@iml/flow-jasmine": "1.6.1",
-    "babel-eslint": "7.2.3",
+    "babel-eslint": "8.0.0",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-lodash": "3.2.11",
     "babel-plugin-transform-flow-strip-types": "6.22.0",
