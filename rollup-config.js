@@ -18,7 +18,6 @@ export default {
     'events',
     'buffer',
     'child_process',
-    'crypto',
     'stream',
     'querystring'
   ],
