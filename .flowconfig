@@ -1,6 +1,9 @@
 [ignore]
 .*/view-server/dist/.*
 
+[untyped]
+.*/node_modules/@iml/req/source/error-buffer.js
+
 [include]
 
 [libs]
