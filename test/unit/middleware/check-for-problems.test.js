@@ -6,18 +6,18 @@ describe('check for problems', () => {
     res,
     next,
     mockRenderRequestError,
-    mockGetStoppedSupervisorServices,
+    mockGetStoppedSystemdServices,
     push;
 
   beforeEach(() => {
-    mockGetStoppedSupervisorServices = jest.fn(() =>
+    mockGetStoppedSystemdServices = jest.fn(() =>
       highland(_push_ => {
         push = _push_;
       })
     );
     jest.mock(
-      '../../../source/supervisor/get-stopped-supervisor-services.js',
-      () => mockGetStoppedSupervisorServices
+      '../../../source/systemd/get-stopped-systemd-services.js',
+      () => mockGetStoppedSystemdServices
     );
 
     mockRenderRequestError = jest.fn(() => () => {});

@@ -1,12 +1,11 @@
 language: node_js
 node_js:
 - 8
-cache: yarn
 script:
-- yarn run eslint
-- yarn run flow
-- yarn run test
-before_deploy: yarn postversion
+- npm run eslint
+- npm run flow
+- npm run test
+before_deploy: npm run postversion
 deploy:
   skip_cleanup: true
   provider: npm
