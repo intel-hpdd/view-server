@@ -18,7 +18,7 @@ export default function checkForProblems(
   getStoppedServices().toArray(stopped => {
     if (stopped.length === 0) return next(req, res);
 
-    const description = `The following services are not running: \n\n${stopped.join(
+    const description = `The following checks failed: \n\n${stopped.join(
       '\n'
     )}\n\n`;
     renderRequestError(res, () => description)(new Error());
