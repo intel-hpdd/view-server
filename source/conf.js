@@ -39,6 +39,7 @@ let conf: $Shape<confT> = {
   LOG_PATH: env.LOG_PATH || '',
   NODE_ENV: env.NODE_ENV || 'development',
   SERVER_HTTP_URL: env.SERVER_HTTP_URL,
+  SITE_ROOT: env.SITE_ROOT,
   VERSION: env.VERSION,
   VIEW_SERVER_PORT: env.VIEW_SERVER_PORT
 };
