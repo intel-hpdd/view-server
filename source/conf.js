@@ -1,46 +1,48 @@
 // @flow
 
 //
-// Copyright (c) 2017 Intel Corporation. All rights reserved.
+// Copyright (c) 2018 Intel Corporation. All rights reserved.
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import url from 'url';
-import path from 'path';
 import helpText from '@iml/help';
-// $FlowFixMe this file does not exist at dev-time.
-import confJson from './conf.json';
+import path from 'path';
+import url from 'url';
 
 type confT = {
-  LOG_PATH: string,
-  LOG_FILE: string,
-  NODE_ENV: string,
-  RUNNER: string,
-  SERVER_HTTP_URL: string,
-  IS_RELEASE: boolean,
   ALLOW_ANONYMOUS_READ: boolean,
-  SITE_ROOT: string,
-  VERSION: string,
-  BUILD: string,
-  VIEW_SERVER_PORT: number,
   API_PORT: string,
   API_URL: string,
+  BUILD: string,
+  HELP_TEXT: Object,
   HOST_NAME: string,
+  IS_RELEASE: boolean,
+  LOG_FILE: string,
+  LOG_PATH: string,
+  NODE_ENV: string,
   PARSED_API_URL: Object,
+  SERVER_HTTP_URL: string,
+  SITE_ROOT: string,
   TEMPLATE_ROOT_NEW: string,
   TEMPLATE_ROOT_OLD: string,
-  HELP_TEXT: Object
+  VERSION: string,
+  VIEW_SERVER_PORT: number
 };
 
-let conf: confT = Object.assign(
-  {
-    LOG_PATH: '',
-    LOG_FILE: 'view_server.log',
-    NODE_ENV: process.env.NODE_ENV || 'development',
-    RUNNER: process.env.RUNNER
-  },
-  confJson
-);
+const env: confT = (process.env: any);
+
+let conf: $Shape<confT> = {
+  ALLOW_ANONYMOUS_READ: env.ALLOW_ANONYMOUS_READ,
+  BUILD: env.BUILD,
+  IS_RELEASE: env.IS_RELEASE,
+  LOG_FILE: 'view_server.log',
+  LOG_PATH: env.LOG_PATH || '',
+  NODE_ENV: env.NODE_ENV || 'development',
+  SERVER_HTTP_URL: env.SERVER_HTTP_URL,
+  SITE_ROOT: env.SITE_ROOT,
+  VERSION: env.VERSION,
+  VIEW_SERVER_PORT: env.VIEW_SERVER_PORT
+};
 
 const modulesPath = path.join.bind(
   path.join,
@@ -51,13 +53,13 @@ const modulesPath = path.join.bind(
 
 if (conf.NODE_ENV === 'test')
   conf = Object.assign({}, conf, {
+    ALLOW_ANONYMOUS_READ: true,
+    BUILD: 'jenkins__',
+    LOG_PATH: conf.SITE_ROOT,
     SERVER_HTTP_URL: 'https://localhost:8000/',
     IS_RELEASE: false,
-    ALLOW_ANONYMOUS_READ: true,
     VERSION: '',
-    BUILD: 'jenkins__',
-    VIEW_SERVER_PORT: 8889,
-    LOG_PATH: conf.SITE_ROOT
+    VIEW_SERVER_PORT: 8889
   });
 
 const parsedServerHttpUrl = url.parse(conf.SERVER_HTTP_URL);

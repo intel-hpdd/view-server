@@ -1,15 +1,13 @@
 import babel from 'rollup-plugin-babel';
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
 import cleanup from 'rollup-plugin-cleanup';
-import bundleSize from 'rollup-plugin-bundle-size';
-import path from 'path';
+import commonjs from 'rollup-plugin-commonjs';
+import filesize from 'rollup-plugin-filesize';
+import json from 'rollup-plugin-json';
+import nodeResolve from 'rollup-plugin-node-resolve';
 
 export default {
-  entry: 'source/server.js',
+  input: 'source/server.js',
   external: [
-    path.resolve('./source/conf.json'),
     'url',
     'path',
     'http',
@@ -20,11 +18,14 @@ export default {
     'events',
     'buffer',
     'child_process',
-    'crypto',
     'stream',
-    'querystring',
-    'net'
+    'querystring'
   ],
+  output: {
+    sourcemap: true,
+    format: 'cjs',
+    file: 'dist/bundle.js'
+  },
   plugins: [
     json(),
     babel({
@@ -48,8 +49,6 @@ export default {
     nodeResolve({ jsnext: true, main: true, preferBuiltins: false }),
     commonjs(),
     cleanup(),
-    bundleSize()
-  ],
-  sourceMap: true,
-  format: 'cjs'
+    filesize()
+  ]
 };
