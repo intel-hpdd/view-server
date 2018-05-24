@@ -3,22 +3,29 @@ describe('get stopped systemd services', () => {
 
   beforeEach(() => {
     mockChildProcess = {
-      exec: jest.fn((_, cb) => {
-        cb(
-          null,
-          `iml-corosync.service                                                                                           loaded    active   running   IML Corosync Service
-iml-gunicorn.service                                                                                           loaded    inactive dead      IML Manager Service
-iml-http-agent.service                                                                                         loaded    active   running   IML Http Agent Service
-iml-job-scheduler.service                                                                                      loaded    active   running   IML Job Scheduler Service
-iml-lustre-audit.service                                                                                       loaded    active   running   IML Lustre Audit Service
-iml-plugin-runner.service                                                                                      loaded    active   running   IML Plugin Runner Service
-iml-power-control.service                                                                                      loaded    active   running   IML Power Control Service Service
-iml-srcmap-reverse.service                                                                                     loaded    inactive dead      Source Map Reverse Service
-iml-stats.service                                                                                              loaded    active   running   IML Stats Service
-iml-supervisor-status.service                                                                                  loaded    inactive dead      IML Supervisor Status Service
-iml-syslog.service                                                                                             loaded    active   running   IML Syslog Service
-`
-        );
+      exec: jest.fn((cmd, cb) => {
+        const commands = {
+          'systemctl is-active iml-corosync.service': [null, 'active'],
+          'systemctl is-active iml-gunicorn.service': [
+            { cmd: 'systemctl is-active iml-gunicorn.service' },
+            'active'
+          ],
+          'systemctl is-active iml-http-agent.service': [null, 'active'],
+          'systemctl is-active iml-job-scheduler.service': [null, 'active'],
+          'systemctl is-active iml-lustre-audit.service': [null, 'active'],
+          'systemctl is-active iml-manager.target': [null, 'active'],
+          'systemctl is-active iml-plugin-runner.service': [null, 'active'],
+          'systemctl is-active iml-power-control.service': [null, 'active'],
+          'systemctl is-active iml-realtime.service': [
+            { cmd: 'systemctl is-active iml-realtime.service' },
+            'failed'
+          ],
+          'systemctl is-active iml-stats.service': [null, 'active'],
+          'systemctl is-active iml-syslog.service': [null, 'active'],
+          'systemctl is-active iml-view-server.service': [null, 'active']
+        };
+
+        cb(...commands[cmd]);
       })
     };
 
@@ -33,9 +40,8 @@ iml-syslog.service                                                              
       .collect()
       .each(xs => {
         expect(xs).toEqual([
-          'iml-gunicorn.service',
-          'iml-srcmap-reverse.service',
-          'iml-supervisor-status.service'
+          'systemctl is-active iml-gunicorn.service',
+          'systemctl is-active iml-realtime.service'
         ]);
 
         done();

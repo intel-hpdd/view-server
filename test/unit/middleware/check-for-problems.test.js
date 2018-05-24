@@ -47,7 +47,7 @@ describe('check for problems', () => {
     const message = mockRenderRequestError.mock.calls[0][1]();
 
     expect(message).toBe(
-      'The following services are not running: \n\ncorosync\nautoreload\n\n'
+      'The following checks failed: \n\ncorosync\nautoreload\n\n'
     );
   });
 

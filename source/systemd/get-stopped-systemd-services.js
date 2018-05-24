@@ -10,19 +10,31 @@ import highland from 'highland';
 
 import type { HighlandStreamT } from 'highland';
 
-const exec: (
-  x: string
-) => HighlandStreamT<string | Buffer> = highland.wrapCallback(
+const exec: (x: string) => HighlandStreamT<Buffer> = highland.wrapCallback(
   childProcess.exec
 );
 
+const services = [
+  'iml-corosync.service',
+  'iml-gunicorn.service',
+  'iml-http-agent.service',
+  'iml-job-scheduler.service',
+  'iml-lustre-audit.service',
+  'iml-manager.target',
+  'iml-plugin-runner.service',
+  'iml-power-control.service',
+  'iml-realtime.service',
+  'iml-stats.service',
+  'iml-syslog.service',
+  'iml-view-server.service'
+];
+
 export default (): HighlandStreamT<string> =>
-  exec('systemctl list-units --all | grep iml-* | grep .service')
-    .map(x => x.toString().trim())
-    .flatMap(x => x.split('\n'))
-    .map(x => x.split(/\s+/, 4))
-    .filter(([, , state]) => state !== 'active')
-    .map(([name]) => name)
-    .errors((err: Error, push) => {
-      push(null, 'systemctl');
+  highland(services)
+    .flatMap(x => exec(`systemctl is-active ${x}`))
+    .map(x => x.toString())
+    .filter(() => false)
+    .errors((err: any, push) => {
+      if (err.cmd) push(null, err.cmd);
+      else push(null, 'systemctl is-active');
     });
