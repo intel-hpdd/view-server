@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:intel-hpdd/view-server.git"
+    "url": "git@github.com:whamcloud/view-server.git"
   },
   "author": "IML Team",
   "license": "MIT",
