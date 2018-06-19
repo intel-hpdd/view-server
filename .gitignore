@@ -1,6 +1,9 @@
 node_modules
-*.iml
-*.idea
-*.log
-dist
+targetdir
 coverage
+_topdir
+iml-view-server-*.tgz
+copr-key
+.DS_Store
+.fake
+*.log
