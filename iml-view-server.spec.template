@@ -1,0 +1,40 @@
+﻿%define base_name view-server
+%define base_prefixed iml-%{base_name}
+
+Name:       %{base_name}
+Version:    @version@
+Release:    1%{?dist}
+Summary:    Serves the HTML pages for the IML GUI.
+License:    MIT
+Group:      System Environment/Libraries
+URL:        https://github.com/whamcloud/%{base_name}
+Source0:    %{base_prefixed}-%{version}.tgz
+
+BuildRequires: nodejs-packaging
+BuildArch:  noarch
+
+%description
+This module serves the HTML + cached API json for the GUI.
+
+%prep
+%setup -q -n package
+
+%build
+#nothing to do
+
+%install
+rm -rf %{buildroot}
+
+mkdir -p %{buildroot}%{nodejs_sitelib}/@iml/%{name}
+
+%clean
+rm -rf %{buildroot}
+
+%files
+%{nodejs_sitelib}
+
+%changelog
+* Thu Mar 15 2018 Brian J. Murrell <brian.murrell@intel.com> - 6.3.0-1
+- Build using the module-tools framework
+- Move content to /usr/share and create a backcompat symlink
+  to be removed at some future update

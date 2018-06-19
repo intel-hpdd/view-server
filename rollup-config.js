@@ -24,7 +24,7 @@ export default {
   output: {
     sourcemap: true,
     format: 'cjs',
-    file: 'dist/bundle.js'
+    file: 'targetdir/bundle.js'
   },
   plugins: [
     json(),
