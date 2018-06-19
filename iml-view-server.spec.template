@@ -10,11 +10,14 @@ Group:      System Environment/Libraries
 URL:        https://github.com/whamcloud/%{base_name}
 Source0:    %{base_prefixed}-%{version}.tgz
 
+%{?systemd_requires}
+BuildRequires: systemd
+
 BuildRequires: nodejs-packaging
-BuildArch:  noarch
+BuildArch: noarch
 
 %description
-This module serves the HTML + cached API json for the GUI.
+This module serves the HTML + cached API JSON for the GUI.
 
 %prep
 %setup -q -n package
@@ -23,18 +26,29 @@ This module serves the HTML + cached API json for the GUI.
 #nothing to do
 
 %install
-rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{nodejs_sitelib}/@iml/%{name}/targetdir
+cp iml-view-server.service %{buildroot}%{_unitdir}
+cp -al targetdir/. %{buildroot}%{nodejs_sitelib}/@iml/%{name}/targetdir
+cp -p package.json %{buildroot}%{nodejs_sitelib}/@iml/%{name}
 
-mkdir -p %{buildroot}%{nodejs_sitelib}/@iml/%{name}
+%post
+systemctl preset iml-view-server.service
+
+%preun
+%systemd_preun iml-view-server.service
+
+%postun
+%systemd_postun_with_restart iml-view-server.service
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %{nodejs_sitelib}
+%attr(0644,root,root)%{_unitdir}/iml-view-server.service
 
 %changelog
-* Thu Mar 15 2018 Brian J. Murrell <brian.murrell@intel.com> - 6.3.0-1
-- Build using the module-tools framework
-- Move content to /usr/share and create a backcompat symlink
-  to be removed at some future update
+* Tue Jun 19 2018 Joe Grund <jgrund@whamcloud.com> - 8.0.0-1
+- Build using FAKE
+- Initial standalone RPM package
