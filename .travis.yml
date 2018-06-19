@@ -13,7 +13,7 @@ jobs:
         - npm run flow
         - npm run test
     - stage: deploy-npm
-      if: branch =~ ^v\d+\.\d+\.\d+$
+      if: branch =~ ^v\d+\.\d+\.\d+-1.*$
       env: Type='npm Deploy'
       before_deploy:
         - npm i --ci
