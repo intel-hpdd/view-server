@@ -1,14 +1,13 @@
 ﻿%define base_name view-server
-%define base_prefixed iml-%{base_name}
 
-Name:       %{base_name}
+Name:       iml-%{base_name}
 Version:    @version@
 Release:    1%{?dist}
 Summary:    Serves the HTML pages for the IML GUI.
 License:    MIT
 Group:      System Environment/Libraries
 URL:        https://github.com/whamcloud/%{base_name}
-Source0:    %{base_prefixed}-%{version}.tgz
+Source0:    %{name}-%{version}.tgz
 
 %{?systemd_requires}
 BuildRequires: systemd
@@ -27,10 +26,10 @@ This module serves the HTML + cached API JSON for the GUI.
 
 %install
 mkdir -p %{buildroot}%{_unitdir}
-mkdir -p %{buildroot}%{nodejs_sitelib}/@iml/%{name}/targetdir
+mkdir -p %{buildroot}%{nodejs_sitelib}/@iml/%{base_name}/targetdir
 cp iml-view-server.service %{buildroot}%{_unitdir}
-cp -al targetdir/. %{buildroot}%{nodejs_sitelib}/@iml/%{name}/targetdir
-cp -p package.json %{buildroot}%{nodejs_sitelib}/@iml/%{name}
+cp -al targetdir/. %{buildroot}%{nodejs_sitelib}/@iml/%{base_name}/targetdir
+cp -p package.json %{buildroot}%{nodejs_sitelib}/@iml/%{base_name}
 
 %post
 systemctl preset iml-view-server.service
