@@ -44,13 +44,6 @@ let conf: $Shape<confT> = {
   VIEW_SERVER_PORT: env.VIEW_SERVER_PORT
 };
 
-const modulesPath = path.join.bind(
-  path.join,
-  conf.SITE_ROOT,
-  'ui-modules',
-  'node_modules'
-);
-
 if (conf.NODE_ENV === 'test')
   conf = Object.assign({}, conf, {
     ALLOW_ANONYMOUS_READ: true,
@@ -70,7 +63,10 @@ conf = Object.assign({}, conf, {
   PARSED_API_URL: parsedServerHttpUrl,
   TEMPLATE_ROOT_NEW:
     path.sep + path.join('usr', 'lib', 'iml-manager', 'iml-gui') + path.sep,
-  TEMPLATE_ROOT_OLD: modulesPath('@iml', 'old-gui', 'templates') + path.sep,
+  TEMPLATE_ROOT_OLD:
+    path.sep +
+    path.join('usr', 'lib', 'node_modules', '@iml', 'old-gui', 'templates') +
+    path.sep,
   HELP_TEXT: helpText
 });
 
