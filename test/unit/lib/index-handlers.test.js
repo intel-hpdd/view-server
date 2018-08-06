@@ -1,6 +1,6 @@
-import * as fp from '@iml/fp';
+import * as fp from "@iml/fp";
 
-describe('index handlers', () => {
+describe("index handlers", () => {
   let indexHandlers, mockTemplates, mockConf, req, res, data, next;
 
   beforeEach(() => {
@@ -25,17 +25,17 @@ describe('index handlers', () => {
     next = jest.fn();
 
     mockTemplates = {
-      'index.html': jest.fn(() => 'index'),
-      'base.html': jest.fn(() => 'base')
+      "index.html": jest.fn(() => "index"),
+      "base.html": jest.fn(() => "base")
     };
-    jest.mock('../../../source/lib/templates.js', () => mockTemplates);
+    jest.mock("../../../source/lib/templates.js", () => mockTemplates);
 
     mockConf = {
       get: fp.always(false)
     };
-    jest.mock('../../../source/conf.js', () => mockConf);
+    jest.mock("../../../source/conf.js", () => mockConf);
 
-    indexHandlers = require('../../../source/lib/index-handlers').default;
+    indexHandlers = require("../../../source/lib/index-handlers").default;
   });
 
   it("should redirect if we don't have a user and disallow anonymous read", () => {
@@ -43,49 +43,46 @@ describe('index handlers', () => {
 
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(res.redirect).toHaveBeenCalledOnceWith('/ui/login/');
+    expect(res.redirect).toHaveBeenCalledOnceWith("/ui/login/");
   });
 
-  it('should set the response header', () => {
+  it("should set the response header", () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith(
-      'Content-Type',
-      'text/html; charset=utf-8'
-    );
+    expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith("Content-Type", "text/html; charset=utf-8");
   });
 
-  it('should set the status code', () => {
+  it("should set the status code", () => {
     indexHandlers.newHandler(req, res, data, next);
 
     expect(res.clientRes.statusCode).toBe(200);
   });
 
-  it('should render the template', () => {
+  it("should render the template", () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(mockTemplates['index.html']).toHaveBeenCalledOnceWith({
-      title: '',
+    expect(mockTemplates["index.html"]).toHaveBeenCalledOnceWith({
+      title: "",
       cache: data.cache
     });
   });
 
-  it('should render the old template', () => {
+  it("should render the old template", () => {
     indexHandlers.oldHandler(req, res, data, next);
 
-    expect(mockTemplates['base.html']).toHaveBeenCalledOnceWith({
-      title: '',
+    expect(mockTemplates["base.html"]).toHaveBeenCalledOnceWith({
+      title: "",
       cache: data.cache
     });
   });
 
-  it('should end the response', () => {
+  it("should end the response", () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(res.clientRes.end).toHaveBeenCalledOnceWith('index');
+    expect(res.clientRes.end).toHaveBeenCalledOnceWith("index");
   });
 
-  it('should call next', () => {
+  it("should call next", () => {
     indexHandlers.newHandler(req, res, data, next);
 
     expect(next).toHaveBeenCalledOnceWith(req, res);

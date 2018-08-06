@@ -5,11 +5,10 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import getRouter from '@iml/router';
+import getRouter from "@iml/router";
 
-import checkForProblems from './middleware/check-for-problems.js';
-import getSession from './middleware/get-session.js';
-import getCache from './middleware/get-cache.js';
+import getSession from "./middleware/get-session.js";
+import getCache from "./middleware/get-cache.js";
 
 export type routerReqT = {
   verb: string,
@@ -34,6 +33,5 @@ export type routerResT = {
 };
 
 export default getRouter()
-  .addStart(checkForProblems)
   .addStart(getSession)
   .addStart(getCache);

@@ -1,27 +1,18 @@
-import * as obj from '@iml/obj';
-import highland from 'highland';
+import * as obj from "@iml/obj";
+import highland from "highland";
 
-describe('get cache', () => {
-  let mockConf,
-    mockApiRequest,
-    data,
-    req,
-    res,
-    getCache,
-    next,
-    calls,
-    mockRenderRequestError,
-    renderRequestErrorInner;
+describe("get cache", () => {
+  let mockConf, mockApiRequest, data, req, res, getCache, next, calls, mockRenderRequestError, renderRequestErrorInner;
 
   beforeEach(() => {
     calls = [
-      ['/filesystem', {}],
-      ['/target', {}],
-      ['/host', {}],
-      ['/power_control_type', {}],
-      ['/server_profile', {}],
+      ["/filesystem", {}],
+      ["/target", {}],
+      ["/host", {}],
+      ["/power_control_type", {}],
+      ["/server_profile", {}],
       [
-        '/lnet_configuration',
+        "/lnet_configuration",
         {
           qs: {
             dehydrate__host: false
@@ -29,20 +20,20 @@ describe('get cache', () => {
         }
       ],
       [
-        '/alert',
+        "/alert",
         {
-          jsonMask: 'objects(affected,message)',
+          jsonMask: "objects(affected,message)",
           qs: {
             active: true
           }
         }
       ],
       [
-        '/job',
+        "/job",
         {
-          jsonMask: 'objects(write_locks,read_locks,description)',
+          jsonMask: "objects(write_locks,read_locks,description)",
           qs: {
-            state__in: ['pending', 'tasked']
+            state__in: ["pending", "tasked"]
           }
         }
       ]
@@ -51,7 +42,7 @@ describe('get cache', () => {
     mockConf = {
       get: jest.fn(() => false)
     };
-    jest.mock('../../../source/conf.js', () => mockConf);
+    jest.mock("../../../source/conf.js", () => mockConf);
 
     req = {};
     res = {};
@@ -61,50 +52,46 @@ describe('get cache', () => {
     data = {
       session: {
         read_enabled: true,
-        resource_uri: '/api/session/',
+        resource_uri: "/api/session/",
         user: {
           alert_subscriptions: [],
-          email: 'debug@debug.co.eh',
-          first_name: '',
-          full_name: '',
+          email: "debug@debug.co.eh",
+          first_name: "",
+          full_name: "",
           groups: [
             {
-              id: '1',
-              name: 'superusers',
-              resource_uri: '/api/group/1/'
+              id: "1",
+              name: "superusers",
+              resource_uri: "/api/group/1/"
             }
           ],
-          id: '1',
+          id: "1",
           is_superuser: true,
-          last_name: '',
+          last_name: "",
           new_password1: null,
           new_password2: null,
           password1: null,
           password2: null,
-          resource_uri: '/api/user/1/',
-          username: 'debug'
+          resource_uri: "/api/user/1/",
+          username: "debug"
         }
       },
-      cacheCookie:
-        'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
+      cacheCookie: "csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;"
     };
 
     mockApiRequest = jest.fn();
-    jest.mock('../../../source/lib/api-request.js', () => mockApiRequest);
+    jest.mock("../../../source/lib/api-request.js", () => mockApiRequest);
 
     renderRequestErrorInner = jest.fn();
 
     mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
 
-    jest.mock(
-      '../../../source/lib/render-request-error.js',
-      () => mockRenderRequestError
-    );
+    jest.mock("../../../source/lib/render-request-error.js", () => mockRenderRequestError);
 
-    getCache = require('../../../source/middleware/get-cache').default;
+    getCache = require("../../../source/middleware/get-cache").default;
   });
 
-  it('should return an empty map if user is null and anonymous read is false', () => {
+  it("should return an empty map if user is null and anonymous read is false", () => {
     data.session.user = null;
 
     getCache(req, res, data, next);
@@ -122,7 +109,7 @@ describe('get cache', () => {
     expect(next).toHaveBeenCalledOnceWith(req, res, data);
   });
 
-  describe('successful responses', () => {
+  describe("successful responses", () => {
     beforeEach(() => {
       mockApiRequest.mockImplementation(endpoint => {
         return highland([
@@ -141,7 +128,7 @@ describe('get cache', () => {
       getCache(req, res, data, next);
     });
 
-    it('should request each cache endpoint', () => {
+    it("should request each cache endpoint", () => {
       const fullCalls = calls.map(call => {
         return [
           obj.merge(
@@ -162,7 +149,7 @@ describe('get cache', () => {
       expect(mockApiRequest.mock.calls).toEqual(fullCalls);
     });
 
-    it('should return the result of each endpoint', () => {
+    it("should return the result of each endpoint", () => {
       const obj = calls.reduce((obj, call) => {
         obj[call.slice(1)] = [{ name: call }];
 
@@ -177,10 +164,10 @@ describe('get cache', () => {
     });
   });
 
-  describe('error response', () => {
+  describe("error response", () => {
     beforeEach(() => {
       mockApiRequest.mockImplementation(opts => {
-        if (opts.path === '/target') throw new Error('boom!');
+        if (opts.path === "/target") throw new Error("boom!");
         else
           return highland([
             {
@@ -194,18 +181,12 @@ describe('get cache', () => {
       getCache(req, res, data, next);
     });
 
-    it('should push the response to renderRequestError', () => {
-      expect(mockRenderRequestError).toHaveBeenCalledOnceWith(
-        res,
-        expect.any(Function)
-      );
+    it("should push the response to renderRequestError", () => {
+      expect(mockRenderRequestError).toHaveBeenCalledOnceWith(res, expect.any(Function));
     });
 
-    it('should render an error page on error', () => {
-      expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
-        new Error('boom!'),
-        expect.any(Function)
-      );
+    it("should render an error page on error", () => {
+      expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error("boom!"), expect.any(Function));
     });
   });
 });

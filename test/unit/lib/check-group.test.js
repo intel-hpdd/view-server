@@ -1,9 +1,9 @@
 // @flow
 
-import GROUPS from '../../../source/lib/groups.js';
-import checkGroup from '../../../source/lib/check-group.js';
+import GROUPS from "../../../source/lib/groups.js";
+import checkGroup from "../../../source/lib/check-group.js";
 
-describe('check group', function() {
+describe("check group", function() {
   let req, res, data, next;
 
   beforeEach(function() {
@@ -19,7 +19,7 @@ describe('check group', function() {
     next = jest.fn();
   });
 
-  it('should return the expected interface', function() {
+  it("should return the expected interface", function() {
     expect(checkGroup).toEqual({
       superusers: expect.any(Function),
       fsAdmins: expect.any(Function),
@@ -27,7 +27,7 @@ describe('check group', function() {
     });
   });
 
-  it('should allow superusers', function() {
+  it("should allow superusers", function() {
     data.cache.session.user = {
       groups: [{ name: GROUPS.SUPERUSERS }]
     };
@@ -37,23 +37,23 @@ describe('check group', function() {
     expect(next).toHaveBeenCalledOnceWith(req, res, data);
   });
 
-  it('should redirect fs admins', function() {
+  it("should redirect fs admins", function() {
     data.cache.session.user = {
       groups: [{ name: GROUPS.FS_ADMINS }]
     };
 
     checkGroup.superusers(req, res, data, next);
 
-    expect(res.redirect).toHaveBeenCalledOnceWith('/ui/');
+    expect(res.redirect).toHaveBeenCalledOnceWith("/ui/");
   });
 
-  it('should redirect fs users', function() {
+  it("should redirect fs users", function() {
     data.cache.session.user = {
       groups: [{ name: GROUPS.FS_USERS }]
     };
 
     checkGroup.superusers(req, res, data, next);
 
-    expect(res.redirect).toHaveBeenCalledOnceWith('/ui/');
+    expect(res.redirect).toHaveBeenCalledOnceWith("/ui/");
   });
 });

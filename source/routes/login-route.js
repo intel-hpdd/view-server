@@ -5,27 +5,27 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import viewRouter from '../view-router.js';
-import templates from '../lib/templates.js';
+import viewRouter from "../view-router.js";
+import templates from "../lib/templates.js";
 
-const indexTemplate = templates['index.html'];
+const indexTemplate = templates["index.html"];
 
 export default () => {
   viewRouter
-    .route('/ui/login')
+    .route("/ui/login")
     .get((req, res, data, next) => {
       const session = data.cache.session;
 
-      if (session.user) return res.redirect('/ui/');
+      if (session.user) return res.redirect("/ui/");
 
       next(req, res, data.cache);
     })
     .get((req, res, cache, next) => {
-      res.clientRes.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.clientRes.setHeader("Content-Type", "text/html; charset=utf-8");
       res.clientRes.statusCode = 200;
 
       const rendered = indexTemplate({
-        title: 'Login',
+        title: "Login",
         cache: cache
       });
 
