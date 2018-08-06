@@ -42,8 +42,8 @@ jobs:
 stages:
   - test
   - name: cd
-     if: branch = master AND type = push AND fork = false
+    if: branch = master AND type = push AND fork = false
   - name: deploy-npm
-     if: branch =~ ^v\d+\.\d+\.\d+-1.*$
+    if: branch =~ ^v\d+\.\d+\.\d+-1.*$
   - name: deploy-copr
-     if: branch =~ ^v\d+\.\d+\.\d+-.+$
+    if: branch =~ ^v\d+\.\d+\.\d+-.+$
