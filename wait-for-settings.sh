@@ -2,7 +2,7 @@
 
 set -e
 
-until [ -x /var/lib/chroma/iml-settings.conf ]; do
+until [ -f /var/lib/chroma/iml-settings.conf ]; do
   echo "Waiting for settings."
   sleep 1
 done

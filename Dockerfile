@@ -4,7 +4,7 @@ COPY . .
 RUN npm i \
   && npm run postversion
 
-FROM alpine
+FROM node:alpine
 WORKDIR /root/
 COPY --from=builder /build/targetdir .
 COPY wait-for-settings.sh /usr/local/bin/
