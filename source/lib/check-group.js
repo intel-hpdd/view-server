@@ -5,12 +5,12 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import * as fp from '@iml/fp';
-import groupAllowed from './group-allowed';
-import groups from './groups';
+import * as fp from "@iml/fp";
+import groupAllowed from "./group-allowed";
+import groups from "./groups";
 
 const allowGroup = (groupName: string) => (req, res, data, next) => {
-  if (!groupAllowed(groupName, data.cache.session)) return res.redirect('/ui/');
+  if (!groupAllowed(groupName, data.cache.session)) return res.redirect("/ui/");
 
   next(req, res, data);
 };
@@ -18,7 +18,7 @@ const allowGroup = (groupName: string) => (req, res, data, next) => {
 const transform = text =>
   text
     .toLowerCase()
-    .split('_')
+    .split("_")
     .reduce((str, part) => (str += capitalize(part)));
 
 const capitalize = x => x.charAt(0).toUpperCase() + x.slice(1);

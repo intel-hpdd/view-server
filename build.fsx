@@ -26,8 +26,12 @@ Usage:
   prog [options]
 
 Options:
+  --release=NUM                 The release field for this build (defaults to 1)
   --prod                        Production build
   --copr-project=NAME           Copr Project
+  --copr-login=LOGIN            Copr Login
+  --copr-username=USERNAME      Copr Username
+  --copr-token=TOKEN            Copr Token
 """
 
 let ctx = Context.forceFakeContext()
@@ -41,6 +45,24 @@ let isProd =
 let coprRepo =
   DocoptResult.tryGetArgument "--copr-project" parsedArguments
   |> Option.defaultValue "managerforlustre/manager-for-lustre-devel/"
+
+let release =
+  DocoptResult.tryGetArgument "--release" parsedArguments
+  |> Option.defaultValue "1"
+
+let coprLogin =
+  DocoptResult.tryGetArgument "--copr-login" parsedArguments
+
+let coprUsername =
+  DocoptResult.tryGetArgument "--copr-username" parsedArguments
+
+let coprToken =
+  DocoptResult.tryGetArgument "--copr-token" parsedArguments
+
+module Option =
+  let expect msg = function
+    | Some x -> x
+    | None -> failwith msg
 
 let getPackageValue key decoder =
   Fake.IO.File.readAsString "package.json"
@@ -75,6 +97,7 @@ Target.create "BuildSpec" (fun _ ->
 
   Fake.IO.Templates.load [specName + ".template"]
     |> Fake.IO.Templates.replaceKeywords [("@version@", v)]
+    |> Fake.IO.Templates.replaceKeywords [("@release@", release)]
     |> Seq.iter(fun (_, file) ->
       let x = UTF8Encoding()
 
@@ -110,6 +133,30 @@ Target.create "Copr" (fun _ ->
       | x -> failwithf "Got a non-zero exit code (%i) for copr-cli %s" x args
 )
 
+Target.create "GenCoprConfig" (fun _ ->
+  let login =
+    coprLogin
+    |> Option.expect "Could not find --copr-login"
+
+  let username =
+    coprUsername
+    |> Option.expect "Could not find --copr-username"
+
+  let token =
+    coprToken
+    |> Option.expect "Could not find --copr-token"
+
+  Fake.IO.Templates.load ["copr.template"]
+    |> Fake.IO.Templates.replaceKeywords [("@login@", login)]
+    |> Fake.IO.Templates.replaceKeywords [("@username@", username)]
+    |> Fake.IO.Templates.replaceKeywords [("@token@", token)]
+    |> Seq.iter(fun (_, file) ->
+      let x = UTF8Encoding()
+
+      Fake.IO.File.writeWithEncoding x false coprKey (Seq.toList file)
+    )
+)
+
 open Fake.Core.TargetOperators
 
 "Clean"
@@ -117,6 +164,7 @@ open Fake.Core.TargetOperators
   ==> "NpmBuild"
   ==> "BuildSpec"
   ==> "SRPM"
+  ==> "GenCoprConfig"
   ==> "Copr"
 
 

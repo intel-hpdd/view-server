@@ -5,9 +5,9 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import helpText from '@iml/help';
-import path from 'path';
-import url from 'url';
+import helpText from "@iml/help";
+import path from "path";
+import url from "url";
 
 type confT = {
   ALLOW_ANONYMOUS_READ: boolean,
@@ -35,23 +35,23 @@ let conf: $Shape<confT> = {
   ALLOW_ANONYMOUS_READ: env.ALLOW_ANONYMOUS_READ,
   BUILD: env.BUILD,
   IS_RELEASE: env.IS_RELEASE,
-  LOG_FILE: 'view_server.log',
-  LOG_PATH: env.LOG_PATH || '',
-  NODE_ENV: env.NODE_ENV || 'development',
+  LOG_FILE: "view_server.log",
+  LOG_PATH: env.LOG_PATH || "",
+  NODE_ENV: env.NODE_ENV || "development",
   SERVER_HTTP_URL: env.SERVER_HTTP_URL,
   SITE_ROOT: env.SITE_ROOT,
   VERSION: env.VERSION,
   VIEW_SERVER_PORT: env.VIEW_SERVER_PORT
 };
 
-if (conf.NODE_ENV === 'test')
+if (conf.NODE_ENV === "test")
   conf = Object.assign({}, conf, {
     ALLOW_ANONYMOUS_READ: true,
-    BUILD: 'jenkins__',
+    BUILD: "jenkins__",
     LOG_PATH: conf.SITE_ROOT,
-    SERVER_HTTP_URL: 'https://localhost:8000/',
+    SERVER_HTTP_URL: "https://localhost:8000/",
     IS_RELEASE: false,
-    VERSION: '',
+    VERSION: "",
     VIEW_SERVER_PORT: 8889
   });
 
@@ -61,12 +61,8 @@ conf = Object.assign({}, conf, {
   API_URL: url.format(parsedServerHttpUrl),
   HOST_NAME: parsedServerHttpUrl.hostname,
   PARSED_API_URL: parsedServerHttpUrl,
-  TEMPLATE_ROOT_NEW:
-    path.sep + path.join('usr', 'lib', 'iml-manager', 'iml-gui') + path.sep,
-  TEMPLATE_ROOT_OLD:
-    path.sep +
-    path.join('usr', 'lib', 'node_modules', '@iml', 'old-gui', 'templates') +
-    path.sep,
+  TEMPLATE_ROOT_NEW: path.sep + path.join("usr", "lib", "iml-manager", "iml-gui") + path.sep,
+  TEMPLATE_ROOT_OLD: path.sep + path.join("usr", "lib", "node_modules", "@iml", "old-gui", "templates") + path.sep,
   HELP_TEXT: helpText
 });
 

@@ -5,6 +5,6 @@
 // Use of this source code is governed by a MIT-style
 // license that can be found in the LICENSE file.
 
-import start from './view-server.js';
+import start from "./view-server.js";
 
 start();

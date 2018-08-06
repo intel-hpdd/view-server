@@ -3,8 +3,7 @@ const toHaveBeenCalledNTimesWith = (n: number) =>
     if (!jest.isMockFunction(received))
       return {
         pass: false,
-        message: () =>
-          `Expected a mock, but got ${this.utils.printReceived(received)}.`
+        message: () => `Expected a mock, but got ${this.utils.printReceived(received)}.`
       };
 
     const foundCount = received.mock.calls.reduce((count, args) => {
@@ -24,13 +23,11 @@ const toHaveBeenCalledNTimesWith = (n: number) =>
         )} not to have been called with ${rest} ${n} time(s) but it was.`;
     else
       result.message = () =>
-        `Expect mock to be called with ${this.utils.printExpected(
-          rest
-        )} ${this.utils.pluralize(
-          'time',
+        `Expect mock to be called with ${this.utils.printExpected(rest)} ${this.utils.pluralize(
+          "time",
           n
         )} but it was called ${this.utils.pluralize(
-          'time',
+          "time",
           foundCount
         )}.\n\nMock this.utils.printReceived(received) call listing:\n${this.utils.printReceived(
           received.mock.calls
@@ -45,17 +42,17 @@ expect.extend({
   toHaveBeenCalledThriceWith: toHaveBeenCalledNTimesWith(3),
   toHaveBeenCalledNTimesWith: toHaveBeenCalledNTimesWith(null),
   toBeAPromise(actual) {
-    const isPromiseLike = obj => obj && typeof obj.then === 'function';
+    const isPromiseLike = obj => obj && typeof obj.then === "function";
 
     if (isPromiseLike(actual))
       return {
         pass: true,
-        message: 'Expected object to be a promise'
+        message: "Expected object to be a promise"
       };
     else
       return {
         pass: false,
-        message: 'Expected object not to be a promise'
+        message: "Expected object not to be a promise"
       };
   }
 });

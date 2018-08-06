@@ -1,4 +1,4 @@
-describe('index route', () => {
+describe("index route", () => {
   let mockIndexHandlers, mockCheckGroup, mockViewRouter;
 
   beforeEach(() => {
@@ -7,14 +7,14 @@ describe('index route', () => {
       newHandler: jest.fn()
     };
 
-    jest.mock('../../../source/lib/index-handlers.js', () => mockIndexHandlers);
+    jest.mock("../../../source/lib/index-handlers.js", () => mockIndexHandlers);
 
     mockCheckGroup = {
       fsAdmins: jest.fn(),
       fsUsers: jest.fn()
     };
 
-    jest.mock('../../../source/lib/check-group.js', () => mockCheckGroup);
+    jest.mock("../../../source/lib/check-group.js", () => mockCheckGroup);
 
     const pathRouter = {
       get: jest.fn(() => pathRouter)
@@ -25,12 +25,12 @@ describe('index route', () => {
       route: jest.fn(() => pathRouter)
     };
 
-    jest.mock('../../../source/view-router.js', () => mockViewRouter);
+    jest.mock("../../../source/view-router.js", () => mockViewRouter);
 
-    require('../../../source/routes/index-route.js').default();
+    require("../../../source/routes/index-route.js").default();
   });
 
-  it('should call view-router route', () => {
+  it("should call view-router route", () => {
     expect(mockViewRouter.route).toHaveBeenCalled();
   });
 });

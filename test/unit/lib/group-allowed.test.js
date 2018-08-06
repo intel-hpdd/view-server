@@ -1,14 +1,14 @@
 // @flow
 
-import groupAllowed from '../../../source/lib/group-allowed.js';
-import GROUPS from '../../../source/lib/groups.js';
+import groupAllowed from "../../../source/lib/group-allowed.js";
+import GROUPS from "../../../source/lib/groups.js";
 
-describe('group allowed', () => {
-  it('should disallow no session', () => {
+describe("group allowed", () => {
+  it("should disallow no session", () => {
     expect(groupAllowed(GROUPS.FS_USERS)).toBeFalsy();
   });
 
-  it('should disallow fs users and admins for superuser level permissions', () => {
+  it("should disallow fs users and admins for superuser level permissions", () => {
     expect(
       groupAllowed(GROUPS.SUPERUSERS, {
         user: {
@@ -18,21 +18,17 @@ describe('group allowed', () => {
     ).toBe(false);
   });
 
-  it('should allow superusers', () => {
+  it("should allow superusers", () => {
     expect(
       groupAllowed(GROUPS.SUPERUSERS, {
         user: {
-          groups: [
-            { name: GROUPS.FS_ADMINS },
-            { name: GROUPS.FS_USERS },
-            { name: GROUPS.SUPERUSERS }
-          ]
+          groups: [{ name: GROUPS.FS_ADMINS }, { name: GROUPS.FS_USERS }, { name: GROUPS.SUPERUSERS }]
         }
       })
     ).toBe(true);
   });
 
-  it('should allow fs users', () => {
+  it("should allow fs users", () => {
     expect(
       groupAllowed(GROUPS.FS_USERS, {
         user: {
@@ -42,7 +38,7 @@ describe('group allowed', () => {
     ).toBe(true);
   });
 
-  it('should allow fs admins', () => {
+  it("should allow fs admins", () => {
     expect(
       groupAllowed(GROUPS.FS_ADMINS, {
         user: {

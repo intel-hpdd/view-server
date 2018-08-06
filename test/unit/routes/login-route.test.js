@@ -1,4 +1,4 @@
-describe('login route', () => {
+describe("login route", () => {
   let mockViewRouter, mockTemplates, req, res, next, pathRouter;
 
   beforeEach(() => {
@@ -15,9 +15,9 @@ describe('login route', () => {
     next = jest.fn();
 
     mockTemplates = {
-      'index.html': jest.fn(() => 'foo')
+      "index.html": jest.fn(() => "foo")
     };
-    jest.mock('../../../source/lib/templates.js', () => mockTemplates);
+    jest.mock("../../../source/lib/templates.js", () => mockTemplates);
 
     pathRouter = {
       get: jest.fn(() => {
@@ -28,44 +28,41 @@ describe('login route', () => {
     mockViewRouter = {
       route: jest.fn(() => pathRouter)
     };
-    jest.mock('../../../source/view-router.js', () => mockViewRouter);
+    jest.mock("../../../source/view-router.js", () => mockViewRouter);
 
-    require('../../../source/routes/login-route').default();
+    require("../../../source/routes/login-route").default();
   });
 
-  it('should register a path for the login route', () => {
-    expect(mockViewRouter.route).toHaveBeenCalledOnceWith('/ui/login');
+  it("should register a path for the login route", () => {
+    expect(mockViewRouter.route).toHaveBeenCalledOnceWith("/ui/login");
   });
 
-  describe('render login', () => {
+  describe("render login", () => {
     beforeEach(() => {
       const handler = pathRouter.get.mock.calls[1][0];
       handler(req, res, {}, next);
     });
 
-    it('should set the header', () => {
-      expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith(
-        'Content-Type',
-        'text/html; charset=utf-8'
-      );
+    it("should set the header", () => {
+      expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith("Content-Type", "text/html; charset=utf-8");
     });
 
-    it('should set the statusCode', () => {
+    it("should set the statusCode", () => {
       expect(res.clientRes.statusCode).toBe(200);
     });
 
-    it('should render the body', () => {
-      expect(res.clientRes.end).toHaveBeenCalledOnceWith('foo');
+    it("should render the body", () => {
+      expect(res.clientRes.end).toHaveBeenCalledOnceWith("foo");
     });
 
-    it('should render the template', () => {
-      expect(mockTemplates['index.html']).toHaveBeenCalledOnceWith({
-        title: 'Login',
+    it("should render the template", () => {
+      expect(mockTemplates["index.html"]).toHaveBeenCalledOnceWith({
+        title: "Login",
         cache: {}
       });
     });
 
-    it('should call next', () => {
+    it("should call next", () => {
       expect(next).toHaveBeenCalledOnceWith(req, res);
     });
   });
