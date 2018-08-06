@@ -34,7 +34,6 @@
     "@iml/flow-jasmine": "1.6.1",
     "@iml/fp": "^8.0.3",
     "@iml/help": "1.4.0",
-    "@iml/logger": "^1.0.2",
     "@iml/obj": "^6.0.3",
     "@iml/req": "^3.0.4",
     "@iml/router": "6.0.2",
