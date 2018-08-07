@@ -17,12 +17,9 @@ type confT = {
   HELP_TEXT: Object,
   HOST_NAME: string,
   IS_RELEASE: boolean,
-  LOG_FILE: string,
-  LOG_PATH: string,
   NODE_ENV: string,
   PARSED_API_URL: Object,
   SERVER_HTTP_URL: string,
-  SITE_ROOT: string,
   TEMPLATE_ROOT_NEW: string,
   TEMPLATE_ROOT_OLD: string,
   VERSION: string,
@@ -35,11 +32,8 @@ let conf: $Shape<confT> = {
   ALLOW_ANONYMOUS_READ: env.ALLOW_ANONYMOUS_READ,
   BUILD: env.BUILD,
   IS_RELEASE: env.IS_RELEASE,
-  LOG_FILE: "view_server.log",
-  LOG_PATH: env.LOG_PATH || "",
   NODE_ENV: env.NODE_ENV || "development",
   SERVER_HTTP_URL: env.SERVER_HTTP_URL,
-  SITE_ROOT: env.SITE_ROOT,
   VERSION: env.VERSION,
   VIEW_SERVER_PORT: env.VIEW_SERVER_PORT
 };
@@ -48,7 +42,6 @@ if (conf.NODE_ENV === "test")
   conf = Object.assign({}, conf, {
     ALLOW_ANONYMOUS_READ: true,
     BUILD: "jenkins__",
-    LOG_PATH: conf.SITE_ROOT,
     SERVER_HTTP_URL: "https://localhost:8000/",
     IS_RELEASE: false,
     VERSION: "",
