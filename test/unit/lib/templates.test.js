@@ -3,14 +3,10 @@ describe('templates', () => {
 
   beforeEach(() => {
     mockGetDirTreeSync = jest.fn(() => ({
-      'e.html':
-        '<$= a $> <$= t("f.html") $> <$= conf.TEMPLATE_ROOT $> <$- html $>',
+      'e.html': '<$= a $> <$= t("f.html") $> <$= conf.TEMPLATE_ROOT $> <$- html $>',
       'f.html': 'bar'
     }));
-    jest.mock(
-      '../../../source/lib/get-dir-tree-sync.js',
-      () => mockGetDirTreeSync
-    );
+    jest.mock('../../../source/lib/get-dir-tree-sync.js', () => mockGetDirTreeSync);
 
     mockConf = {
       TEMPLATE_ROOT: '/a/b/c'
@@ -26,8 +22,6 @@ describe('templates', () => {
         a: 'a',
         html: '<script>console.log("foo");</script>'
       })
-    ).toEqual(
-      'a bar /a/b/c &lt;script&gt;console.log(&quot;foo&quot;);&lt;/script&gt;'
-    );
+    ).toEqual('a bar /a/b/c &lt;script&gt;console.log(&quot;foo&quot;);&lt;/script&gt;');
   });
 });

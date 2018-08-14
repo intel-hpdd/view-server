@@ -21,8 +21,7 @@ export default function getDirTreeSync(
     const filePath = path.join(dir, file);
     const s = fs.statSync(filePath);
 
-    if (s.isFile() && /\.html$/.test(filePath))
-      obj[transformPath(filePath)] = fs.readFileSync(filePath, 'utf8');
+    if (s.isFile() && /\.html$/.test(filePath)) obj[transformPath(filePath)] = fs.readFileSync(filePath, 'utf8');
     if (s.isDirectory()) getDirTreeSync(`${filePath}/`, transformPath, obj);
 
     return obj;

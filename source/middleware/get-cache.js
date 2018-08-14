@@ -15,12 +15,7 @@ import type { routerReqT, routerResT } from '../view-router.js';
 
 import type { dataT } from './get-session.js';
 
-export default (
-  req: routerReqT,
-  res: routerResT,
-  data: dataT,
-  next: Function
-) => {
+export default (req: routerReqT, res: routerResT, data: dataT, next: Function) => {
   let cache;
   const calls = [
     { path: '/filesystem', qs: {} },
@@ -72,12 +67,7 @@ export default (
   cache
     .collect()
     .map(fp.zipObject(calls.map(call => call.path.slice(1))))
-    .stopOnError(
-      renderRequestError(
-        res,
-        (err: Error): string => `Exception rendering resources: ${err.stack}`
-      )
-    )
+    .stopOnError(renderRequestError(res, (err: Error): string => `Exception rendering resources: ${err.stack}`))
     .each(cache => {
       cache.session = data.session;
 

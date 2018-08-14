@@ -29,8 +29,7 @@ describe('get uname', () => {
         nodename: 'iml.local',
         release: '14.1.0',
         version: 'Darwin',
-        machine:
-          'Darwin Kernel Version 14.1.0: Mon Dec 22 23:10:38 PST 2014;  root:xnu-2782.10.72~2/RELEASE_X86_64'
+        machine: 'Darwin Kernel Version 14.1.0: Mon Dec 22 23:10:38 PST 2014;  root:xnu-2782.10.72~2/RELEASE_X86_64'
       });
 
       done();

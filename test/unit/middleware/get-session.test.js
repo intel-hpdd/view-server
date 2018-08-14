@@ -1,14 +1,7 @@
 import highland from 'highland';
 
 describe('get session', () => {
-  let getSession,
-    mockApiRequest,
-    mockRenderRequestError,
-    renderRequestErrorInner,
-    req,
-    res,
-    next,
-    push;
+  let getSession, mockApiRequest, mockRenderRequestError, renderRequestErrorInner, req, res, next, push;
 
   beforeEach(() => {
     req = {
@@ -42,10 +35,7 @@ describe('get session', () => {
 
     mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
 
-    jest.mock(
-      '../../../source/lib/render-request-error.js',
-      () => mockRenderRequestError
-    );
+    jest.mock('../../../source/lib/render-request-error.js', () => mockRenderRequestError);
 
     getSession = require('../../../source/middleware/get-session').default;
 
@@ -77,17 +67,13 @@ describe('get session', () => {
         session: 'stuff'
       },
       cache: {},
-      cacheCookie:
-        'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
+      cacheCookie: 'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
     });
   });
 
   it('should stop on error', () => {
     push(new Error('boom!'));
 
-    expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
-      new Error('boom!'),
-      expect.any(Function)
-    );
+    expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error('boom!'), expect.any(Function));
   });
 });

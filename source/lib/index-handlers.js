@@ -13,16 +13,10 @@ import type { routerReqT, routerResT } from '../view-router.js';
 
 import type { dataT } from '../middleware/get-session.js';
 
-const handler = template => (
-  req: routerReqT,
-  res: routerResT,
-  data: dataT,
-  next: Function
-) => {
+const handler = template => (req: routerReqT, res: routerResT, data: dataT, next: Function) => {
   const session = data.cache.session;
 
-  if (!session.user && !conf.ALLOW_ANONYMOUS_READ)
-    return res.redirect('/ui/login/');
+  if (!session.user && !conf.ALLOW_ANONYMOUS_READ) return res.redirect('/ui/login/');
 
   res.clientRes.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.clientRes.setHeader('Content-Security-Policy', cspPolicy);

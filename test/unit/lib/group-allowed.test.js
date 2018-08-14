@@ -22,11 +22,7 @@ describe('group allowed', () => {
     expect(
       groupAllowed(GROUPS.SUPERUSERS, {
         user: {
-          groups: [
-            { name: GROUPS.FS_ADMINS },
-            { name: GROUPS.FS_USERS },
-            { name: GROUPS.SUPERUSERS }
-          ]
+          groups: [{ name: GROUPS.FS_ADMINS }, { name: GROUPS.FS_USERS }, { name: GROUPS.SUPERUSERS }]
         }
       })
     ).toBe(true);

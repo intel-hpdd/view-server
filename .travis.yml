@@ -1,18 +1,25 @@
 language: node_js
 node_js:
-- 8
-cache: yarn
-script:
-- yarn run eslint
-- yarn run flow
-- yarn run test
-before_deploy: yarn postversion
-deploy:
-  skip_cleanup: true
-  provider: npm
-  email: joe.grund@intel.com
-  api_key:
-    secure: Mccu2NHxQG86XCpr3ME5lZMUzIlyp0sBBQNGMv7eXwzwPP2akknWVY4cx8+JTNMF4PgR6JlukSSC65uVuVo6+CBEW1Ztl+MCFsKiH1F2SUgIyO9Sw84sZ9PruozbNmc2V1hvM6WUDLHvB+pz1t6nVVIUJP3QrTGZKeFTgzAc3ExaoFFDl9zrsOTZGZUpdpt54qwJRGH4oBM+MffwRBt1tPT74u7NTT90aHd8FBYKR+gqK9sNhANBoMHlB57Nce1+UAU9l//9ChehO7JK6Ve2mYZvpCHYKh2vKDADk5/xAZIw+OkWo4yV6ckUSqoLMTGjMMsc6+q8UwMGayDFCF45Ul/Z62Ghq+Gu4CGZEu0b1qLIYRL+QP7jvElW1teQhssd4sb0Xq16g5561oowFRt4+XYWqYfkPk0WISK1zDRBBXeAqUg9tXgfn5myj39bo8kX55xnIH21LECAPLqc9CdPfaWUW9sNnmTplSIQ9fIMBw1g8lnMurQHyqORXLIqNljw25tC004c4S3FC2KMYZizICs5W6GCFYYUG70lrtwAuuduZ/hjYZW8tpj3dVRAhGKFdyaxAxMxztBuq6/dIesfKxtfDSetvSYOlifwyKPwn3fkrxEXU1NTMwafFSclMJpvqj6WAT0aM0Ee6QuIUSGseEX7d7bZXVfViV/iLhNHebg=
-  on:
-    tags: true
-    repo: intel-hpdd/view-server
+  - 8
+jobs:
+  include:
+    - stage: test
+      env: Type='Test Checks'
+      script:
+        - npm run eslint
+        - npm run flow
+        - npm run test
+    - stage: deploy-npm
+      env: Type='NPM Deploy'
+      before_deploy: npm postversion
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          all_branches: true
+          repo: whamcloud/view-server
+stages:
+  - name: deploy-npm
+    if: branch =~ ^v\d+\.\d+\.\d+$

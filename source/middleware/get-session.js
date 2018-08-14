@@ -25,12 +25,7 @@ export default (req: routerReqT, res: routerResT, next: Function) => {
       cookie
     }
   })
-    .stopOnError(
-      renderRequestError(
-        res,
-        (err: Error) => `Exception rendering resources: ${err.stack}`
-      )
-    )
+    .stopOnError(renderRequestError(res, (err: Error) => `Exception rendering resources: ${err.stack}`))
     .each(response => {
       // Pass the session cookies to the client.
       res.clientRes.setHeader('Set-Cookie', response.headers['set-cookie']);
@@ -39,10 +34,7 @@ export default (req: routerReqT, res: routerResT, next: Function) => {
         session: response.body,
         cache: {},
         cacheCookie: response.headers['set-cookie']
-          .map(
-            (x: string) =>
-              (x.match(/((?:csrftoken|sessionid)=[^;]+;)/) || [''])[0]
-          )
+          .map((x: string) => (x.match(/((?:csrftoken|sessionid)=[^;]+;)/) || [''])[0])
           .join(' ')
       };
 

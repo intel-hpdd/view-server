@@ -1,6 +1,9 @@
 [ignore]
 .*/view-server/dist/.*
 
+[untyped]
+.*/node_modules/@iml/req/source/error-buffer.js
+
 [include]
 
 [libs]
@@ -10,4 +13,3 @@ node_modules/@iml/flow-jasmine/flow-typed
 
 [options]
 esproposal.class_instance_fields=enable
-experimental.strict_type_args=true

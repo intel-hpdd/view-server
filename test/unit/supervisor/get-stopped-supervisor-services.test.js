@@ -11,8 +11,7 @@ describe('get stopped supervisor services', () => {
     };
     jest.mock('net', () => mockNet);
 
-    getStoppedSupervisorServices = require('../../../source/supervisor/get-stopped-supervisor-services')
-      .default;
+    getStoppedSupervisorServices = require('../../../source/supervisor/get-stopped-supervisor-services').default;
   });
 
   it('should return the non-running services', done => {
@@ -31,11 +30,13 @@ describe('get stopped supervisor services', () => {
       })
     );
 
-    getStoppedSupervisorServices().errors(done.fail).apply(x => {
-      expect(x).toBe('corosync');
+    getStoppedSupervisorServices()
+      .errors(done.fail)
+      .apply(x => {
+        expect(x).toBe('corosync');
 
-      done();
-    });
+        done();
+      });
   });
 
   it('should return empty when everything is running', done => {
@@ -54,21 +55,25 @@ describe('get stopped supervisor services', () => {
       })
     );
 
-    getStoppedSupervisorServices().errors(done.fail).apply(x => {
-      expect(x).toBe(undefined);
+    getStoppedSupervisorServices()
+      .errors(done.fail)
+      .apply(x => {
+        expect(x).toBe(undefined);
 
-      done();
-    });
+        done();
+      });
   });
 
   it('should tell supervisor is down on error', done => {
     stream.emit(new Error('socket error'));
     stream.end();
 
-    getStoppedSupervisorServices().errors(done.fail).apply(x => {
-      expect(x).toBe('supervisor');
+    getStoppedSupervisorServices()
+      .errors(done.fail)
+      .apply(x => {
+        expect(x).toBe('supervisor');
 
-      done();
-    });
+        done();
+      });
   });
 });

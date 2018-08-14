@@ -2,16 +2,7 @@ import * as obj from '@iml/obj';
 import highland from 'highland';
 
 describe('get cache', () => {
-  let mockConf,
-    mockApiRequest,
-    data,
-    req,
-    res,
-    getCache,
-    next,
-    calls,
-    mockRenderRequestError,
-    renderRequestErrorInner;
+  let mockConf, mockApiRequest, data, req, res, getCache, next, calls, mockRenderRequestError, renderRequestErrorInner;
 
   beforeEach(() => {
     calls = [
@@ -85,8 +76,7 @@ describe('get cache', () => {
           username: 'debug'
         }
       },
-      cacheCookie:
-        'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
+      cacheCookie: 'csrftoken=0GkwjZHBUq1DoLeg7M3cEfod8d0EjAAn; sessionid=7dbd643025680726843284b5ba7402b1;'
     };
 
     mockApiRequest = jest.fn();
@@ -96,10 +86,7 @@ describe('get cache', () => {
 
     mockRenderRequestError = jest.fn(() => renderRequestErrorInner);
 
-    jest.mock(
-      '../../../source/lib/render-request-error.js',
-      () => mockRenderRequestError
-    );
+    jest.mock('../../../source/lib/render-request-error.js', () => mockRenderRequestError);
 
     getCache = require('../../../source/middleware/get-cache').default;
   });
@@ -195,17 +182,11 @@ describe('get cache', () => {
     });
 
     it('should push the response to renderRequestError', () => {
-      expect(mockRenderRequestError).toHaveBeenCalledOnceWith(
-        res,
-        expect.any(Function)
-      );
+      expect(mockRenderRequestError).toHaveBeenCalledOnceWith(res, expect.any(Function));
     });
 
     it('should render an error page on error', () => {
-      expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(
-        new Error('boom!'),
-        expect.any(Function)
-      );
+      expect(renderRequestErrorInner).toHaveBeenCalledOnceWith(new Error('boom!'), expect.any(Function));
     });
   });
 });

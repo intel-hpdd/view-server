@@ -1,10 +1,5 @@
 describe('view router', () => {
-  let mockGetRouter,
-    router,
-    mockCheckForProblems,
-    mockGetSession,
-    mockGetCache,
-    instance;
+  let mockGetRouter, router, mockCheckForProblems, mockGetSession, mockGetCache, instance;
 
   beforeEach(() => {
     router = {
@@ -15,10 +10,7 @@ describe('view router', () => {
     jest.mock('@iml/router', () => mockGetRouter);
 
     mockCheckForProblems = function checkForProblems() {};
-    jest.mock(
-      '../../source/middleware/check-for-problems.js',
-      () => mockCheckForProblems
-    );
+    jest.mock('../../source/middleware/check-for-problems.js', () => mockCheckForProblems);
 
     mockGetSession = function getSession() {};
     jest.mock('../../source/middleware/get-session.js', () => mockGetSession);

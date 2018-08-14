@@ -44,10 +44,7 @@ describe('login route', () => {
     });
 
     it('should set the header', () => {
-      expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith(
-        'Content-Type',
-        'text/html; charset=utf-8'
-      );
+      expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith('Content-Type', 'text/html; charset=utf-8');
     });
 
     it('should set the statusCode', () => {

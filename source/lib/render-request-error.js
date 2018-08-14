@@ -14,9 +14,7 @@ const backendErrorTemplate = templates['backend_error.html'];
 
 type fnToStringT = (err: Error) => string;
 
-export default (res: routerResT, descriptionFn: fnToStringT) => (
-  err: Error
-) => {
+export default (res: routerResT, descriptionFn: fnToStringT) => (err: Error) => {
   const description = descriptionFn(err);
 
   getUname().each(map => {

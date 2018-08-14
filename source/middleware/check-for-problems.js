@@ -11,17 +11,11 @@ import getStoppedServices from '../supervisor/get-stopped-supervisor-services.js
 
 import type { routerReqT, routerResT } from '../view-router.js';
 
-export default function checkForProblems(
-  req: routerReqT,
-  res: routerResT,
-  next: Function
-) {
+export default function checkForProblems(req: routerReqT, res: routerResT, next: Function) {
   getStoppedServices().toArray(stopped => {
     if (stopped.length === 0) return next(req, res);
 
-    const description = `The following services are not running: \n\n${stopped.join(
-      '\n'
-    )}\n\n`;
+    const description = `The following services are not running: \n\n${stopped.join('\n')}\n\n`;
     renderRequestError(res, () => description)(new Error());
   });
 }

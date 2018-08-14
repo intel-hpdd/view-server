@@ -1,13 +1,5 @@
 describe('view server', () => {
-  let mockHttp,
-    mockHttps,
-    close,
-    server,
-    mockLoginRoute,
-    mockIndexRoute,
-    mockViewRouter,
-    mockConf,
-    mockApi;
+  let mockHttp, mockHttps, close, server, mockLoginRoute, mockIndexRoute, mockViewRouter, mockConf, mockApi;
 
   beforeEach(() => {
     server = {
@@ -69,9 +61,7 @@ describe('view server', () => {
   });
 
   it('should call createServer', () => {
-    expect(mockHttp.createServer).toHaveBeenCalledOnceWith(
-      expect.any(Function)
-    );
+    expect(mockHttp.createServer).toHaveBeenCalledOnceWith(expect.any(Function));
   });
 
   it('should listen on the view server port', () => {

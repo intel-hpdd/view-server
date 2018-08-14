@@ -42,12 +42,7 @@ let conf: confT = Object.assign(
   confJson
 );
 
-const modulesPath = path.join.bind(
-  path.join,
-  conf.SITE_ROOT,
-  'ui-modules',
-  'node_modules'
-);
+const modulesPath = path.join.bind(path.join, conf.SITE_ROOT, 'ui-modules', 'node_modules');
 
 if (conf.NODE_ENV === 'test')
   conf = Object.assign({}, conf, {
@@ -66,8 +61,7 @@ conf = Object.assign({}, conf, {
   API_URL: url.format(parsedServerHttpUrl),
   HOST_NAME: parsedServerHttpUrl.hostname,
   PARSED_API_URL: parsedServerHttpUrl,
-  TEMPLATE_ROOT_NEW:
-    path.sep + path.join('usr', 'lib', 'iml-manager', 'iml-gui') + path.sep,
+  TEMPLATE_ROOT_NEW: path.sep + path.join('usr', 'lib', 'iml-manager', 'iml-gui') + path.sep,
   TEMPLATE_ROOT_OLD: modulesPath('@iml', 'old-gui', 'templates') + path.sep,
   HELP_TEXT: helpText
 });

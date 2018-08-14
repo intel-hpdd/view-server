@@ -12,14 +12,8 @@ import conf from '../conf.js';
 
 const transformPath = root => p => p.replace(root, '');
 const templates = {
-  ...getDirTreeSync(
-    conf.TEMPLATE_ROOT_OLD,
-    transformPath(conf.TEMPLATE_ROOT_OLD)
-  ),
-  ...getDirTreeSync(
-    conf.TEMPLATE_ROOT_NEW,
-    transformPath(conf.TEMPLATE_ROOT_NEW)
-  )
+  ...getDirTreeSync(conf.TEMPLATE_ROOT_OLD, transformPath(conf.TEMPLATE_ROOT_OLD)),
+  ...getDirTreeSync(conf.TEMPLATE_ROOT_NEW, transformPath(conf.TEMPLATE_ROOT_NEW))
 };
 
 templateSettings.imports = {

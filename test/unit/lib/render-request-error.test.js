@@ -20,8 +20,7 @@ describe('render request error', () => {
     mockGetUname = jest.fn(() => stream);
     jest.mock('../../../source/lib/get-uname.js', () => mockGetUname);
 
-    renderRequestError = require('../../../source/lib/render-request-error')
-      .default;
+    renderRequestError = require('../../../source/lib/render-request-error').default;
   });
 
   it('should render a backend error', () => {

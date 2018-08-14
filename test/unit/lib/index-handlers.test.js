@@ -49,10 +49,7 @@ describe('index handlers', () => {
   it('should set the response header', () => {
     indexHandlers.newHandler(req, res, data, next);
 
-    expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith(
-      'Content-Type',
-      'text/html; charset=utf-8'
-    );
+    expect(res.clientRes.setHeader).toHaveBeenCalledOnceWith('Content-Type', 'text/html; charset=utf-8');
   });
 
   it('should set the status code', () => {
