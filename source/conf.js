@@ -29,7 +29,7 @@ type confT = {
 const env: confT = (process.env: any);
 
 let conf: $Shape<confT> = {
-  ALLOW_ANONYMOUS_READ: env.ALLOW_ANONYMOUS_READ,
+  ALLOW_ANONYMOUS_READ: env.ALLOW_ANONYMOUS_READ === "true",
   BUILD: env.BUILD,
   IS_RELEASE: env.IS_RELEASE,
   NODE_ENV: env.NODE_ENV || "development",
