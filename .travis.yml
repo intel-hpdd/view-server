@@ -1,9 +1,5 @@
-sudo: required
 language: node_js
-node_js:
-  - 10
-services:
-  - docker
+node_js: "10"
 jobs:
   include:
     - stage: test
@@ -13,15 +9,16 @@ jobs:
         - npm run flow
         - npm run test
     - stage: cd
-      git:
-        depth: 999999
-      env: 'Type=Continuous Deployment'
+      name: "Continuous Deployment"
       script:
-        - docker run -dit --name copr -v $(pwd):/builddir imlteam/dotnet-docker /usr/sbin/init
-        - docker exec -it copr bash -c 'yum install -y rpmdevtools copr-cli git'
-        - docker exec -it copr bash -c "cd /builddir && fake run build.fsx --release=\$(git rev-list HEAD | wc -l) --copr-login=$COPR_LOGIN --copr-username=$COPR_USERNAME --copr-token=$COPR_TOKEN"
+        - export OWNER=managerforlustre
+        - export PROJECT=manager-for-lustre-devel
+        - export PACKAGE=iml-view-server
+        - export CLONE_URL=https://github.com/whamcloud/view-server.git
+        - export SPEC=iml-view-server.spec
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
     - stage: deploy-npm
-      env: Type='npm Deploy'
+      name: "npm Deploy"
       before_deploy:
         - npm i --ci
         - npm run postversion
@@ -33,12 +30,15 @@ jobs:
         on:
           all_branches: true
     - stage: deploy-copr
-      env: Type='Copr deploy'
-      language: generic
+      name: "Copr deploy"
       script:
-        - docker run -dit --name copr -v $(pwd):/builddir imlteam/dotnet-docker /usr/sbin/init
-        - docker exec -it copr bash -c 'yum install -y rpmdevtools copr-cli'
-        - docker exec -it copr bash -c "cd /builddir && fake run build.fsx --copr-login=$COPR_LOGIN --copr-username=$COPR_USERNAME --copr-token=$COPR_TOKEN --prod"
+        - export OWNER=managerforlustre
+        - export PROJECT=manager-for-lustre
+        - export PACKAGE=iml-view-server
+        - export CLONE_URL=https://github.com/whamcloud/view-server.git
+        - export SPEC=iml-view-server.spec
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+
 stages:
   - test
   - name: cd
