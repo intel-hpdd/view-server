@@ -1,24 +1,18 @@
-language: node_js
-node_js: "10"
 jobs:
   include:
     - stage: test
-      env: Type='Lint & Test'
+      name: "Lint & Test"
+      language: node_js
+      node_js: "10"
+      cache: npm
       script:
         - npm run eslint
         - npm run flow
         - npm run test
-    - stage: cd
-      name: "Continuous Deployment"
-      script:
-        - export OWNER=managerforlustre
-        - export PROJECT=manager-for-lustre-devel
-        - export PACKAGE=iml-view-server
-        - export CLONE_URL=https://github.com/whamcloud/view-server.git
-        - export SPEC=iml-view-server.spec
-        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
     - stage: deploy-npm
       name: "npm Deploy"
+      language: node_js
+      node_js: "10"
       before_deploy:
         - npm i --ci
         - npm run postversion
@@ -29,8 +23,19 @@ jobs:
         api_key: "$NPM_TOKEN"
         on:
           all_branches: true
+    - stage: cd
+      name: "Continuous Deployment"
+      language: generic
+      script:
+        - export OWNER=managerforlustre
+        - export PROJECT=manager-for-lustre-devel
+        - export PACKAGE=iml-view-server
+        - export CLONE_URL=https://github.com/whamcloud/view-server.git
+        - export SPEC=iml-view-server.spec
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
     - stage: deploy-copr
       name: "Copr deploy"
+      language: generic
       script:
         - export OWNER=managerforlustre
         - export PROJECT=manager-for-lustre
