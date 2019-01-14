@@ -1,6 +1,6 @@
 {
   "name": "@iml/view-server",
-  "version": "8.0.2",
+  "version": "8.0.3",
   "description": "Serves the HTML pages for the IML GUI.",
   "main": "targetdir/bundle.js",
   "scripts": {
