@@ -4,6 +4,7 @@ $(NPM):
 	dnf install -y npm
 
 srpm: $(NPM)
+	npm i
 	npm run postversion
 	npm pack
 	mkdir -p /tmp/_topdir/SOURCES
