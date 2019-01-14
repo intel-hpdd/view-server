@@ -1,7 +1,7 @@
 ﻿%define base_name view-server
 
 Name:       iml-%{base_name}
-Version:    8.0.3
+Version:    8.0.4
 Release:    1%{?dist}
 Summary:    Serves the HTML pages for the IML GUI.
 License:    MIT
@@ -48,6 +48,9 @@ rm -rf %{buildroot}
 %attr(0644,root,root)%{_unitdir}/iml-view-server.service
 
 %changelog
+* Mon Jan 14 2019 Will Johnson <wjohnson@whamcloud.com> - 8.0.4-1
+- Install deps before running postversion
+
 * Mon Jan 14 2019 Will Johnson <wjohnson@whamcloud.com> - 8.0.3-1
 - Build using Docker copr image
 
