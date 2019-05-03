@@ -1,6 +1,12 @@
 jobs:
   include:
     - stage: test
+      name: "copr build test"
+      script:
+        - export SPEC=iml-view-server.spec
+        - docker run -it -e SPEC="$SPEC" -e LOCAL_ONLY="True" -v $(pwd):/build:rw imlteam/copr
+        - ((`find _topdir/RPMS -name *.rpm | wc -l` > 0))
+    - stage: test
       name: "Lint & Test"
       language: node_js
       node_js: "10"
@@ -30,9 +36,8 @@ jobs:
         - export OWNER=managerforlustre
         - export PROJECT=manager-for-lustre-devel
         - export PACKAGE=iml-view-server
-        - export CLONE_URL=https://github.com/whamcloud/view-server.git
         - export SPEC=iml-view-server.spec
-        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
     - stage: deploy-copr-r5.0
       name: "Copr deploy"
       language: generic
@@ -40,9 +45,8 @@ jobs:
         - export OWNER=managerforlustre
         - export PROJECT=manager-for-lustre-5.0
         - export PACKAGE=iml-view-server
-        - export CLONE_URL=https://github.com/whamcloud/view-server.git
         - export SPEC=iml-view-server.spec
-        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e CLONE_URL="$CLONE_URL" -e SPEC="$SPEC" -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
+        - docker run -it -e OWNER="$OWNER" -e PROJECT="$PROJECT" -e PACKAGE="$PACKAGE" -e SPEC="$SPEC" -e PROD=true -e KEY="$encrypted_253525cedcf6_key" -e IV="$encrypted_253525cedcf6_iv" -v $(pwd):/build:rw imlteam/copr
 
 stages:
   - test

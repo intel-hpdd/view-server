@@ -2,7 +2,9 @@
 
 Name:       iml-%{base_name}
 Version:    8.0.4
+# Release Start
 Release:    1%{?dist}
+# Release End
 Summary:    Serves the HTML pages for the IML GUI.
 License:    MIT
 Group:      System Environment/Libraries
