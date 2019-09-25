@@ -1,7 +1,7 @@
 %define base_name view-server
 
 Name:       iml-%{base_name}
-Version:    8.0.4
+Version:    8.0.5
 # Release Start
 Release:    1%{?dist}
 # Release End
