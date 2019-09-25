@@ -54,5 +54,5 @@ stages:
     if: branch = master AND type = push AND fork = false
   - name: deploy-npm
     if: branch =~ ^v\d+\.\d+\.\d+-1.*$
-  - name: deploy-copr-r5.0
+  - name: deploy-copr-r5.1
     if: branch =~ ^v\d+\.\d+\.\d+-.+-r5\.1$
